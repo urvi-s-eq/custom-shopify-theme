@@ -1,0 +1,36 @@
+<section class="cwr-review-sec">
+        <div class="cwr-review-sec__bg">
+        <img src="{{ 'review-bg-img.jpg' | file_url }}" alt="review img" class="img-fluid lazyload desktop-img"
+                width="1903" height="412" />
+        <img src="{{ 'review-bg-img-mobile.jpg' | file_url }}" alt="review img" class="img-fluid lazyload mobile-img"
+                width="720" height="489" />
+        </div>
+        <div class="container">
+            <div class="cwr-review-sec__content">
+                <div class="cwr-rating">
+                    <ul>
+                        <li><img src="{{ 'rating-star.svg' | file_url }}" alt="star icon" class="img-fluid" width="" height=""/></li>
+                        <li><img src="{{ 'rating-star.svg' | file_url }}" alt="star icon" class="img-fluid" width="" height=""/></li>
+                        <li><img src="{{ 'rating-star.svg' | file_url }}" alt="star icon" class="img-fluid" width="" height=""/></li>
+                        <li><img src="{{ 'rating-star.svg' | file_url }}" alt="star icon" class="img-fluid" width="" height=""/></li>
+                        <li><img src="{{ 'rating-star.svg' | file_url }}" alt="star icon" class="img-fluid" width="" height=""/></li>
+                    </ul>
+                </div>
+                <p>“Seriously, these markers are god damn perfect for making custom colors along with the one4all
+                    refills. I personally think getting these over the premixed one4all markers is the more efficient
+                    way to go. Highly recommend these.”</p>
+                <span>wingnut</span>
+            </div>
+        </div>
+</section>
+{% schema %}
+    {
+        "name": "CWR Review",
+        "settings": [],
+        "presets" : [
+            {
+                "name" : "CWR Review"
+            }
+        ]
+    }
+{% endschema %}

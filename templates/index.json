@@ -1,75 +1,90 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
-    "image_banner": {
-      "type": "image-banner",
-      "blocks": {
-        "heading": {
-          "type": "heading",
-          "settings": {
-            "heading": "Browse our latest products",
-            "heading_size": "h0"
-          }
-        },
-        "button": {
-          "type": "buttons",
-          "settings": {
-            "button_label_1": "Shop all",
-            "button_link_1": "shopify://collections/all",
-            "button_style_secondary_1": true,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
-          }
-        }
-      },
-      "block_order": [
-        "heading",
-        "button"
-      ],
-      "settings": {
-        "image_overlay_opacity": 40,
-        "image_height": "large",
-        "desktop_content_position": "bottom-center",
-        "show_text_box": false,
-        "image_behavior": "none",
-        "desktop_content_alignment": "center",
-        "color_scheme": "scheme-3",
-        "mobile_content_alignment": "center",
-        "stack_images_on_mobile": false,
-        "show_text_below": false
-      }
+    "custom-banner": {
+      "type": "custom-banner",
+      "settings": {}
     },
-    "featured_collection": {
-      "type": "featured-collection",
-      "settings": {
-        "title": "Featured products",
-        "heading_size": "h2",
-        "description": "",
-        "show_description": false,
-        "description_style": "body",
-        "collection": "all",
-        "products_to_show": 8,
-        "columns_desktop": 4,
-        "color_scheme": "scheme-1",
-        "full_width": false,
-        "show_view_all": true,
-        "view_all_style": "solid",
-        "enable_desktop_slider": false,
-        "swipe_on_mobile": false,
-        "image_ratio": "adapt",
-        "image_shape": "default",
-        "show_secondary_image": true,
-        "show_vendor": false,
-        "show_rating": false,
-        "quick_add": "none",
-        "columns_mobile": "2",
-        "padding_top": 44,
-        "padding_bottom": 36
-      }
+    "award_slider_bJ8KHx": {
+      "type": "award-slider",
+      "settings": {}
+    },
+    "our_categories_b8y9H6": {
+      "type": "our-categories",
+      "settings": {}
+    },
+    "cwr_marquee_slider_4wfbar": {
+      "type": "cwr-marquee-slider",
+      "settings": {}
+    },
+    "cwr_img_content_ajB7Le": {
+      "type": "cwr-img-content",
+      "settings": {}
+    },
+    "cwr_review_jiBpXQ": {
+      "type": "cwr-review",
+      "settings": {}
+    },
+    "customer_favourite_4XRFTL": {
+      "type": "customer-favourite",
+      "settings": {}
+    },
+    "img_content_choose_us_V3jLef": {
+      "type": "img-content-choose-us",
+      "settings": {}
+    },
+    "new_arrival_CM3QkB": {
+      "type": "new-arrival",
+      "settings": {}
+    },
+    "instagram_QDjgRq": {
+      "type": "instagram",
+      "settings": {}
+    },
+    "shopping_with_us_review_QF33Da": {
+      "type": "shopping-with-us-review",
+      "settings": {}
+    },
+    "cwr_faq_KzmBgn": {
+      "type": "cwr-Faq",
+      "settings": {}
+    },
+    "img_content_creations_fwzBW9": {
+      "type": "img-content-creations",
+      "settings": {}
+    },
+    "cwr_newsletter_NDCAtW": {
+      "type": "cwr-newsletter",
+      "settings": {}
+    },
+    "cwr_blog_qBUMKR": {
+      "type": "cwr-blog",
+      "settings": {}
     }
   },
   "order": [
-    "image_banner",
-    "featured_collection"
+    "custom-banner",
+    "award_slider_bJ8KHx",
+    "our_categories_b8y9H6",
+    "cwr_marquee_slider_4wfbar",
+    "cwr_img_content_ajB7Le",
+    "cwr_review_jiBpXQ",
+    "customer_favourite_4XRFTL",
+    "img_content_choose_us_V3jLef",
+    "new_arrival_CM3QkB",
+    "instagram_QDjgRq",
+    "shopping_with_us_review_QF33Da",
+    "cwr_faq_KzmBgn",
+    "img_content_creations_fwzBW9",
+    "cwr_newsletter_NDCAtW",
+    "cwr_blog_qBUMKR"
   ]
 }

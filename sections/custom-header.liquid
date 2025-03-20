@@ -1,0 +1,94 @@
+<header class="cwr-header">
+    <div class="cwr-announcement-bar">
+        <div class="container">
+            <p>Some announcement goes here
+            </p>
+        </div>
+    </div>
+    <div class="cwr-header__content">
+      <div class="container">
+          <div class="cwr-header__content-wrap">
+              <div class="mobile-nav">
+                  <div class="hamburg-icon js-hamburg-icon"><a href="javascript:void(0)">
+                    <img src="{{ 'menu.svg' | file_url }}" alt="menu" class="img-fluid" width=""
+                    height="">
+                      </a>
+                  </div>
+              </div>
+              <div class="cwr-header__left">
+                  <div class="logo">
+                    <a href="javascript:void(0)">
+                    <img src="{{ 'logo.png' | file_url}}" class="img-fluid lazyload" alt="logo" width=""
+                    height="">
+                    </a>
+                </div>
+              </div>
+              <div class="cwr-header__right">
+                <div class="search-input">
+                    <form>
+                        <button>
+                          <img src="{{ 'search-icon-mobile.svg' | file_url }}" alt="search-icon" class="img-fluid" width=""
+                        height="">
+                        </button>
+                        <input type="text" name="" value="" id="search" placeholder="Search......"
+                            class="search">
+                    </form>
+                </div>
+                <div class="cwr-country-logo">
+                    <div class="selected">
+                        <a href="javascript:void(0)"><span>
+                          <img src="{{ 'country-img.svg' | file_url }}" alt="country-img" width=""
+                        height="">
+                            </span></a>
+                        <div class="dropdown_arrow"><svg xmlns="http://www.w3.org/2000/svg" width="14"
+                                height="14" viewBox="0 0 14 14" fill="none">
+                                <path
+                                    d="M6.99978 9.33312C6.92301 9.33356 6.84691 9.31884 6.77584 9.28982C6.70477 9.26079 6.64012 9.21801 6.58562 9.16395L3.08562 5.66395C2.97577 5.55411 2.91406 5.40513 2.91406 5.24978C2.91406 5.09444 2.97577 4.94546 3.08562 4.83562C3.19546 4.72577 3.34444 4.66406 3.49978 4.66406C3.65513 4.66406 3.80411 4.72577 3.91395 4.83562L6.99978 7.92728L10.0856 4.84145C10.1972 4.74588 10.3408 4.69595 10.4876 4.70162C10.6344 4.70729 10.7736 4.76815 10.8775 4.87204C10.9814 4.97593 11.0423 5.11519 11.0479 5.262C11.0536 5.40881 11.0037 5.55236 10.9081 5.66395L7.40812 9.16395C7.29946 9.27172 7.15281 9.33247 6.99978 9.33312Z"
+                                    fill="white" />
+                            </svg></div>
+                    </div>
+                    <div class="options">
+                        <ul>
+                            <li><a href="javascript:void(0)">
+                            <img src="{{ 'country-img2.png' | file_url }}" alt="" width=""
+                            height="">CAD</a>
+                            </li>
+                            <li><a href="javascript:void(0)">
+                              <img src="{{ 'country-img.svg' | file_url }}" alt="" width=""
+                            height="">USD</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="cwr-user-and-cart">
+                    <div class="cwr-user">
+                        <a href="javascript:;">
+                          <img src="{{ 'user-img.svg' | file_url }}" alt="search-icon" width=""
+                            height="" class="img-fluid">
+                        </a>
+                    </div>
+                    <div class="cwr-cart js-cart-icon">
+                        <a href="javascript:;">
+                          <img src="{{ 'cart-img.svg' | file_url }}" alt="search-icon" class="img-fluid" width=""
+                            height="">
+                        </a>
+                    </div>
+                </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            {%- render 'usp-slider' %} 
+            {%- render 'custom-nav' %}
+</header>
+{% schema %}
+    {
+        "name": "Custom Header",
+        "settings": [],
+        "presets" : [
+            {
+                "name" : "Custom Header"
+            }
+        ]
+    }
+{% endschema %}
