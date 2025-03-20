@@ -1268,7 +1268,7 @@ footer{
     .cwr-banner-img-top .cwr-banner__img-mobile::after{
         position: absolute;
         content: '';
-        background-image: url(../images/banner-img-mobile-shdow.png);
+        background-image: url('https://cdn.shopify.com/s/files/1/0930/1200/1082/files/banner-img-mobile-shdow.png?v=1742376988');
         background-repeat: no-repeat;
         background-size: cover;
         left: 0;

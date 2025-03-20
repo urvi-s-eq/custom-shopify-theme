@@ -8,9 +8,8 @@
     {{ 'custom.css' | asset_url | stylesheet_tag }}
     {{ 'cwr-cart-page.css' | asset_url | stylesheet_tag }}
     {{ content_for_header }}
+    <script src="{{ 'search-form.js' | asset_url }}" defer="defer"></script>
 </head>
-
-
 <body class="gradient{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %}">
 <script src="{{ 'jquery.min.js' | asset_url }}" defer="defer"></script>
 <script src="{{ 'plugins.js' | asset_url }}" defer="defer"></script>
