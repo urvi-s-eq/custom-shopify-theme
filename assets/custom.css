@@ -52,6 +52,7 @@
     min-width: 386px;
     padding: 5px 12px;
     background-color: var(--color-light);
+    margin-bottom: 0px;
 }
 .search-input form button{
     border: none;
