@@ -1,32 +1,57 @@
 <section class="cwr-review-sec">
         <div class="cwr-review-sec__bg">
-        <img src="{{ 'review-bg-img.jpg' | file_url }}" alt="review img" class="img-fluid lazyload desktop-img"
+        {% if section.settings.review_background_image != blank %}
+        <img src="{{ section.settings.review_background_image | image_url: width: 1903, height: 412 }}" alt="review img" class="img-fluid lazyload desktop-img"
                 width="1903" height="412" />
-        <img src="{{ 'review-bg-img-mobile.jpg' | file_url }}" alt="review img" class="img-fluid lazyload mobile-img"
+        {% endif %}
+        {% if section.settings.review_background_mobile_image != blank %}
+        <img src="{{ section.settings.review_background_mobile_image | image_url: width: 720, height: 489 }}" alt="review img" class="img-fluid lazyload mobile-img"
                 width="720" height="489" />
+        {% endif %}
         </div>
         <div class="container">
             <div class="cwr-review-sec__content">
                 <div class="cwr-rating">
                     <ul>
-                        <li><img src="{{ 'rating-star.svg' | file_url }}" alt="star icon" class="img-fluid" width="" height=""/></li>
-                        <li><img src="{{ 'rating-star.svg' | file_url }}" alt="star icon" class="img-fluid" width="" height=""/></li>
-                        <li><img src="{{ 'rating-star.svg' | file_url }}" alt="star icon" class="img-fluid" width="" height=""/></li>
-                        <li><img src="{{ 'rating-star.svg' | file_url }}" alt="star icon" class="img-fluid" width="" height=""/></li>
-                        <li><img src="{{ 'rating-star.svg' | file_url }}" alt="star icon" class="img-fluid" width="" height=""/></li>
+                        {% for i in (1..5) %}
+                        <li><img src="{{ 'rating-star.svg' | file_url }}" alt="star icon" class="img-fluid" width="16" height="16"></li>
+                        {% endfor %}
                     </ul>
                 </div>
-                <p>“Seriously, these markers are god damn perfect for making custom colors along with the one4all
-                    refills. I personally think getting these over the premixed one4all markers is the more efficient
-                    way to go. Highly recommend these.”</p>
-                <span>wingnut</span>
+                {% if section.settings.review_text_content != blank %}
+                <p>{{ section.settings.review_text_content }}</p>
+                {% endif %}
+                {% if section.settings.reviewer != blank %}
+                <span>{{ section.settings.reviewer }}</span>
+                {% endif %}
             </div>
         </div>
 </section>
 {% schema %}
     {
         "name": "CWR Review",
-        "settings": [],
+        "settings": [
+            {
+                "type": "image_picker",
+                "label": "Review Background Image",
+                "id": "review_background_image"
+            },
+            {
+                "type": "image_picker",
+                "label": "Review Background Mobile Image",
+                "id": "review_background_mobile_image"
+            },
+            {
+                "type": "text",
+                "label": "Review Text Content",
+                "id": "review_text_content"
+            },
+            {
+                "type": "text",
+                "label": "Reviewer",
+                "id": "reviewer"
+            }
+        ],
         "presets" : [
             {
                 "name" : "CWR Review"

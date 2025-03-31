@@ -1,172 +1,84 @@
 <section class="cwr-our-product">
         <div class="container">
             <div class="sec-heading">
-                <h2 class="custom-heading-md">OUR CUSTOMER FAVORITES</h2>
-                <h4 class="custom-heading-sm">Must-haves worth checking out!</h4>
+            {%- if section.settings.fav_header != blank -%}<h2 class="custom-heading-md">{{ section.settings.fav_header }}</h2>{%- endif -%}
+            {%- if section.settings.fav_subheader != blank -%}<h4 class="custom-heading-sm">{{ section.settings.fav_subheader }}</h4>{%- endif -%}
             </div>
         </div>
         <div class="cwr-our-product__wrap js-cwr-our-product">
-            <div class="cwr-slick-item">
-                <div> <!-- need to mobile device  -->
-                    <div class="cwr-our-product__box">
-                        <a href="javascript:void(0)">
-                            <figure>
-                                <img src="{{ 'our-product-img1.jpg' | file_url }}" alt="product img"
-                                    class="img-fluid lazyload" width="344" height="344">
-                            </figure>
-                        </a>
-                        <span class="cwr-new-arrival">New Arrival</span>
-                        <div class="cwr-our-product__box-content">
-                            <div class="cwr-rating">
-                        <ul>
-                        <li><img src="{{ 'rating-star.svg' | file_url }}" alt="star icon" class="img-fluid" width="" height=""/></li>
-                        <li><img src="{{ 'rating-star.svg' | file_url }}" alt="star icon" class="img-fluid" width="" height=""/></li>
-                        <li><img src="{{ 'rating-star.svg' | file_url }}" alt="star icon" class="img-fluid" width="" height=""/></li>
-                        <li><img src="{{ 'rating-star.svg' | file_url }}" alt="star icon" class="img-fluid" width="" height=""/></li>
-                        <li><img src="{{ 'rating-star.svg' | file_url }}" alt="star icon" class="img-fluid" width="" height=""/></li>
-                        </ul>
-                                <span>84 reviews</span>
-                            </div>
-                            <a href="javascript:void(0)">
-                                <h5>Heavy Goods Hoodie (Worldwide) - Black</h5>
+            {% for block in section.blocks %}
+                <div class="cwr-slick-item">
+                    <div>
+                        <div class="cwr-our-product__box">
+                            {%- if block.settings.product_picker.url != blank and block.settings.product_picker.featured_image != blank -%}
+                            <a href="{{ block.settings.product_picker.url }}">
+                                {% if block.settings.product_picker.featured_image != blank %}
+                                <figure>
+                                    <img src="{{ block.settings.product_picker.featured_image | image_url }}" alt="product img"
+                                        class="img-fluid lazyload" width="344" height="344">
+                                </figure>
+                                {% endif %}
                             </a>
-                            <div class="cwr-product-price">
-                                <span>USD$44.95</span>
+                            {% endif %}
+                            {% if block.settings.product_picker.tags contains 'New Arrival' %}<span class="cwr-new-arrival">{{  block.settings.product_picker.tags | first }}</span>{% endif %}
+                            {% if block.settings.product_picker.tags contains 'Sale' and block.settings.product_picker.compare_at_price > block.settings.product_picker.price %}<span class="cwr-new-arrival  cwr-sale">{{  block.settings.product_picker.tags | first }}</span>{% endif %}
+                            <div class="cwr-our-product__box-content">
+                                <div class="cwr-rating">
+                                    <ul>
+                                        {% for i in (1..5) %}
+                                            <li><img src="{{ 'rating-star.svg' | file_url }}" alt="star icon" class="img-fluid" width="16" height="16"></li>
+                                        {% endfor %}
+                                    </ul>
+                                    <span>{{ block.settings.product_picker.metafields.custom.reviews }}</span>
+                                </div>
+                                {%- if block.settings.product_picker.url != blank and block.settings.product_picker.title != blank -%}
+                                <a href="{{ block.settings.product_picker.url }}">
+                                    <h5>{{ block.settings.product_picker.title }}</h5>
+                                </a>
+                                {% endif %}
+                                {% if block.settings.product_picker.price %}
+                                <div class="cwr-product-price">
+                                    {% if block.settings.product_picker.compare_at_price > block.settings.product_picker.price %}
+                                        <span><del>{{ block.settings.product_picker.compare_at_price | money }}</del>{{ block.settings.product_picker.price | money }}</span>
+                                    {% else %}
+                                        <span>{{ block.settings.product_picker.price | money }}</span>
+                                    {% endif %}
+                                </div>
+                                {% endif %}
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="cwr-slick-item">
-                <div>
-                    <div class="cwr-our-product__box">
-                        <a href="javascript:void(0)">
-                            <figure>
-                                <img src="{{ 'our-product-img2.jpg' | file_url }}" alt="product img"
-                                    class="img-fluid lazyload" width="344" height="344">
-                            </figure>
-                        </a>
-                        <span class="cwr-new-arrival cwr-sale">SALE</span>
-                        <div class="cwr-our-product__box-content">
-                            <div class="cwr-rating">
-                        <ul>
-                        <li><img src="{{ 'rating-star.svg' | file_url }}" alt="star icon" class="img-fluid" width="" height=""/></li>
-                        <li><img src="{{ 'rating-star.svg' | file_url }}" alt="star icon" class="img-fluid" width="" height=""/></li>
-                        <li><img src="{{ 'rating-star.svg' | file_url }}" alt="star icon" class="img-fluid" width="" height=""/></li>
-                        <li><img src="{{ 'rating-star.svg' | file_url }}" alt="star icon" class="img-fluid" width="" height=""/></li>
-                        <li><img src="{{ 'rating-star.svg' | file_url }}" alt="star icon" class="img-fluid" width="" height=""/></li>
-                        </ul>
-                                <span>84 reviews</span>
-                            </div>
-                            <a href="javascript:void(0)">
-                                <h5>Stylefile 6 Classic Marker Set (Tryout Kit)</h5>
-                            </a>
-                            <div class="cwr-product-price">
-                                <span><del>USD$10.49</del>USD$7.49</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="cwr-slick-item">
-                <div>
-                    <div class="cwr-our-product__box">
-                        <a href="javascript:void(0)">
-                            <figure>
-                                <img src="{{ 'our-product-img3.jpg' | file_url }}" alt="product img"
-                                    class="img-fluid lazyload" width="344" height="344">
-                            </figure>
-                        </a>
-                        <span class="cwr-new-arrival">New Arrival</span>
-                        <div class="cwr-our-product__box-content">
-                            <div class="cwr-rating">
-                        <ul>
-                        <li><img src="{{ 'rating-star.svg' | file_url }}" alt="star icon" class="img-fluid" width="" height=""/></li>
-                        <li><img src="{{ 'rating-star.svg' | file_url }}" alt="star icon" class="img-fluid" width="" height=""/></li>
-                        <li><img src="{{ 'rating-star.svg' | file_url }}" alt="star icon" class="img-fluid" width="" height=""/></li>
-                        <li><img src="{{ 'rating-star.svg' | file_url }}" alt="star icon" class="img-fluid" width="" height=""/></li>
-                        <li><img src="{{ 'rating-star.svg' | file_url }}" alt="star icon" class="img-fluid" width="" height=""/></li>
-                        </ul>
-                                <span>84 reviews</span>
-                            </div>
-                            <a href="javascript:void(0)">
-                                <h5>Tribal crewneck (Battlebox) - Red</h5>
-                            </a>
-                            <div class="cwr-product-price">
-                                <span>USD$44.95</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="cwr-slick-item">
-                <div>
-                    <div class="cwr-our-product__box">
-                        <a href="javascript:void(0)">
-                            <figure>
-                                <img src="{{ 'our-product-img4.jpg' | file_url }}" alt="product img"
-                                    class="img-fluid lazyload" width="344" height="344">
-                            </figure>
-                        </a>
-                        <span class="cwr-new-arrival cwr-sale">SALE</span>
-                        <div class="cwr-our-product__box-content">
-                            <div class="cwr-rating">
-                        <ul>
-                        <li><img src="{{ 'rating-star.svg' | file_url }}" alt="star icon" class="img-fluid" width="" height=""/></li>
-                        <li><img src="{{ 'rating-star.svg' | file_url }}" alt="star icon" class="img-fluid" width="" height=""/></li>
-                        <li><img src="{{ 'rating-star.svg' | file_url }}" alt="star icon" class="img-fluid" width="" height=""/></li>
-                        <li><img src="{{ 'rating-star.svg' | file_url }}" alt="star icon" class="img-fluid" width="" height=""/></li>
-                        <li><img src="{{ 'rating-star.svg' | file_url }}" alt="star icon" class="img-fluid" width="" height=""/></li>
-                        </ul>
-                                <span>84 reviews</span>
-                            </div>
-                            <a href="javascript:void(0)">
-                                <h5>Molotow Premium 400ml</h5>
-                            </a>
-                            <div class="cwr-product-price">
-                                <span><del>USD$10.49</del>USD$7.49</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="cwr-slick-item">
-                <div>
-                    <div class="cwr-our-product__box">
-                        <a href="javascript:void(0)">
-                            <figure>
-                                <img src="{{ 'our-product-img1.jpg' | file_url }}" alt="product img"
-                                    class="img-fluid lazyload" width="344" height="344">
-                            </figure>
-                        </a>
-                        <span class="cwr-new-arrival">New Arrival</span>
-                        <div class="cwr-our-product__box-content">
-                            <div class="cwr-rating">
-                        <ul>
-                        <li><img src="{{ 'rating-star.svg' | file_url }}" alt="star icon" class="img-fluid" width="" height=""/></li>
-                        <li><img src="{{ 'rating-star.svg' | file_url }}" alt="star icon" class="img-fluid" width="" height=""/></li>
-                        <li><img src="{{ 'rating-star.svg' | file_url }}" alt="star icon" class="img-fluid" width="" height=""/></li>
-                        <li><img src="{{ 'rating-star.svg' | file_url }}" alt="star icon" class="img-fluid" width="" height=""/></li>
-                        <li><img src="{{ 'rating-star.svg' | file_url }}" alt="star icon" class="img-fluid" width="" height=""/></li>
-                        </ul>
-                                <span>84 reviews</span>
-                            </div>
-                            <a href="javascript:void(0)">
-                                <h5>Molotow Burner 600ml</h5>
-                            </a>
-                            <div class="cwr-product-price">
-                                <span>USD$44.95</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            {% endfor %}
         </div>
     </section>
     {% schema %}
         {
             "name": "Customer Favourite",
-            "settings": [],
+            "settings": [
+            {
+                "id": "fav_header" , 
+                "type": "text",
+                "label": "Customer-Favourite-Heading"
+            },
+            {
+                "id": "fav_subheader" , 
+                "type": "text",
+                "label": "Customer-Favourite-Subheading"
+            }
+            ],
+            "blocks": [
+            {
+                "type" : "product_block",
+                "name": "Product Block",
+                "settings" : [
+                    {
+                    "type" : "product",
+                    "id" : "product_picker",
+                    "label" : "Choose a product"
+                    }
+                ]
+            }],
             "presets" : [
                 {
                     "name" : "Customer Favourite"

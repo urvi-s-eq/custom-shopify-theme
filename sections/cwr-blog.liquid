@@ -1,74 +1,45 @@
 <section class="cwr-blog">
-        <div class="container">
-            <div class="sec-heading">
-                <h2 class="custom-heading-md">Discover our latest Blogs</h2>
-                <h4 class="custom-heading-sm">Scelerisque sit amet posuere quis ultricies. Eget sollicitudin blandit pretium</h4>
-            </div>
-            <div class="cwr-blog__box-wrap js-blog-slider">
-                <div class="cwr-blog__box">
-                    <div class="cwr-blog__img">
-                        <img src="{{'cwr-blog-img1.jpg' | file_url }}" alt="blog-img"
-                            class="img-fluid lazyload" width="402" height="446">
-                    </div>
-                    <div class="cwr-blog__content">
-                        <h4>Geser 3A x Mr Totem Podcast</h4>
-                        <p>Lorem ipsum dolor sit amet consectetur. Aenean eu lorem ipsum dolor sit amet</p>
-                        <a href="javascript:void(0)" class="custom-btn">
-                            <span>Read more<svg xmlns="http://www.w3.org/2000/svg" width="18" height="15"
-                                    viewBox="0 0 18 15" fill="none">
-                                    <path fill-rule="evenodd" clip-rule="evenodd"
-                                        d="M11.3429 0.292893L17.7069 6.65685C18.0974 7.04738 18.0974 7.68054 17.7069 8.07107L11.3429 14.435C10.9524 14.8256 10.3192 14.8256 9.92869 14.435C9.53816 14.0445 9.53816 13.4113 9.92869 13.0208L14.5855 8.36396H0.999756C0.447471 8.36396 -0.000244141 7.91625 -0.000244141 7.36396C-0.000244141 6.81168 0.447471 6.36396 0.999756 6.36396H14.5855L9.92869 1.70711C9.53816 1.31658 9.53816 0.683418 9.92869 0.292893C10.3192 -0.0976311 10.9524 -0.0976311 11.3429 0.292893Z"
-                                        fill="black" />
-                                </svg>
-                            </span>
-                        </a>
-                    </div>
-                </div>
-                <div class="cwr-blog__box">
-                    <div class="cwr-blog__img">
-                        <img src="{{'cwr-blog-img2.jpg' | file_url }}" alt="blog-img"
-                            class="img-fluid lazyload" width="402" height="446">
-                    </div>
-                    <div class="cwr-blog__content">
-                        <h4>Graffiti Video: Northeast Winter Storm Trackside Trooping 2024</h4>
-                        <p>The Graffiti Wanderer is back again with another awesome video exploring some track…</p>
-                        <a href="javascript:void(0)" class="custom-btn">
-                            <span>Read more<svg xmlns="http://www.w3.org/2000/svg" width="18" height="15"
-                                    viewBox="0 0 18 15" fill="none">
-                                    <path fill-rule="evenodd" clip-rule="evenodd"
-                                        d="M11.3429 0.292893L17.7069 6.65685C18.0974 7.04738 18.0974 7.68054 17.7069 8.07107L11.3429 14.435C10.9524 14.8256 10.3192 14.8256 9.92869 14.435C9.53816 14.0445 9.53816 13.4113 9.92869 13.0208L14.5855 8.36396H0.999756C0.447471 8.36396 -0.000244141 7.91625 -0.000244141 7.36396C-0.000244141 6.81168 0.447471 6.36396 0.999756 6.36396H14.5855L9.92869 1.70711C9.53816 1.31658 9.53816 0.683418 9.92869 0.292893C10.3192 -0.0976311 10.9524 -0.0976311 11.3429 0.292893Z"
-                                        fill="black" />
-                                </svg>
-                            </span>
-                        </a>
-                    </div>
-                </div>
-                <div class="cwr-blog__box">
-                    <div class="cwr-blog__img">
-                        <img src="{{'cwr-blog-img3.jpg' | file_url }}" alt="blog-img"
-                            class="img-fluid lazyload" width="402" height="446">
-                    </div>
-                    <div class="cwr-blog__content">
-                        <h4>Spray Paint Breakdown</h4>
-                        <p>Whether you’re into fine art, murals, bombing or anything in between, we offer 500+…</p>
-                        <a href="javascript:void(0)" class="custom-btn">
-                            <span>Read more<svg xmlns="http://www.w3.org/2000/svg" width="18" height="15"
-                                    viewBox="0 0 18 15" fill="none">
-                                    <path fill-rule="evenodd" clip-rule="evenodd"
-                                        d="M11.3429 0.292893L17.7069 6.65685C18.0974 7.04738 18.0974 7.68054 17.7069 8.07107L11.3429 14.435C10.9524 14.8256 10.3192 14.8256 9.92869 14.435C9.53816 14.0445 9.53816 13.4113 9.92869 13.0208L14.5855 8.36396H0.999756C0.447471 8.36396 -0.000244141 7.91625 -0.000244141 7.36396C-0.000244141 6.81168 0.447471 6.36396 0.999756 6.36396H14.5855L9.92869 1.70711C9.53816 1.31658 9.53816 0.683418 9.92869 0.292893C10.3192 -0.0976311 10.9524 -0.0976311 11.3429 0.292893Z"
-                                        fill="black" />
-                                </svg>
-                            </span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+  <div class="container">
+    <div class="sec-heading">
+    {% if section.settings.heading_content %}<h2 class="custom-heading-md">{{ section.settings.heading_content }}</h2>{% endif %}
+    {% if section.settings.sub_heading_content %}<h4 class="custom-heading-sm">{{ section.settings.sub_heading_content }}</h4>{% endif %}
+    </div>
+    <div class="cwr-blog__box-wrap js-blog-slider">
+      {% assign selected_blog = blogs[section.settings.selected_blog] %}
+      {% for article in selected_blog.articles %}
+        {% if article %}
+          {% include 'cwr-article' with article %}
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
     {% schema %}
         {
             "name": "CWR-Blog",
-            "settings": [],
+            "settings": [
+                {
+                    "type": "text",
+                    "label": "Heading Content",
+                    "id": "heading_content"
+                    },
+                    {
+                    "type": "text",
+                    "label": "Sub Heading Content",
+                    "id": "sub_heading_content"
+                    },
+                    {
+                    "type": "text",
+                    "id": "button_label",
+                    "label": "Button Label",
+                    "default": "Read More"
+                    },
+                    {
+                    "type": "blog",
+                    "id": "selected_blog",
+                    "label": "Select a Blog"
+                    }
+            ],
             "presets" : [
                 {
                     "name" : "CWR-Blog"

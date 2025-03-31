@@ -1,10 +1,16 @@
 <header class="cwr-header">
+    {% for block in section.blocks %}
+      {% if block.type == 'announcement' %}
     <div class="cwr-announcement-bar">
+      {% if block.settings.text != blank %}
         <div class="container">
-            <p>Some announcement goes here
+            <p>{{ block.settings.text }}
             </p>
         </div>
+      {% endif %}
     </div>
+      {% endif %}
+    {% endfor %}
     <div class="cwr-header__content">
       <div class="container">
           <div class="cwr-header__content-wrap">
@@ -18,77 +24,630 @@
               <div class="cwr-header__left">
                   <div class="logo">
                     <a href="javascript:void(0)">
-                    <img src="{{ 'logo.png' | file_url}}" class="img-fluid lazyload" alt="logo" width=""
-                    height="">
+                    {{ 
+                      settings.logo
+                      | image_url: width: 600
+                      | image_tag:
+                        class: 'img-fluid lazyload',
+                        width: settings.logo_width,
+                        alt: "logo",
+                        preload: true
+                    }}
                     </a>
                 </div>
               </div>
               <div class="cwr-header__right">
-                <div class="search-input">
-                    <form>
-                        <button>
-                          <img src="{{ 'search-icon-mobile.svg' | file_url }}" alt="search-icon" class="img-fluid" width=""
-                        height="">
-                        </button>
-                        <input type="text" name="" value="" id="search" placeholder="Search......"
-                            class="search">
-                    </form>
-                </div>
+              {% render 'custom-header-search' %}
+              {%- if section.settings.enable_currency_selector -%}
                 <div class="cwr-country-logo">
-                    <div class="selected">
-                        <a href="javascript:void(0)"><span>
-                          <img src="{{ 'country-img.svg' | file_url }}" alt="country-img" width=""
-                        height="">
-                            </span></a>
-                        <div class="dropdown_arrow"><svg xmlns="http://www.w3.org/2000/svg" width="14"
-                                height="14" viewBox="0 0 14 14" fill="none">
-                                <path
-                                    d="M6.99978 9.33312C6.92301 9.33356 6.84691 9.31884 6.77584 9.28982C6.70477 9.26079 6.64012 9.21801 6.58562 9.16395L3.08562 5.66395C2.97577 5.55411 2.91406 5.40513 2.91406 5.24978C2.91406 5.09444 2.97577 4.94546 3.08562 4.83562C3.19546 4.72577 3.34444 4.66406 3.49978 4.66406C3.65513 4.66406 3.80411 4.72577 3.91395 4.83562L6.99978 7.92728L10.0856 4.84145C10.1972 4.74588 10.3408 4.69595 10.4876 4.70162C10.6344 4.70729 10.7736 4.76815 10.8775 4.87204C10.9814 4.97593 11.0423 5.11519 11.0479 5.262C11.0536 5.40881 11.0037 5.55236 10.9081 5.66395L7.40812 9.16395C7.29946 9.27172 7.15281 9.33247 6.99978 9.33312Z"
-                                    fill="white" />
-                            </svg></div>
+                  <div class="selected">
+                    <a href="javascript:void(0)">
+                      <span>
+                        <img
+                          src="https://flagcdn.com/w40/{{ localization.country.iso_code | downcase }}.png"
+                          alt="country-img"
+                        >
+                      </span>
+                    </a>
+                    <div class="dropdown_arrow">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                        <path d="M6.99978 9.33312C6.92301 9.33356 6.84691 9.31884 6.77584 9.28982C6.70477 9.26079 6.64012 9.21801 6.58562 9.16395L3.08562 5.66395C2.97577 5.55411 2.91406 5.40513 2.91406 5.24978C2.91406 5.09444 2.97577 4.94546 3.08562 4.83562C3.19546 4.72577 3.34444 4.66406 3.49978 4.66406C3.65513 4.66406 3.80411 4.72577 3.91395 4.83562L6.99978 7.92728L10.0856 4.84145C10.1972 4.74588 10.3408 4.69595 10.4876 4.70162C10.6344 4.70729 10.7736 4.76815 10.8775 4.87204C10.9814 4.97593 11.0423 5.11519 11.0479 5.262C11.0536 5.40881 11.0037 5.55236 10.9081 5.66395L7.40812 9.16395C7.29946 9.27172 7.15281 9.33247 6.99978 9.33312Z" fill="white" />
+                      </svg>
                     </div>
-                    <div class="options">
-                        <ul>
-                            <li><a href="javascript:void(0)">
-                            <img src="{{ 'country-img2.png' | file_url }}" alt="" width=""
-                            height="">CAD</a>
-                            </li>
-                            <li><a href="javascript:void(0)">
-                              <img src="{{ 'country-img.svg' | file_url }}" alt="" width=""
-                            height="">USD</a>
-                            </li>
-                        </ul>
-                    </div>
+                  </div>
+                
+                  <div class="options">
+                    <ul class="scrollable-list">
+                      {% for currency in shop.enabled_currencies %}
+                        {% assign country_code = "" %}
+                        {% for country in localization.available_countries %}
+                          {% if country.currency.iso_code == currency.iso_code %}
+                            {% assign country_code = country.iso_code %}
+                            {% break %}
+                          {% endif %}
+                        {% endfor %}
+                        <li>
+                          <a href="javascript:void(0)" class="currency-switch" data-country-code="{{ country_code }}" data-currency="{{ currency.iso_code }}">
+                            <img src="https://flagcdn.com/w40/{{ country_code | downcase }}.png" 
+                                 alt="{{ country.name }}">
+                            {{ currency.iso_code }}
+                          </a>
+                        </li>
+                      {% endfor %}
+                    </ul>
+                  </div>
+                
+                  <localization-form>
+                    {% form 'localization' %}
+                      <input type="hidden" id="country-selector" name="country_code" value="{{ localization.country.iso_code }}">
+                      <input type="hidden" id="currency-selector" name="currency" value="{{ localization.currency.iso_code }}">
+                    {% endform %}
+                  </localization-form>
                 </div>
+              {% endif %}
                 <div class="cwr-user-and-cart">
                     <div class="cwr-user">
-                        <a href="javascript:;">
-                          <img src="{{ 'user-img.svg' | file_url }}" alt="search-icon" width=""
-                            height="" class="img-fluid">
-                        </a>
+                        {%- if shop.customer_accounts_enabled -%}
+                            <a
+                              href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}"
+                              class="header__icon header__icon--account link focus-inset{% if section.settings.menu != blank %} small-hide{% endif %}"
+                              rel="nofollow"
+                            >
+                              {%- if section.settings.enable_customer_avatar -%}
+                                <account-icon>
+                                  {%- if customer and customer.has_avatar? -%}
+                                    {{ customer | avatar }}
+                                  {%- else -%}
+                                    <span class="svg-wrapper"> <img 
+                                        src="{{section.settings.user_icon | image_url }}" 
+                                        alt="search-icon" 
+                                        class="img-fluid" 
+                                        width="" 
+                                        height=""/></span>
+                                  {%- endif -%}
+                                </account-icon>
+                              {%- else -%}
+                                <span class="svg-wrapper"> <img 
+                                      src="{{section.settings.user_icon | image_url }}" 
+                                      alt="search-icon" 
+                                      class="img-fluid" 
+                                      width="" 
+                                      height=""/></span>
+                              {%- endif -%}
+                              <span class="visually-hidden">
+                                {%- liquid
+                                  if customer
+                                    echo 'customer.account_fallback' | t
+                                  else
+                                    echo 'customer.log_in' | t
+                                  endif
+                                -%}
+                              </span>
+                            </a>
+                          {%- endif -%}
+
                     </div>
                     <div class="cwr-cart js-cart-icon">
-                        <a href="javascript:;">
-                          <img src="{{ 'cart-img.svg' | file_url }}" alt="search-icon" class="img-fluid" width=""
-                            height="">
-                        </a>
+                      <a href="{{ routes.cart_url }}">
+                      {% if cart == empty %}
+                       <img 
+                        src="{{ section.settings.cart_icon | image_url }}" 
+                        alt="search-icon" 
+                        class="img-fluid" 
+                        width="" 
+                        height=""/>
+                      {% else %}
+                       <img 
+                        src="{{ section.settings.cart_icon | image_url }}" 
+                        alt="search-icon" 
+                        class="img-fluid" 
+                        width="" 
+                        height=""/>
+                      {% endif %}
+                      <span class="visually-hidden">{{ 'templates.cart.cart' | t }}</span>
+                      {%- if cart != empty -%}
+                        <div class="cart-count-bubble">
+                          {%- if cart.item_count < 100 -%}
+                            <span aria-hidden="true">{{ cart.item_count }}</span>
+                          {%- endif -%}
+                          <span class="visually-hidden">{{ 'sections.header.cart_count' | t: count: cart.item_count }}</span>
+                        </div>
+                      {%- endif -%}
+                      </a>
                     </div>
                 </div>
+              </div>
+          </div>
+      </div>
+    </div>
+    <div class="cwr-usp-slider cwr-usp-slider--bg-light">{%- render 'usp-slider' %}</div>
+            <div class="container">
+              <nav class="nav js-nav">
+                  <div class="nav-top">
+                      <div class="nav-top__left">
+                          <a href="javascript:;" class="hamburg-close">
+                              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                  stroke="#fff" class="hamburg-close">
+                                  <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+                              </svg>
+                          </a>
+                      </div>
+                      <div class="nav-top__right">
+                        {%- if section.settings.enable_currency_selector -%}
+                          <div class="cwr-country-logo">
+                            <div class="selected">
+                              <a href="javascript:void(0)">
+                                <span>
+                                  <img
+                                    src="https://flagcdn.com/w40/{{ localization.country.iso_code | downcase }}.png"
+                                    alt="country-img"
+                                  >
+                                </span>
+                              </a>
+                              <div class="dropdown_arrow">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                                  <path d="M6.99978 9.33312C6.92301 9.33356 6.84691 9.31884 6.77584 9.28982C6.70477 9.26079 6.64012 9.21801 6.58562 9.16395L3.08562 5.66395C2.97577 5.55411 2.91406 5.40513 2.91406 5.24978C2.91406 5.09444 2.97577 4.94546 3.08562 4.83562C3.19546 4.72577 3.34444 4.66406 3.49978 4.66406C3.65513 4.66406 3.80411 4.72577 3.91395 4.83562L6.99978 7.92728L10.0856 4.84145C10.1972 4.74588 10.3408 4.69595 10.4876 4.70162C10.6344 4.70729 10.7736 4.76815 10.8775 4.87204C10.9814 4.97593 11.0423 5.11519 11.0479 5.262C11.0536 5.40881 11.0037 5.55236 10.9081 5.66395L7.40812 9.16395C7.29946 9.27172 7.15281 9.33247 6.99978 9.33312Z" fill="black" />
+                                </svg>
+                              </div>
+                            </div>
+                          
+                            <div class="options">
+                              <ul class="scrollable-list">
+                                {% for currency in shop.enabled_currencies %}
+                                  {% assign country_code = "" %}
+                                  {% for country in localization.available_countries %}
+                                    {% if country.currency.iso_code == currency.iso_code %}
+                                      {% assign country_code = country.iso_code %}
+                                      {% break %}
+                                    {% endif %}
+                                  {% endfor %}
+                                  <li>
+                                    <a href="javascript:void(0)" class="currency-switch" data-country-code="{{ country_code }}" data-currency="{{ currency.iso_code }}">
+                                      <img src="https://flagcdn.com/w40/{{ country_code | downcase }}.png" 
+                                           alt="{{ country.name }}">
+                                      {{ currency.iso_code }}
+                                    </a>
+                                  </li>
+                                {% endfor %}
+                              </ul>
+                            </div>
+                          
+                            <localization-form>
+                              {% form 'localization' %}
+                                <input type="hidden" id="country-selector" name="country_code" value="{{ localization.country.iso_code }}">
+                                <input type="hidden" id="currency-selector" name="currency" value="{{ localization.currency.iso_code }}">
+                              {% endform %}
+                            </localization-form>
+                          </div>
+                        {% endif %}
+                        <div class="cwr-user-and-cart">
+                          <div class="cwr-user">
+                              {%- if shop.customer_accounts_enabled -%}
+                                  <a
+                                    href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}"
+                                    class="header__icon header__icon--account link focus-inset{% if section.settings.menu != blank %} small-hide{% endif %}"
+                                    rel="nofollow"
+                                  >
+                                    {%- if section.settings.enable_customer_avatar -%}
+                                      <account-icon>
+                                        {%- if customer and customer.has_avatar? -%}
+                                          {{ customer | avatar }}
+                                        {%- else -%}
+                                          <span class="svg-wrapper"> <img 
+                                              src="{{ section.settings.mobile_user_icon | image_url }}" 
+                                              alt="search-icon" 
+                                              class="img-fluid" 
+                                              width="" 
+                                              height=""/></span>
+                                        {%- endif -%}
+                                      </account-icon>
+                                    {%- else -%}
+                                      <span class="svg-wrapper"> <img 
+                                            src="{{ section.settings.mobile_user_icon | image_url }}" 
+                                            alt="search-icon" 
+                                            class="img-fluid" 
+                                            width="" 
+                                            height=""/></span>
+                                    {%- endif -%}
+                                    <span class="visually-hidden">
+                                      {%- liquid
+                                        if customer
+                                          echo 'customer.account_fallback' | t
+                                        else
+                                          echo 'customer.log_in' | t
+                                        endif
+                                      -%}
+                                    </span>
+                                  </a>
+                                {%- endif -%}
+      
+                          </div>
+                          <div class="cwr-cart js-cart-icon">
+                            <a href="{{ routes.cart_url }}">
+                            {% if cart == empty %}
+                             <img 
+                              src="{{ section.settings.mobile_cart_icon | image_url }}" 
+                              alt="search-icon" 
+                              class="img-fluid" 
+                              width="" 
+                              height=""/>
+                            {% else %}
+                             <img 
+                              src="{{ section.settings.mobile_cart_icon | image_url }}" 
+                              alt="search-icon" 
+                              class="img-fluid" 
+                              width="" 
+                              height=""/>
+                            {% endif %}
+                            <span class="visually-hidden">{{ 'templates.cart.cart' | t }}</span>
+                            {%- if cart != empty -%}
+                              <div class="cart-count-bubble">
+                                {%- if cart.item_count < 100 -%}
+                                  <span aria-hidden="true">{{ cart.item_count }}</span>
+                                {%- endif -%}
+                                <span class="visually-hidden">{{ 'sections.header.cart_count' | t: count: cart.item_count }}</span>
+                              </div>
+                            {%- endif -%}
+                            </a>
+                          </div>
+                      </div>
+                      </div>
+                  </div>
+                  <div class="search-input mobile-search">
+                    {% render 'custom-header-search' %}
+                  </div>
+                  <div class="cwr-best-seller-product">
+                    {% for product_block in section.blocks %}
+                      {% if product_block.type == 'product_block' %}
+                        <h4>{{ product_block.settings.product_lable }}</h4>
+                        <div class="cwr__list-box  js-cwr-list-box">
+                          {% for i in (1..5) %}
+                            {% assign product_var = "product_picker_" | append: i %}
+                            {% assign selected_product = product_block.settings[product_var] %}
+                            {% if selected_product %}
+                              {% include 'product-display' with selected_product %}
+                            {% endif %}
+                          {% endfor %}
+                        </div>
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                  
+                  <ul class="nav-list">
+                  {% for block in section.blocks %}
+                    {% if block.type == 'custom_nav' %}
+                      {% assign custom_menu = linklists[block.settings.custom_menu] %}
+                      {% for link in custom_menu.links %}
+                        <li class="js-dropdown">
+                          <a href="{{ link.url }}" class="dropdown">
+                            {{ link.title }}
+                            {% for sub_block in section.blocks %}
+                              {% if sub_block.type == 'custom_block' %}
+                                {% if link.title == sub_block.settings.submenu_title %}
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15" fill="none">
+                                    <path d="M7.49978 9.83312C7.42301 9.83356 7.34691 9.81884 7.27584 9.78982C7.20477 9.76079 7.14012 9.71801 7.08562 9.66395L3.58562 6.16395C3.47577 6.05411 3.41406 5.90513 3.41406 5.74978C3.41406 5.59444 3.47577 5.44546 3.58562 5.33562C3.69546 5.22577 3.84444 5.16406 3.99978 5.16406C4.15513 5.16406 4.30411 5.22577 4.41395 5.33562L7.49978 8.42728L10.5856 5.34145C10.6972 5.24588 10.8408 5.19595 10.9876 5.20162C11.1344 5.20729 11.2736 5.26815 11.3775 5.37204C11.4814 5.47593 11.5423 5.61519 11.5479 5.762C11.5536 5.90881 11.5037 6.05236 11.4081 6.16395L7.90812 9.66395C7.79946 9.77172 7.65281 9.83247 7.49978 9.83312Z" fill="black" />
+                                  </svg>
+                                {% endif %}
+                              {% endif %}
+                            {% endfor %}
+                          </a>
+                          {% for sub_block in section.blocks %}
+                            {% if sub_block.type == 'custom_block' %}
+                              {% if link.title == sub_block.settings.submenu_title %}
+                                <div class="dropdown-list js-dropdown-list">
+                                  <div class="dropdown-list-wrap">
+                                    <div class="js-sub-menu">
+                                        <a href="javascript:void(0)" class="sub-dropdown">{{ sub_block.settings.submenu_menu_label1 }}<svg
+                                                xmlns="http://www.w3.org/2000/svg" width="15" height="15"
+                                                viewBox="0 0 15 15" fill="none">
+                                                <path
+                                                    d="M7.49978 9.83312C7.42301 9.83356 7.34691 9.81884 7.27584 9.78982C7.20477 9.76079 7.14012 9.71801 7.08562 9.66395L3.58562 6.16395C3.47577 6.05411 3.41406 5.90513 3.41406 5.74978C3.41406 5.59444 3.47577 5.44546 3.58562 5.33562C3.69546 5.22577 3.84444 5.16406 3.99978 5.16406C4.15513 5.16406 4.30411 5.22577 4.41395 5.33562L7.49978 8.42728L10.5856 5.34145C10.6972 5.24588 10.8408 5.19595 10.9876 5.20162C11.1344 5.20729 11.2736 5.26815 11.3775 5.37204C11.4814 5.47593 11.5423 5.61519 11.5479 5.762C11.5536 5.90881 11.5037 6.05236 11.4081 6.16395L7.90812 9.66395C7.79946 9.77172 7.65281 9.83247 7.49978 9.83312Z"
+                                                    fill="black" />
+                                            </svg>
+                                        </a>
+                                        {% assign submenu_menu1 = linklists[sub_block.settings.submenu_menu1] %}
+                                        <ul class="js-sub-dropdown-list">
+                                          {% for link in submenu_menu1.links %}
+                                            <li> 
+                                              <a href="{{ link.url }}" class="dropdown">
+                                              {{ link.title }}
+                                              </a>
+                                            </li>
+                                          {% endfor %}
+                                        </ul>
+                                    </div>
+                                    <div class="js-sub-menu">
+                                        <a href="javascript:void(0)" class="sub-dropdown">{{ sub_block.settings.submenu_menu_label2 }}<svg
+                                                xmlns="http://www.w3.org/2000/svg" width="15" height="15"
+                                                viewBox="0 0 15 15" fill="none">
+                                                <path
+                                                    d="M7.49978 9.83312C7.42301 9.83356 7.34691 9.81884 7.27584 9.78982C7.20477 9.76079 7.14012 9.71801 7.08562 9.66395L3.58562 6.16395C3.47577 6.05411 3.41406 5.90513 3.41406 5.74978C3.41406 5.59444 3.47577 5.44546 3.58562 5.33562C3.69546 5.22577 3.84444 5.16406 3.99978 5.16406C4.15513 5.16406 4.30411 5.22577 4.41395 5.33562L7.49978 8.42728L10.5856 5.34145C10.6972 5.24588 10.8408 5.19595 10.9876 5.20162C11.1344 5.20729 11.2736 5.26815 11.3775 5.37204C11.4814 5.47593 11.5423 5.61519 11.5479 5.762C11.5536 5.90881 11.5037 6.05236 11.4081 6.16395L7.90812 9.66395C7.79946 9.77172 7.65281 9.83247 7.49978 9.83312Z"
+                                                    fill="black" />
+                                            </svg>
+                                        </a>
+                                        {% assign submenu_menu2 = linklists[sub_block.settings.submenu_menu2] %}
+                                        <ul class="js-sub-dropdown-list">
+                                          {% for link in submenu_menu2.links %}
+                                            <li> 
+                                              <a href="{{ link.url }}" class="dropdown">
+                                              {{ link.title }}
+                                              </a>
+                                            </li>
+                                          {% endfor %}
+                                        </ul>
+                                    </div>
+                                  </div>
+                                  <div class="dropdown-list-wrap">
+                                    <div class="js-sub-menu">
+                                        <a href="javascript:void(0)" class="sub-dropdown">{{ sub_block.settings.submenu_menu_label3 }}<svg
+                                                xmlns="http://www.w3.org/2000/svg" width="15" height="15"
+                                                viewBox="0 0 15 15" fill="none">
+                                                <path
+                                                    d="M7.49978 9.83312C7.42301 9.83356 7.34691 9.81884 7.27584 9.78982C7.20477 9.76079 7.14012 9.71801 7.08562 9.66395L3.58562 6.16395C3.47577 6.05411 3.41406 5.90513 3.41406 5.74978C3.41406 5.59444 3.47577 5.44546 3.58562 5.33562C3.69546 5.22577 3.84444 5.16406 3.99978 5.16406C4.15513 5.16406 4.30411 5.22577 4.41395 5.33562L7.49978 8.42728L10.5856 5.34145C10.6972 5.24588 10.8408 5.19595 10.9876 5.20162C11.1344 5.20729 11.2736 5.26815 11.3775 5.37204C11.4814 5.47593 11.5423 5.61519 11.5479 5.762C11.5536 5.90881 11.5037 6.05236 11.4081 6.16395L7.90812 9.66395C7.79946 9.77172 7.65281 9.83247 7.49978 9.83312Z"
+                                                    fill="black" />
+                                            </svg>
+                                        </a>
+                                        {% assign submenu_menu3 = linklists[sub_block.settings.submenu_menu3] %}
+                                        <ul class="js-sub-dropdown-list">
+                                          {% for link in submenu_menu3.links %}
+                                            <li> 
+                                              <a href="{{ link.url }}" class="dropdown">
+                                              {{ link.title }}
+                                              </a>
+                                            </li>
+                                          {% endfor %}
+                                        </ul>
+                                    </div>
+                                  </div>
+                                  <div class="dropdown-list-wrap-right">
+                                    {% for product_block in section.blocks %}
+                                      {% if product_block.type == 'product_block' %}
+                                        <h4>{{ product_block.settings.product_lable }}</h4> <!-- Product Label from the Schema -->
+                                        <div class="cwr__list-box">
+                                          {% for i in (1..5) %}
+                                            {% assign product_var = "product_picker_" | append: i %}
+                                            {% assign selected_product = product_block.settings[product_var] %}
+                                            {% if selected_product %}
+                                              {% include 'product-display' with selected_product %}
+                                            {% endif %}
+                                          {% endfor %}
+                                        </div>
+                                      {% endif %}
+                                    {% endfor %}
+                                  </div>
+                                </div>
+                              {% endif %}
+                            {% endif %}
+                          {% endfor %}
+                        </li>
+                      {% endfor %}
+                    {% endif %}
+                  {% endfor %}
+                  </ul>
+                <div class="nav-bottom">
+                  <ul class="social-icon">
+                    {% if settings.facebook_url != blank and settings.facebook_icon != blank %}
+                    <li><a href="{{ settings.facebook_url }}">
+                    {% if settings.facebook_icon != blank %}<img src="{{ settings.facebook_icon | image_url }}" alt="{{ settings.facebook_text }}" class="img-fluid" />{% endif %}
+                    </a></li>
+                    {% endif %}
+                    {% if settings.twitter_url != blank and settings.twitter_icon != blank %}
+                    <li><a href="{{ settings.twitter_url }}">
+                    {% if settings.twitter_icon != blank %}<img src="{{ settings.twitter_icon | image_url }}" alt="{{ settings.twitter_text }}" class="img-fluid" />{% endif %}
+                    </a></li>
+                    {% endif %}
+                    {% if settings.google_plus_url != blank and settings.google_plus_icon != blank %}
+                    <li><a href="{{ settings.google_plus_url }}">
+                    {% if settings.google_plus_icon != blank %}<img src="{{ settings.google_plus_icon | image_url }}" alt="{{ settings.google_plus_text }}" class="img-fluid" />{% endif %}
+                    </a></li>
+                    {% endif %}
+                    {% if settings.youtube_url != blank and settings.youtube_icon != blank %}
+                    <li><a href="{{ settings.youtube_url }}">
+                    {% if settings.youtube_icon != blank %}<img src="{{ settings.youtube_icon | image_url }}" alt="{{ settings.youtube_text }}" class="img-fluid" />{% endif %}
+                      </a></li>
+                    {% endif %}
+                    {% if settings.instagram_url != blank and settings.instagram_icon != blank %}
+                    <li><a href="{{ settings.instagram_url }}">
+                    {% if settings.instagram_icon != blank %}<img src="{{ settings.instagram_icon | image_url }}" alt="{{ settings.instagram_text }}" class="img-fluid" />{% endif %}
+                    </a></li>
+                    {% endif %}
+                  </ul>
+                </div>
+              </nav>
             </div>
-            </div>
-            </div>
-            </div>
-            {%- render 'usp-slider' %} 
-            {%- render 'custom-nav' %}
 </header>
+
 {% schema %}
-    {
-        "name": "Custom Header",
-        "settings": [],
-        "presets" : [
+  {
+      "name": "Custom Header",
+      "settings": [
+          {
+              "type": "image_picker",
+              "id": "user_icon",
+              "label": "User Icon"
+          },
+          {
+              "type": "image_picker",
+              "id": "cart_icon",
+              "label": "Cart Icon"
+          },
+          {
+              "type": "image_picker",
+              "id": "search_icon",
+              "label": "Search Icon"
+          },
+          {
+              "type": "image_picker",
+              "id": "close_icon",
+              "label": "Close Icon"
+          },
+          {
+              "type": "image_picker",
+              "id": "mobile_user_icon",
+              "label": "Mobile User Icon"
+          },
+          {
+              "type": "image_picker",
+              "id": "mobile_cart_icon",
+              "label": "Mobile Cart Icon"
+          },
+          {
+              "type": "text",
+              "id": "search_placeholder_text",
+              "label": "Search Input Placeholder Text"
+          },
+          {
+              "type": "checkbox",
+              "id": "enable_currency_selector",
+              "default": true,
+              "label": "Enable Currency Switcher"
+          }
+      ],
+      "blocks": [
+          {
+              "type": "announcement",
+              "name": "Announcement Bar",
+              "settings": [
+                  {
+                      "type": "text",
+                      "id": "text",
+                      "default": "Some announcement goes here",
+                      "label": "Announcement Label"
+                  },
+                  {
+                      "type": "url",
+                      "id": "link",
+                      "label": "Announcement Link"
+                  }
+              ]
+          },
+          {
+              "type": "custom_nav",
+              "name": "Custom Nav",
+              "settings": [
+                  {
+                      "type": "link_list",
+                      "id": "custom_menu",
+                      "label": "Custom Nav"
+                  }
+              ]
+          },
+          {
+            "type": "custom_block",
+            "name": "Custom Submenu",
+            "settings": [
+              {
+                "type": "text",
+                "id": "submenu_title",
+                "label": "Submenu Title"
+              },
+              {
+                "type": "text",
+                "id": "submenu_menu_label1",
+                "label": "Submenu Label1"
+              },
+              {
+                "type": "link_list",
+                "id": "submenu_menu1",
+                "label": "Select Submenu 1"
+              },
+              {
+                "type": "text",
+                "id": "submenu_menu_label2",
+                "label": "Submenu Label2"
+              },
+              {
+                "type": "link_list",
+                "id": "submenu_menu2",
+                "label": "Select Submenu 2"
+              },
+              {
+                "type": "text",
+                "id": "submenu_menu_label3",
+                "label": "Submenu Label3"
+              },
+              {
+                "type": "link_list",
+                "id": "submenu_menu3",
+                "label": "Select Submenu 3"
+              }
+            ]
+          },
+          {
+          "type" : "product_block",
+          "name": "Product Block",
+          "settings" : [
             {
-                "name" : "Custom Header"
-            }
-        ]
-    }
-{% endschema %}
+              "type" : "text",
+              "id" : "product_lable",
+              "label" : "Product Label"
+            },
+            {
+              "type" : "product",
+              "id" : "product_picker_1",
+              "label" : "Choose a product 1"
+            },
+            {
+              "type" : "product",
+              "id" : "product_picker_2",
+              "label" : "Choose a product 2"
+            },
+            {
+              "type" : "product",
+              "id" : "product_picker_3",
+              "label" : "Choose a product 3"
+            },
+            {
+              "type" : "product",
+              "id" : "product_picker_4",
+              "label" : "Choose a product 4"
+            },
+            {
+              "type" : "product",
+              "id" : "product_picker_5",
+              "label" : "Choose a product 5"
+            }  
+          ]
+        }
+      ],
+      "presets": [
+          {
+              "name": "Custom Header"
+          }
+      ]
+  }
+  {% endschema %}
+  
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const countryLinks = document.querySelectorAll(".currency-switch");
+      const selectedImage = document.querySelector(".selected img");
+      const countryInput = document.getElementById("country-selector");
+      const currencyInput = document.getElementById("currency-selector");
+      const localizationForm = document.querySelector("localization-form form");
+  
+      countryLinks.forEach(link => {
+        link.addEventListener("click", function () {
+          const countryCode = this.getAttribute("data-country-code");
+          const currencyCode = this.getAttribute("data-currency");
+          const newImageSrc = `https://flagcdn.com/w40/${countryCode.toLowerCase()}.png`;
+  
+          if (selectedImage) {
+            selectedImage.src = newImageSrc;
+          }
+  
+          if (countryInput) {
+            countryInput.value = countryCode;
+          }
+          if (currencyInput) {
+            currencyInput.value = currencyCode;
+          }
+  
+          if (localizationForm) {
+            localizationForm.submit();
+          }
+        });
+      });
+    });
+  </script>
+  
