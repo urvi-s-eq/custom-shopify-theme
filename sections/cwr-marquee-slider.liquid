@@ -1,21 +1,13 @@
 <section class="cwr-marquee-slider">
     <div class="cwr-marquee-slider__content">
         <ul class="js-marquee-slider">
-            <li>
-                <p>200+ Google Reviews</p>
-            </li>
-            <li>
-                <p>Since 1998</p>
-            </li>
-            <li>
-                <p>90,000+ Happy customers</p>
-            </li>
-            <li>
-                <p>Premium Quality</p>
-            </li>
-            <li>
-                <p>Since 1998</p>
-            </li>
+            {% for block in section.blocks %}
+                {% if block.settings.marquee_text != blank %}
+                    <li>
+                        {% if block.settings.marquee_text != blank %}<p>{{ block.settings.marquee_text }}</p>{% endif %}
+                    </li>
+                {% endif %}
+            {% endfor %}
         </ul>
     </div>
 </section>
@@ -23,6 +15,16 @@
     {
         "name": " CWR Marquee Slider",
         "settings": [],
+        "blocks" : [{
+            "type": "slider",
+            "name": "Marquee Slider Block",
+            "settings": [
+                {
+                "type": "text",
+                "label": "Marquee Text",
+                "id": "marquee_text"
+                }]
+        }],
         "presets" : [
             {
                 "name" : "CWR Marquee Slider"

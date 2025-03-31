@@ -1451,5 +1451,182 @@
         "default": "scheme-1"
       }
     ]
+  },
+  {
+    "name": "USP Slider",
+    "settings": [
+      {
+        "type": "image_picker",
+        "label": "Slider Item 1 Image",
+        "id": "usp_slider_image_1"
+      },
+      {
+        "type": "image_picker",
+        "label": "Slider Item 1 Image Main Content",
+        "id": "usp_slider_image_main_content_1"
+      },
+      {
+        "type": "text",
+        "label": "Slider Item 1 Text",
+        "id": "usp_slider_text_1"
+      },
+      {
+        "type": "image_picker",
+        "label": "Slider Item 2 Image",
+        "id": "usp_slider_image_2"
+      },
+      {
+        "type": "image_picker",
+        "label": "Slider Item 2 Image Main Content",
+        "id": "usp_slider_image_main_content_2"
+      },
+      {
+        "type": "text",
+        "label": "Slider Item 2 Text",
+        "id": "usp_slider_text_2"
+      },
+      {
+        "type": "image_picker",
+        "label": "Slider Item 3 Image",
+        "id": "usp_slider_image_3"
+      },
+      {
+        "type": "image_picker",
+        "label": "Slider Item 3 Image Main Content",
+        "id": "usp_slider_image_main_content_3"
+      },
+      {
+        "type": "text",
+        "label": "Slider Item 3 Text",
+        "id": "usp_slider_text_3"
+      }
+    ]
+  },
+  {
+    "name": "Social Media Links",
+    "settings": [
+      {
+        "type": "text",
+        "id": "social_menu_label",
+        "label": "Social Label"
+      },
+      {
+        "type": "url",
+        "id": "facebook_url",
+        "label": "Facebook URL"
+      },
+      {
+        "type": "image_picker",
+        "id": "facebook_icon",
+        "label": "Facebook Icon"
+      },
+      {
+        "type": "image_picker",
+        "id": "facebook_icon_footer",
+        "label": "Facebook Icon Footer"
+      },
+      {
+        "type": "text",
+        "id": "facebook_text",
+        "label": "Facebook Link Text"
+      },
+      {
+        "type": "url",
+        "id": "twitter_url",
+        "label": "Twitter URL"
+      },
+      {
+        "type": "image_picker",
+        "id": "twitter_icon",
+        "label": "Twitter Icon"
+      },
+      {
+        "type": "image_picker",
+        "id": "twitter_icon_footer",
+        "label": "Twitter Icon Footer"
+      },
+      {
+        "type": "text",
+        "id": "twitter_text",
+        "label": "Twitter Link Text"
+      },
+      {
+        "type": "url",
+        "id": "google_plus_url",
+        "label": "Google+ URL"
+      },
+      {
+        "type": "image_picker",
+        "id": "google_plus_icon",
+        "label": "Google+ Icon"
+      },
+      {
+        "type": "image_picker",
+        "id": "google_plus_icon_footer",
+        "label": "Google+ Icon Footer"
+      },
+      {
+        "type": "text",
+        "id": "google_plus_text",
+        "label": "Google+ Link Text"
+      },
+      {
+        "type": "url",
+        "id": "youtube_url",
+        "label": "YouTube URL"
+      },
+      {
+        "type": "image_picker",
+        "id": "youtube_icon",
+        "label": "YouTube Icon"
+      },
+      {
+        "type": "image_picker",
+        "id": "youtube_icon_footer",
+        "label": "YouTube Icon Footer"
+      },
+      {
+        "type": "text",
+        "id": "youtube_text",
+        "label": "YouTube Link Text"
+      },
+      {
+        "type": "url",
+        "id": "instagram_url",
+        "label": "Instagram URL"
+      },
+      {
+        "type": "image_picker",
+        "id": "instagram_icon",
+        "label": "Instagram Icon"
+      },
+      {
+        "type": "image_picker",
+        "id": "instagram_icon_footer",
+        "label": "Instagram Icon Footer"
+      },
+      {
+        "type": "text",
+        "id": "instagram_text",
+        "label": "Instagram Link Text"
+      }
+    ]
+  },
+  {
+    "name": "Currency Flags",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "currency_CAD_flag",
+        "label": "Canadian Dollar (CAD) Flag"
+      },
+      {
+        "type": "image_picker",
+        "id": "currency_USD_flag",
+        "label": "US Dollar (USD) Flag"
+      }
+    ]
   }
+  
+  
 ]

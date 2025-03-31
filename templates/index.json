@@ -7,67 +7,613 @@
  * made to this file may be overwritten.
  * ------------------------------------------------------------
  */
-{
+ {
   "sections": {
     "custom-banner": {
       "type": "custom-banner",
+      "blocks": {
+        "banner_z6Jm6V": {
+          "type": "banner",
+          "settings": {
+            "background_banner_image": "shopify://shop_images/banner-bg-1.jpg",
+            "heading": "YOUR TRUSTED ART & GRAFFITI SUPPLIER SINCE '98",
+            "subheading": "From a broad selection of markers and caps to an array of paints, we keep our shelves stocked with all the essentials an artist could ever need.",
+            "button_text": "Shop best sellers",
+            "button_url": "/",
+            "rating_text": "Rated 4.9/5 by Thousands of Happy Customers"
+          }
+        },
+        "banner_YbKgUK": {
+          "type": "banner",
+          "settings": {
+            "background_banner_image": "shopify://shop_images/banner-bg-2.jpg",
+            "heading": "WHEN INSPIRATION STRIKES, WE'RE READY TO DELIVER.",
+            "subheading": "Art supplies for Canvas, Concrete, and Everything In Between,                        Unmatched in Quality and Value.",
+            "button_text": "Shop best sellers",
+            "button_url": "/",
+            "rating_text": ""
+          }
+        },
+        "banner_Mj6mfP": {
+          "type": "banner",
+          "settings": {
+            "background_banner_image": "shopify://shop_images/banner-bg-3.jpg",
+            "heading": "OVER 90K+ ARTISTS AND GRAFFITI ENTHUSIASTS HAVE FOUND THEIR                        INSPIRATION HERE",
+            "subheading": "Discover the handpicked favorites that keep drawing them back for                        restocking, time and time again.",
+            "button_text": "Shop best sellers",
+            "button_url": "/",
+            "rating_text": ""
+          }
+        }
+      },
+      "block_order": [
+        "banner_z6Jm6V",
+        "banner_YbKgUK",
+        "banner_Mj6mfP"
+      ],
       "settings": {}
     },
     "award_slider_bJ8KHx": {
       "type": "award-slider",
+      "blocks": {
+        "award_a9XeEb": {
+          "type": "award",
+          "settings": {
+            "award_image": "shopify://shop_images/logo-slider-img1.png"
+          }
+        },
+        "award_hRNpf4": {
+          "type": "award",
+          "settings": {
+            "award_image": "shopify://shop_images/logo-slider-img2.png"
+          }
+        },
+        "award_A7hfJm": {
+          "type": "award",
+          "settings": {
+            "award_image": "shopify://shop_images/logo-slider-img3.png"
+          }
+        },
+        "award_wYXLXw": {
+          "type": "award",
+          "settings": {
+            "award_image": "shopify://shop_images/logo-slider-img4.png"
+          }
+        },
+        "award_PJ6idV": {
+          "type": "award",
+          "settings": {
+            "award_image": "shopify://shop_images/logo-slider-img5.png"
+          }
+        },
+        "award_qhqDc4": {
+          "type": "award",
+          "settings": {
+            "award_image": "shopify://shop_images/logo-slider-img6.png"
+          }
+        },
+        "award_Pr9yJH": {
+          "type": "award",
+          "settings": {
+            "award_image": "shopify://shop_images/logo-slider-img7.png"
+          }
+        },
+        "award_TAP8W3": {
+          "type": "award",
+          "settings": {
+            "award_image": "shopify://shop_images/logo-slider-img8.png"
+          }
+        },
+        "award_wNqRFF": {
+          "type": "award",
+          "settings": {
+            "award_image": "shopify://shop_images/logo-slider-img6.png"
+          }
+        }
+      },
+      "block_order": [
+        "award_a9XeEb",
+        "award_hRNpf4",
+        "award_A7hfJm",
+        "award_wYXLXw",
+        "award_PJ6idV",
+        "award_qhqDc4",
+        "award_Pr9yJH",
+        "award_TAP8W3",
+        "award_wNqRFF"
+      ],
       "settings": {}
     },
     "our_categories_b8y9H6": {
       "type": "our-categories",
-      "settings": {}
+      "blocks": {
+        "categories_yeiWGE": {
+          "type": "categories",
+          "settings": {
+            "category_image": "shopify://shop_images/our-categories-bg-img1.jpg",
+            "category_url": "/",
+            "category_label": "spray paint"
+          }
+        },
+        "categories_Dj6y3y": {
+          "type": "categories",
+          "settings": {
+            "category_image": "shopify://shop_images/our-categories-bg-img2.jpg",
+            "category_url": "/",
+            "category_label": "Markers"
+          }
+        },
+        "categories_XVUKMf": {
+          "type": "categories",
+          "settings": {
+            "category_image": "shopify://shop_images/our-categories-bg-img3.jpg",
+            "category_url": "/",
+            "category_label": "Caps"
+          }
+        },
+        "categories_thhEbi": {
+          "type": "categories",
+          "settings": {
+            "category_image": "shopify://shop_images/our-categories-bg-img4.jpg",
+            "category_url": "/",
+            "category_label": "gear"
+          }
+        },
+        "categories_XEgpnN": {
+          "type": "categories",
+          "settings": {
+            "category_image": "shopify://shop_images/our-categories-bg-img5.jpg",
+            "category_url": "/",
+            "category_label": "bundles"
+          }
+        },
+        "categories_AMaEYK": {
+          "type": "categories",
+          "settings": {
+            "category_image": "shopify://shop_images/our-categories-bg-img6.jpg",
+            "category_url": "/",
+            "category_label": "Other"
+          }
+        }
+      },
+      "block_order": [
+        "categories_yeiWGE",
+        "categories_Dj6y3y",
+        "categories_XVUKMf",
+        "categories_thhEbi",
+        "categories_XEgpnN",
+        "categories_AMaEYK"
+      ],
+      "settings": {
+        "category_heading": "Explore our categories",
+        "category_subheading": "Transform your living spaces with sophisticated artistry"
+      }
     },
     "cwr_marquee_slider_4wfbar": {
       "type": "cwr-marquee-slider",
+      "blocks": {
+        "slider_fNVGq3": {
+          "type": "slider",
+          "settings": {
+            "marquee_text": "200+ Google Reviews"
+          }
+        },
+        "slider_zRgTtp": {
+          "type": "slider",
+          "settings": {
+            "marquee_text": "Since 1998"
+          }
+        },
+        "slider_kJ89AV": {
+          "type": "slider",
+          "settings": {
+            "marquee_text": "90,000+ Happy customers"
+          }
+        },
+        "slider_JpVGTk": {
+          "type": "slider",
+          "settings": {
+            "marquee_text": "Premium Quality"
+          }
+        },
+        "slider_jabW3m": {
+          "type": "slider",
+          "settings": {
+            "marquee_text": "Since 1998"
+          }
+        }
+      },
+      "block_order": [
+        "slider_fNVGq3",
+        "slider_zRgTtp",
+        "slider_kJ89AV",
+        "slider_JpVGTk",
+        "slider_jabW3m"
+      ],
       "settings": {}
     },
     "cwr_img_content_ajB7Le": {
       "type": "cwr-img-content",
+      "blocks": {
+        "image_content_XQNHtw": {
+          "type": "image_content",
+          "settings": {
+            "img_content_img1": "shopify://shop_images/img-content-img1.jpg",
+            "img_content_img2": "shopify://shop_images/img-content-img2.jpg",
+            "img_content_img3": "shopify://shop_images/img-content-img3.jpg"
+          }
+        },
+        "text_content_iwPi6i": {
+          "type": "text_content",
+          "settings": {
+            "heading_content": "TRUSTED ART SUPPLIER FOR 25+ YEARS",
+            "sub_heading_content": "Thousands of artists globally rely on us for quality and variety.",
+            "main_content": "<p>Since launching in 1998, we've been a source of artistic inspiration, innovation, and endless   possibilities for artists and graffiti enthusiasts alike. Taking our passion online in 2004 marked a pivotal moment, extending our influence globally from our trusted origins as an art supplier in the USA and Canada.</p><p>As of now, we're proudly connecting with over 90,000 satisfied customers globally, and that  number keeps growing day by day.</p>",
+            "button_label": "LEARN MORE",
+            "button_link": "/"
+          }
+        }
+      },
+      "block_order": [
+        "image_content_XQNHtw",
+        "text_content_iwPi6i"
+      ],
       "settings": {}
     },
     "cwr_review_jiBpXQ": {
       "type": "cwr-review",
-      "settings": {}
+      "settings": {
+        "review_background_image": "shopify://shop_images/review-bg-img.jpg",
+        "review_background_mobile_image": "shopify://shop_images/review-bg-img-mobile.jpg",
+        "review_text_content": "“Seriously, these markers are god damn perfect for making custom colors along with the one4all                    refills. I personally think getting these over the premixed one4all markers is the more efficient                    way to go. Highly recommend these.”",
+        "reviewer": "wingnut"
+      }
     },
     "customer_favourite_4XRFTL": {
       "type": "customer-favourite",
-      "settings": {}
+      "blocks": {
+        "product_block_n4cmqz": {
+          "type": "product_block",
+          "settings": {
+            "product_picker": "molotow-227hs-marker"
+          }
+        },
+        "product_block_LinU9H": {
+          "type": "product_block",
+          "settings": {
+            "product_picker": "grog-squeezer-marker-10-fmp"
+          }
+        },
+        "product_block_hEK8Vw": {
+          "type": "product_block",
+          "settings": {
+            "product_picker": "dang-flex-15-mop-paint"
+          }
+        },
+        "product_block_Xi8h3B": {
+          "type": "product_block",
+          "settings": {
+            "product_picker": "markal-marker-b-paint-stik"
+          }
+        },
+        "product_block_66gTNb": {
+          "type": "product_block",
+          "settings": {
+            "product_picker": "uni-paint-marker-px-30"
+          }
+        }
+      },
+      "block_order": [
+        "product_block_n4cmqz",
+        "product_block_LinU9H",
+        "product_block_hEK8Vw",
+        "product_block_Xi8h3B",
+        "product_block_66gTNb"
+      ],
+      "settings": {
+        "fav_header": "OUR CUSTOMER FAVORITES",
+        "fav_subheader": "Must-haves worth checking out!"
+      }
     },
     "img_content_choose_us_V3jLef": {
       "type": "img-content-choose-us",
+      "blocks": {
+        "text_content_F7WMk8": {
+          "type": "text_content",
+          "settings": {
+            "choose_us_img": "shopify://shop_images/choose-us-img.jpg",
+            "heading_content": "AN EXTENSIVE RANGE OF PRODUCTS YOU WON'T EASILY FIND IN LOCAL STORES",
+            "sub_heading_content": "Featuring unparalleled quality and unbeatable prices",
+            "main_content": "<p>Artists, graffitists, and anyone seeking to infuse creativity into their surroundings — we've got what you're looking for. Our shop has grown over the years to cater to those unafraid to express themselves with colors. We don't pick favorites – our products suit any style, any experience level, and almost any budget.</p>",
+            "button_label": "Shop best sellers",
+            "button_link": "/"
+          }
+        }
+      },
+      "block_order": [
+        "text_content_F7WMk8"
+      ],
       "settings": {}
     },
     "new_arrival_CM3QkB": {
       "type": "new-arrival",
+      "disabled": true,
       "settings": {}
+    },
+    "customer_favourite_DyLXeX": {
+      "type": "customer-favourite",
+      "blocks": {
+        "product_block_ddtKza": {
+          "type": "product_block",
+          "settings": {
+            "product_picker": "dang-flex-15-mop-paint"
+          }
+        },
+        "product_block_7FUQCV": {
+          "type": "product_block",
+          "settings": {
+            "product_picker": "grog-squeezer-marker-10-fmp"
+          }
+        },
+        "product_block_RJ7GPd": {
+          "type": "product_block",
+          "settings": {
+            "product_picker": "markal-marker-b-paint-stik"
+          }
+        },
+        "product_block_jATgC3": {
+          "type": "product_block",
+          "settings": {
+            "product_picker": "molotow-227hs-marker"
+          }
+        },
+        "product_block_gDg6J3": {
+          "type": "product_block",
+          "settings": {
+            "product_picker": "uni-paint-marker-px-30"
+          }
+        }
+      },
+      "block_order": [
+        "product_block_ddtKza",
+        "product_block_7FUQCV",
+        "product_block_RJ7GPd",
+        "product_block_jATgC3",
+        "product_block_gDg6J3"
+      ],
+      "settings": {
+        "fav_header": "New arrivals",
+        "fav_subheader": "Take a look at the freshest additions to our collection"
+      }
     },
     "instagram_QDjgRq": {
       "type": "instagram",
-      "settings": {}
+      "blocks": {
+        "image_BXFUpz": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/insta-img1.jpg",
+            "image_link": "/"
+          }
+        },
+        "image_GUzmLQ": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/insta-img2.jpg",
+            "image_link": "/"
+          }
+        },
+        "image_FWWLTc": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/insta-img3.jpg",
+            "image_link": "/"
+          }
+        },
+        "image_3XUtEz": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/insta-img4.jpg",
+            "image_link": "/"
+          }
+        },
+        "image_aj36ge": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/insta-img5.jpg",
+            "image_link": "/"
+          }
+        },
+        "image_4y6cwq": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/insta-img6.jpg",
+            "image_link": "/"
+          }
+        },
+        "image_VJhH44": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/insta-img7.jpg",
+            "image_link": "/"
+          }
+        },
+        "image_NwVfxF": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/insta-img8.jpg",
+            "image_link": "/"
+          }
+        }
+      },
+      "block_order": [
+        "image_BXFUpz",
+        "image_GUzmLQ",
+        "image_FWWLTc",
+        "image_3XUtEz",
+        "image_aj36ge",
+        "image_4y6cwq",
+        "image_VJhH44",
+        "image_NwVfxF"
+      ],
+      "settings": {
+        "instagram_text": "Follow Us On Instagram",
+        "instagram_url": "",
+        "instagram_handle": "@bombingsci",
+        "shadow_image": "shopify://shop_images/instagram-img-icon.svg"
+      }
     },
     "shopping_with_us_review_QF33Da": {
       "type": "shopping-with-us-review",
-      "settings": {}
+      "blocks": {
+        "quote_NQWaFJ": {
+          "type": "quote",
+          "settings": {
+            "quote_image": "shopify://shop_images/review-slider-img1.jpg",
+            "quote_text": "<p>“Great customer service. I had damage to a order, they fixed/ resolved immediately! Also the search tool on shop website is very user friendly (dont need exact text to generate results)!”</p>",
+            "author_name": "ERIC POTTS"
+          }
+        },
+        "quote_QFG7Vr": {
+          "type": "quote",
+          "settings": {
+            "quote_image": "shopify://shop_images/review-slider-img2.jpg",
+            "quote_text": "<p>“I just found Bombing Science and I’m glad I said! Great website! Quick ship! Easy to navigate. Great selection and better prices than the big guy! I’m a Bombing Science customer! Thanks!”</p>",
+            "author_name": "stevie kay"
+          }
+        },
+        "quote_JTCQK7": {
+          "type": "quote",
+          "settings": {
+            "quote_image": "shopify://shop_images/review-slider-img3.jpg",
+            "quote_text": "<p>“Bombing Science has great prices and variety. Dang brand paint is great quality and sold for a great price. I would strongly recommend Bombing Science for art/graff supplies!”</p>",
+            "author_name": "Matthew Keyes"
+          }
+        },
+        "quote_8yEUFn": {
+          "type": "quote",
+          "settings": {
+            "quote_image": "shopify://shop_images/review-slider-img4.jpg",
+            "quote_text": "<p>“I’ve only ordered from them 3 times but will always come back to order more, unbelievable amount of colours, amazing quality an unmatched prices!!</p>",
+            "author_name": "ChedderB 1620"
+          }
+        },
+        "quote_F9WKdj": {
+          "type": "quote",
+          "settings": {
+            "quote_image": "shopify://shop_images/review-slider-img1.jpg",
+            "quote_text": "<p>“Great for custom work when you'd rather use refills than buying new markers or for mixing custom colors. I like to throw a 2mm nib into my 111's so I can make super fine lines.”</p>",
+            "author_name": "spectre"
+          }
+        }
+      },
+      "block_order": [
+        "quote_NQWaFJ",
+        "quote_QFG7Vr",
+        "quote_JTCQK7",
+        "quote_8yEUFn",
+        "quote_F9WKdj"
+      ],
+      "settings": {
+        "quote_header": "WHY ARTISTS AND GRAFFITISTS LOVE SHOPPING WITH US",
+        "quote_subheader": "Hear it straight from those who trust our products"
+      }
     },
     "cwr_faq_KzmBgn": {
       "type": "cwr-Faq",
-      "settings": {}
+      "blocks": {
+        "question_rFb4mF": {
+          "type": "question",
+          "settings": {
+            "title": "When my order will be delivered?",
+            "answer": "<p>USA: 3-6 business daysCanada: 1-5 business daysInternational: 8-75 business days.</p><ul><li>Calculate the business days from the day after you have received your shipping confirmation. For example, if you have received your shipping confirmation today, tomorrow will be the 1st business day of the shipping.</li><li>The shipping times above are for deliveries in major centers. For rural deliveries or deliveries outside continental USA and Canada, it can take a few more days.</li></ul>"
+          }
+        },
+        "question_XVmK7H": {
+          "type": "question",
+          "settings": {
+            "title": "When will you ship my order?",
+            "answer": "<p>USA: 3-6 business daysCanada: 1-5 business daysInternational: 8-75 business days</p>"
+          }
+        },
+        "question_yrBGQb": {
+          "type": "question",
+          "settings": {
+            "title": "Where can I track my package?",
+            "answer": "<p>USA: 3-6 business daysCanada: 1-5 business daysInternational: 8-75 business days</p>"
+          }
+        },
+        "question_nL4jMY": {
+          "type": "question",
+          "settings": {
+            "title": "What is your return policy?",
+            "answer": "<p>USA: 3-6 business daysCanada: 1-5 business daysInternational: 8-75 business days</p>"
+          }
+        },
+        "question_RNDzdi": {
+          "type": "question",
+          "settings": {
+            "title": "What kind of payment do you accept?",
+            "answer": "<p>USA: 3-6 business daysCanada: 1-5 business daysInternational: 8-75 business days</p>"
+          }
+        }
+      },
+      "block_order": [
+        "question_rFb4mF",
+        "question_XVmK7H",
+        "question_yrBGQb",
+        "question_nL4jMY",
+        "question_RNDzdi"
+      ],
+      "settings": {
+        "faq_img": "shopify://shop_images/faq-logo.png",
+        "faq_heading": "Frequently asked questions",
+        "faq_subheading": "If you can’t find all the answers you need here, please contact us                            at",
+        "faq_email": "support@bombingscience.com ."
+      }
     },
     "img_content_creations_fwzBW9": {
       "type": "img-content-creations",
+      "blocks": {
+        "text_content_ipEwrH": {
+          "type": "text_content",
+          "settings": {
+            "creation_img": "shopify://shop_images/creations-img.png",
+            "heading_content": "WHY LET THE INSPIRATION LINGER?",
+            "sub_heading_content": "YOUR CREATIVE ARSENAL IS JUST A CLICK AWAY!",
+            "main_content": "Seize the spray can, grab the markers – your canvas is calling!                            Explore our shop now and discover the tools that will bring your vision to life.",
+            "button_label": "Shop best sellers",
+            "button_link": "/",
+            "rating_text": "Rated <b>4.9/5</b> by <b>Thousands</b> of Happy Customers"
+          }
+        }
+      },
+      "block_order": [
+        "text_content_ipEwrH"
+      ],
       "settings": {}
     },
     "cwr_newsletter_NDCAtW": {
       "type": "cwr-newsletter",
-      "settings": {}
+      "settings": {
+        "heading_content": "Subscribe for exclusive updates",
+        "sub_heading_content": "Be the first to know about our latest products, offers, and exclusive content.",
+        "placeholder": "Email Address.....",
+        "button_label": "Subscribe",
+        "img_content_img1": "shopify://shop_images/newsletter-img1.jpg",
+        "img_content_img1_mobile": "shopify://shop_images/newsletter-img1-mobile.jpg",
+        "img_content_img2": "shopify://shop_images/newsletter-img2.jpg",
+        "img_content_img3": "shopify://shop_images/newsletter-img3.jpg"
+      }
     },
     "cwr_blog_qBUMKR": {
       "type": "cwr-blog",
-      "settings": {}
+      "settings": {
+        "heading_content": "Discover our latest Blogs",
+        "sub_heading_content": "Scelerisque sit amet posuere quis ultricies. Eget sollicitudin blandit pretium",
+        "button_label": "Read more",
+        "selected_blog": "latest-blogs"
+      }
     }
   },
   "order": [
@@ -80,6 +626,7 @@
     "customer_favourite_4XRFTL",
     "img_content_choose_us_V3jLef",
     "new_arrival_CM3QkB",
+    "customer_favourite_DyLXeX",
     "instagram_QDjgRq",
     "shopping_with_us_review_QF33Da",
     "cwr_faq_KzmBgn",

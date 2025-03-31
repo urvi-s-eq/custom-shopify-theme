@@ -13,6 +13,33 @@ $(document).ready(function () {
         $('.js-nav').removeClass('mobile-menu--show');
         $("body").removeClass("menu-open");
     });
+
+
+    $(document).click(function(event) {
+        var searchInput = $('#Search-In-Template');
+        var resultsContainer = $('#predictive-search-results');
+        var suggestionList = $('.predictive-search-results-list');
+        
+        // Check if the click was outside the search input and results container
+        if (!searchInput.is(event.target) && !resultsContainer.is(event.target) && resultsContainer.has(event.target).length === 0) {
+          resultsContainer.hide();  // Hide results
+          suggestionList.empty();  // Clear results
+          searchInput.val('');  // Clear the search input
+        }
+      });
+
+      // Close results if input is empty
+      $('#Search-In-Template').on('input', function() {
+        var searchInput = $(this);
+        var resultsContainer = $('#predictive-search-results');
+        var suggestionList = $('.predictive-search-results-list');
+        
+        if (searchInput.val() === '') {
+          resultsContainer.hide();
+          suggestionList.empty();
+        }
+      });
+      
     // end hamburger menu show
 
     //  cart js start
