@@ -1,0 +1,27 @@
+<div class="cwr__box">
+  <a href="{{ selected_product.url }}">
+    <figure>
+      <img src="{{ selected_product.featured_image | img_url: 'medium' }}" alt="{{ selected_product.title }}" class="img-fluid lazyload" width="50" height="112">
+    </figure>
+  </a>
+  <div class="cwr__box-content">
+    <div class="cwr-rating">
+      <ul>
+        {% for i in (1..5) %}
+          <li><img src="{{ 'rating-star.svg' | file_url }}" alt="star icon" class="img-fluid" width="16" height="16"></li>
+        {% endfor %}
+      </ul>
+      <span>{{ selected_product.metafields.custom.reviews }}</span>
+    </div>
+    <a href="{{ selected_product.url }}">
+      <h5>{{ selected_product.title }}</h5>
+    </a>
+    <div class="cwr-product-price">
+      {% if selected_product.compare_at_price > selected_product.price %}
+        <span><del>{{ selected_product.compare_at_price | money }}</del>{{ selected_product.price | money }}</span>
+      {% else %}
+        <span>{{ selected_product.price | money }}</span>
+      {% endif %}
+    </div>
+  </div>
+</div>

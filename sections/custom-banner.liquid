@@ -1,111 +1,88 @@
 <section class="cwr-banner">
-        <div class="cwr-banner__wrap js-banner-wrap">
-            <div class="cwr-banner__img cwr-banner-img-top">
-                <div class="cwr-banner__bg-img">
-                    <img src="{{ 'banner-bg-1.jpg' | file_url }}" alt="hero-img" class="img-fluid lazyload" width="1903"
-                        height="483">
-                </div>
-                <div class="cwr-banner__img-mobile">
-                    <img src="{{ 'banner-img-mobile.png' | file_url }}" alt="hero-img" class="img-fluid lazyload" width="991"
-                        height="665">
-                </div>
-                <div class="cwr-banner__wrap-content">
-                    <div class="cwr-rating">
-                        <ul>
-                            <li><img src="{{ 'rating-star.svg' | file_url }}" alt="star icon" class="img-fluid" width="" height=""/></li>
-                            <li><img src="{{ 'rating-star.svg' | file_url }}" alt="star icon" class="img-fluid" width="" height=""/></li>
-                            <li><img src="{{ 'rating-star.svg' | file_url }}" alt="star icon" class="img-fluid" width="" height=""/></li>
-                            <li><img src="{{ 'rating-star.svg' | file_url }}" alt="star icon" class="img-fluid" width="" height=""/></li>
-                            <li><img src="{{ 'rating-star.svg' | file_url }}" alt="star icon" class="img-fluid" width="" height=""/></li>
-                        </ul>
-                        <span>Rated <b>4.9/5 </b> by <b>Thousands</b> of Happy Customers</span>
-                    </div>
-                    <h1 class="custom-heading-xl">YOUR TRUSTED ART & GRAFFITI SUPPLIER SINCE '98</h1>
-                    <h4 class="custom-heading-sm">From a broad selection of markers and caps to an array of paints, we
-                        keep our shelves stocked with all the essentials an artist could ever need.</h4>
-                    <a href="#" class="custom-btn">
-                        <span>Shop best sellers<svg xmlns="http://www.w3.org/2000/svg" width="18" height="15"
-                                viewBox="0 0 18 15" fill="none">
-                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                    d="M11.3429 0.292893L17.7069 6.65685C18.0974 7.04738 18.0974 7.68054 17.7069 8.07107L11.3429 14.435C10.9524 14.8256 10.3192 14.8256 9.92869 14.435C9.53816 14.0445 9.53816 13.4113 9.92869 13.0208L14.5855 8.36396H0.999756C0.447471 8.36396 -0.000244141 7.91625 -0.000244141 7.36396C-0.000244141 6.81168 0.447471 6.36396 0.999756 6.36396H14.5855L9.92869 1.70711C9.53816 1.31658 9.53816 0.683418 9.92869 0.292893C10.3192 -0.0976311 10.9524 -0.0976311 11.3429 0.292893Z"
-                                    fill="black" />
-                            </svg></span>
-                    </a>
-                </div>
+    <div class="cwr-banner__wrap js-banner-wrap">
+        {% for block in section.blocks %}
+        <div class="cwr-banner__img cwr-banner-img-{{ block.id }}">
+            {% if block.settings.background_banner_image != blank %}
+            <div class="cwr-banner__bg-img">
+                <img src="{{ block.settings.background_banner_image | image_url: width: 1903, height: 483}}" alt="hero-img" class="img-fluid lazyload">
             </div>
-            <div class="cwr-banner__img cwr-banner-img-center">
-                <div class="cwr-banner__bg-img">
-                    <img src="{{ 'banner-bg-2.jpg' | file_url }}" alt="hero-img" class="img-fluid lazyload" width="1903"
-                        height="483">
+        {% endif %}
+            <div class="cwr-banner__wrap-content">
+                <div class="cwr-rating">
+                    <ul>
+                        {% for i in (1..5) %}
+                        <li><img src="{{ 'rating-star.svg' | file_url }}" alt="star icon" class="img-fluid" width="16" height="16"></li>
+                        {% endfor %}
+                    </ul>
+                    {% if block.settings.rating_text != blank %}<span>{{ block.settings.rating_text }}</span>{% endif %}
                 </div>
-                <div class="cwr-banner__wrap-content">
-                    <div class="cwr-rating">
-                        <ul>
-                            <li><img src="{{ 'rating-star.svg' | file_url }}" alt="star icon" class="img-fluid" width="" height=""/></li>
-                            <li><img src="{{ 'rating-star.svg' | file_url }}" alt="star icon" class="img-fluid" width="" height=""/></li>
-                            <li><img src="{{ 'rating-star.svg' | file_url }}" alt="star icon" class="img-fluid" width="" height=""/></li>
-                            <li><img src="{{ 'rating-star.svg' | file_url }}" alt="star icon" class="img-fluid" width="" height=""/></li>
-                            <li><img src="{{ 'rating-star.svg' | file_url }}" alt="star icon" class="img-fluid" width="" height=""/></li>
-                        </ul>
-                        <span>Rated <b>4.9/5 </b> by <b>Thousands</b> of Happy Customers</span>
-                    </div>
-                    <h1 class="custom-heading-xl">WHEN INSPIRATION STRIKES, WE'RE READY TO DELIVER.</h1>
-                    <h4 class="custom-heading-sm">Art supplies for Canvas, Concrete, and Everything In Between,
-                        Unmatched in Quality and Value.</h4>
-                    <a href="#" class="custom-btn">
-                        <span>Shop best sellers<svg xmlns="http://www.w3.org/2000/svg" width="18" height="15"
-                                viewBox="0 0 18 15" fill="none">
-                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                    d="M11.3429 0.292893L17.7069 6.65685C18.0974 7.04738 18.0974 7.68054 17.7069 8.07107L11.3429 14.435C10.9524 14.8256 10.3192 14.8256 9.92869 14.435C9.53816 14.0445 9.53816 13.4113 9.92869 13.0208L14.5855 8.36396H0.999756C0.447471 8.36396 -0.000244141 7.91625 -0.000244141 7.36396C-0.000244141 6.81168 0.447471 6.36396 0.999756 6.36396H14.5855L9.92869 1.70711C9.53816 1.31658 9.53816 0.683418 9.92869 0.292893C10.3192 -0.0976311 10.9524 -0.0976311 11.3429 0.292893Z"
-                                    fill="black" />
-                            </svg></span>
-                    </a>
-                </div>
-            </div>
-            <div class="cwr-banner__img cwr-banner-img-bottom">
-                <div class="cwr-banner__bg-img">
-                    <img src="{{ 'banner-bg-3.jpg' | file_url }}" alt="hero-img" class="img-fluid lazyload" width="1903"
-                        height="483">
-                </div>
-                <div class="cwr-banner__wrap-content">
-                    <div class="cwr-rating">
-                        <ul>
-                            <li><img src="{{ 'rating-star.svg' | file_url }}" alt="star icon" class="img-fluid" width="" height=""/></li>
-                            <li><img src="{{ 'rating-star.svg' | file_url }}" alt="star icon" class="img-fluid" width="" height=""/></li>
-                            <li><img src="{{ 'rating-star.svg' | file_url }}" alt="star icon" class="img-fluid" width="" height=""/></li>
-                            <li><img src="{{ 'rating-star.svg' | file_url }}" alt="star icon" class="img-fluid" width="" height=""/></li>
-                            <li><img src="{{ 'rating-star.svg' | file_url }}" alt="star icon" class="img-fluid" width="" height=""/></li>
-                        </ul>
-                        <span>Rated <b>4.9/5 </b> by <b>Thousands</b> of Happy Customers</span>
-                    </div>
-                    <h1 class="custom-heading-xl">OVER 90K+ ARTISTS AND GRAFFITI ENTHUSIASTS HAVE FOUND THEIR
-                        INSPIRATION HERE</h1>
-                    <h4 class="custom-heading-sm">Discover the handpicked favorites that keep drawing them back for
-                        restocking, time and time again.</h4>
-                    <a href="#" class="custom-btn">
-                        <span>Shop best sellers<svg xmlns="http://www.w3.org/2000/svg" width="18" height="15"
-                                viewBox="0 0 18 15" fill="none">
-                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                    d="M11.3429 0.292893L17.7069 6.65685C18.0974 7.04738 18.0974 7.68054 17.7069 8.07107L11.3429 14.435C10.9524 14.8256 10.3192 14.8256 9.92869 14.435C9.53816 14.0445 9.53816 13.4113 9.92869 13.0208L14.5855 8.36396H0.999756C0.447471 8.36396 -0.000244141 7.91625 -0.000244141 7.36396C-0.000244141 6.81168 0.447471 6.36396 0.999756 6.36396H14.5855L9.92869 1.70711C9.53816 1.31658 9.53816 0.683418 9.92869 0.292893C10.3192 -0.0976311 10.9524 -0.0976311 11.3429 0.292893Z"
-                                    fill="black" />
-                            </svg></span>
-                    </a>
-                     <div class="cwr-banner__img-mobile">
-                        <img src="{{ 'banner-img2-mobile.png' | file_url }}" alt="hero-img" class="img-fluid " width="" height=""/>
-                    </div>
-                </div>
+                {% if block.settings.heading != blank %}
+                <h1 class="custom-heading-xl">{{ block.settings.heading }}</h1>
+                {% endif %}
+                        
+                {% if block.settings.subheading != blank %}
+                <h4 class="custom-heading-sm">{{ block.settings.subheading }}</h4>
+                {% endif %}
+                        
+                {% if block.settings.button_text != blank %}
+                <a href="{{ block.settings.button_url }}" class="custom-btn">
+                    <span>{{ block.settings.button_text }}<svg xmlns="http://www.w3.org/2000/svg" width="18" height="15" viewBox="0 0 18 15" fill="none">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M11.3429 0.292893L17.7069 6.65685C18.0974 7.04738 18.0974 7.68054 17.7069 8.07107L11.3429 14.435C10.9524 14.8256 10.3192 14.8256 9.92869 14.435C9.53816 14.0445 9.53816 13.4113 9.92869 13.0208L14.5855 8.36396H0.999756C0.447471 8.36396 -0.000244141 7.91625 -0.000244141 7.36396C-0.000244141 6.81168 0.447471 6.36396 0.999756 6.36396H14.5855L9.92869 1.70711C9.53816 1.31658 9.53816 0.683418 9.92869 0.292893C10.3192 -0.0976311 10.9524 -0.0976311 11.3429 0.292893Z" fill="black" />
+                    </svg></span>
+                </a>
+                {% endif %}
             </div>
         </div>
+        {% endfor %}
+    </div>
 </section>
 
-    {% schema %}
+{% schema %}
     {
-        "name": "Custom Banner",
-        "settings": [],
-        "presets" : [
-            {
-                "name" : "Custom Banner"
-            }
-        ]
+      "name": "Custom Banner",
+      "max_blocks": 3,
+      "settings": [],
+      "blocks" : [
+        {
+            "type": "banner",
+            "name": "Banner Slider",
+            "settings": [
+                {
+                "type": "image_picker",
+                "label": "Background Image for Banner",
+                "id": "background_banner_image"
+                },
+                {
+                "type": "text",
+                "label": "Heading for Banner",
+                "id": "heading"
+                },
+                {
+                "type": "text",
+                "label": "Subheading for Banner",
+                "id": "subheading"
+                },
+                {
+                "type": "text",
+                "label": "Button Text for Banner",
+                "id": "button_text"
+                },
+                {
+                "type": "url",
+                "label": "Button Url for Banner",
+                "id": "button_url"
+                },
+                {
+                "type": "text",
+                "label": "Rating Text for Banner",
+                "id": "rating_text"
+                }],
+        }],
+      "presets": [
+        {
+          "name": "Custom Banner"
+        }
+      ]
     }
     {% endschema %}
+    

@@ -1,133 +1,307 @@
 <footer>
         <div class="container">
-            <div class="footer-wrap desktop-footer">
-                <div class="footer-wrap-content">
-                    <h4>MAIN PRODUCTS</h4>
+          <div class="footer-wrap desktop-footer">
+            {% for block in section.blocks %}
+              {% case block.type %}
+              {%- when 'product_list' -%}
+              {% if block.settings.product_menu_label or block.settings.product_menu %}
+              <div class="footer-wrap-content">
+                <h4>{{ block.settings.product_menu_label }}</h4>
+                {% if block.settings.product_menu %}
+                  <ul>
+                    {% assign product_links = linklists[block.settings.product_menu].links %}
+                      {% for link in product_links %}
+                      <li>
+                        <a href="{{ link.url | default: 'javascript:void(0)' }}" title="{{ link.title }}">
+                          {{ link.title }}
+                        </a>
+                      </li>
+                    {% endfor %}
+                  </ul>
+                {% endif %}
+              </div>
+              {% endif %}
+              {%- when 'brand_list' -%}
+              {% if block.settings.brand_menu_label or block.settings.brand_menu %}
+              <div class="footer-wrap-content">
+                <h4>{{ block.settings.brand_menu_label }}</h4>
+                {% if block.settings.brand_menu %}
+                  <ul>
+                    {% assign brand_links = linklists[block.settings.brand_menu].links %}
+                      {% for link in brand_links %}
+                      <li>
+                        <a href="{{ link.url | default: 'javascript:void(0)' }}" title="{{ link.title }}">
+                          {{ link.title }}
+                        </a>
+                      </li>
+                    {% endfor %}
+                  </ul>
+                {% endif %}
+              </div>
+              {% endif %}
+              {%- when 'link_list' -%}
+              {% if block.settings.footer_quick_menu_label or block.settings.footer_menu %}
+              <div class="footer-wrap-content">
+                <h4>{{ block.settings.footer_quick_menu_label }}</h4>
+                {% if block.settings.footer_menu %}
+                  <ul>
+                    {% assign footer_links = linklists[block.settings.footer_menu].links %}
+                      {% for link in footer_links %}
+                      <li>
+                        <a href="{{ link.url | default: 'javascript:void(0)' }}" title="{{ link.title }}">
+                          {{ link.title }}
+                        </a>
+                      </li>
+                    {% endfor %}
+                  </ul>
+                {% endif %}
+              </div>
+              {% endif %}
+              {%- when 'social_link' -%}
+              <div class="footer-wrap-content">
+              {% if settings.social_menu_label %}<h4>{{ settings.social_menu_label }}</h4>{% endif %}
+              <ul class="social-icon">
+                {% if settings.facebook_url != blank or settings.facebook_icon_footer != blank and settings.facebook_text != blank %}
+                  <li><a href="{{ settings.facebook_url }}">
+                    <img src="{{ settings.facebook_icon_footer | image_url }}" alt="{{ settings.facebook_text }}" class="img-fluid" />
+                    {{ settings.facebook_text }}
+                  </a></li>
+                {% endif %}
+                {% if settings.twitter_url != blank or settings.twitter_icon_footer != blank and settings.twitter_text != blank %}
+                    <li><a href="{{ settings.twitter_url }}">
+                      <img src="{{ settings.twitter_icon_footer | image_url }}" alt="{{ settings.twitter_text }}" class="img-fluid" />
+                      {{ settings.twitter_text }}
+                    </a></li>
+                {% endif %}
+                {% if settings.google_plus_url != blank or settings.google_plus_icon_footer != blank and settings.google_plus_text != blank %}
+                    <li><a href="{{ settings.google_plus_url }}">
+                      <img src="{{ settings.google_plus_icon_footer | image_url }}" alt="{{ settings.google_plus_text }}" class="img-fluid" />
+                      {{ settings.google_plus_text }}
+                    </a></li>
+                {% endif %}
+                {% if settings.youtube_url != blank or settings.youtube_icon_footer != blank and settings.youtube_text != blank %}
+                    <li><a href="{{ settings.youtube_url }}">
+                      <img src="{{ settings.youtube_icon_footer | image_url }}" alt="{{ settings.youtube_text }}" class="img-fluid" />
+                      {{ settings.youtube_text }}
+                    </a></li>
+                {% endif %}
+                {% if settings.instagram_url != blank or settings.instagram_icon_footer != blank and settings.instagram_text != blank %}
+                    <li><a href="{{ settings.instagram_url }}">
+                      <img src="{{ settings.instagram_icon_footer | image_url }}" alt="{{ settings.instagram_text }}" class="img-fluid" />
+                      {{ settings.instagram_text }}
+                    </a></li>
+                {% endif %}
+              </ul>
+              </div>
+              {% endcase %}
+            {% endfor %} 
+          </div>
+          <div class="footer-wrap footer-mobile-content">
+            {% for block in section.blocks %}
+              {% case block.type %}
+              {%- when 'brand_list' -%}
+              {% if block.settings.brand_menu_label or block.settings.brand_menu %}
+              <div class="footer-wrap-content">
+                <h4>{{ block.settings.brand_menu_label }}</h4>
+                {% if block.settings.brand_menu %}
+                  <ul>
+                    {% assign brand_links = linklists[block.settings.brand_menu].links %}
+                      {% for link in brand_links %}
+                      <li>
+                        <a href="{{ link.url | default: 'javascript:void(0)' }}" title="{{ link.title }}">
+                          {{ link.title }}
+                        </a>
+                      </li>
+                    {% endfor %}
+                  </ul>
+                {% endif %}
+              </div>
+              {% endif %}
+              {%- when 'link_list' -%}
+              {% if block.settings.footer_quick_menu_label or block.settings.footer_menu %}
+              <div class="footer-wrap-content">
+                  <h4>{{ block.settings.footer_quick_menu_label }}</h4>
+                  {% if block.settings.footer_menu %}
                     <ul>
-                        <li><a href="#">Graffiti Spray Paint</a></li>
-                        <li><a href="#">Graffiti Markers</a></li>
-                        <li><a href="#">Spray Caps</a></li>
-                        <li><a href="#">Graffiti Magazines</a></li>
-                        <li><a href="#">Graffiti Books</a></li>
-                        <li><a href="#">Streetwear</a></li>
+                      {% assign footer_links = linklists[block.settings.footer_menu].links %}
+                        {% for link in footer_links %}
+                        <li>
+                          <a href="{{ link.url | default: 'javascript:void(0)' }}" title="{{ link.title }}">
+                            {{ link.title }}
+                          </a>
+                        </li>
+                      {% endfor %}
                     </ul>
-                </div>
-                <div class="footer-wrap-content">
-                    <h4>BRANDS</h4>
-                    <ul>
-                        <li><a href="#">Molotow</a></li>
-                        <li><a href="#">Dang Paint</a></li>
-                        <li><a href="#">Flame Paint</a></li>
-                        <li><a href="#">Krink</a></li>
-                        <li><a href="#">Grog</a></li>
-                        <li><a href="#">Stylefile</a></li>
-                        <li><a href="#">On The Run</a></li>
-                        <li><a href="#">Potentate</a></li>
-                        <li><a href="#">Sakura</a></li>
-                        <li><a href="#">Markal</a></li>
-                    </ul>
-                </div>
-                <div class="footer-wrap-content">
-                    <h4>INFORMATION</h4>
-                    <ul>
-                        <li><a href="#">Your Account</a></li>
-                        <li><a href="#">Faq</a></li>
-                        <li><a href="#">Contact Us</a></li>
-                        <li><a href="#">Returns And Refunds</a></li>
-                        <li><a href="#">Terms Of Service</a></li>
-                        <li><a href="#">Search Terms</a></li>
-                        <li><a href="#">Site Map</a></li>
-                        <li><a href="#">Testimonials</a></li>
-                        <li><a href="#">Wholesale</a></li>
-                    </ul>
-                </div>
-                <div class="footer-wrap-content">
-                    <h4>FOLLOW US</h4>
-                    <ul class="social-icon">
-                        <li><a href="#"><img src="{{ 'facebook-icon.svg' | file_url }}" alt="social-icon"
-                                    class="img-fluid" width="" height=""/>FaceBook</a></li>
-                        <li><a href="#"><img src="{{ 'twitter-icon.svg' | file_url }}"  alt="social-icon"
-                                    class="img-fluid" width="" height=""/>Twitter</a></li>
-                        <li><a href="#"><img src="{{ 'google-icon.svg' | file_url }}"  alt="social-icon"
-                                    class="img-fluid" width="" height=""/>Google+</a></li>
-                        <li><a href="#"><img src="{{ 'youtube-icon.svg' | file_url }}"  alt="social-icon"
-                                    class="img-fluid" width="" height=""/>YouTube</a></li>
-                        <li><a href="#"><img src="{{ 'insta-icon.svg' | file_url }}" alt="social-icon"
-                                    class="img-fluid" width="" height=""/>Instagram</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-wrap footer-mobile-content">
-                <div class="footer-wrap-content">
-                    <h4>BRANDS</h4>
-                    <ul>
-                        <li><a href="javascript:void(0)">Molotow</a></li>
-                        <li><a href="javascript:void(0)">Dang Paint</a></li>
-                        <li><a href="javascript:void(0)">Flame Paint</a></li>
-                        <li><a href="javascript:void(0)">Krink</a></li>
-                        <li><a href="javascript:void(0)">Grog</a></li>
-                        <li><a href="javascript:void(0)">Stylefile</a></li>
-                        <li><a href="javascript:void(0)">On The Run</a></li>
-                        <li><a href="javascript:void(0)">Potentate</a></li>
-                        <li><a href="javascript:void(0)">Sakura</a></li>
-                        <li><a href="javascript:void(0)">Markal</a></li>
-                    </ul>
-                </div>
-                <div class="footer-wrap-content">
-                    <h4>INFORMATION</h4>
-                    <ul>
-                        <li><a href="javascript:void(0)">Your Account</a></li>
-                        <li><a href="javascript:void(0)">Faq</a></li>
-                        <li><a href="javascript:void(0)">Contact Us</a></li>
-                        <li><a href="javascript:void(0)">Returns And Refunds</a></li>
-                        <li><a href="javascript:void(0)">Terms Of Service</a></li>
-                        <li><a href="javascript:void(0)">Search Terms</a></li>
-                        <li><a href="javascript:void(0)">Site Map</a></li>
-                        <li><a href="javascript:void(0)">Testimonials</a></li>
-                        <li><a href="javascript:void(0)">Wholesale</a></li>
-                    </ul>
-                </div>
-                <div class="footer-wrap-content">
-                    <h4>MAIN PRODUCTS</h4>
-                    <ul>
-                        <li><a href="javascript:void(0)">Graffiti Spray Paint</a></li>
-                        <li><a href="javascript:void(0)">Graffiti Markers</a></li>
-                        <li><a href="javascript:void(0)">Spray Caps</a></li>
-                        <li><a href="javascript:void(0)">Graffiti Magazines</a></li>
-                        <li><a href="javascript:void(0)">Graffiti Books</a></li>
-                        <li><a href="javascript:void(0)">Streetwear</a></li>
-                    </ul>
-                </div>
-                <div class="footer-wrap-content">
-                    <h4>FOLLOW US</h4>
-                    <ul class="social-icon">
-                        <li><a href="#"><img src="{{ 'facebook-icon.svg' | file_url }}" alt="social-icon"
-                                    class="img-fluid" width="" height=""/>FaceBook</a></li>
-                        <li><a href="#"><img src="{{ 'twitter-icon.svg' | file_url }}"  alt="social-icon"
-                                    class="img-fluid" width="" height=""/>Twitter</a></li>
-                        <li><a href="#"><img src="{{ 'google-icon.svg' | file_url }}"  alt="social-icon"
-                                    class="img-fluid" width="" height=""/>Google+</a></li>
-                        <li><a href="#"><img src="{{ 'youtube-icon.svg' | file_url }}"  alt="social-icon"
-                                    class="img-fluid" width="" height=""/>YouTube</a></li>
-                        <li><a href="#"><img src="{{ 'insta-icon.svg' | file_url }}" alt="social-icon"
-                                    class="img-fluid" width="" height=""/>Instagram</a></li>
-                    </ul>
-                </div>
-            </div>
+                  {% endif %}
+              </div>
+              {% endif %}
+              {%- when 'product_list' -%}
+              {% if block.settings.product_menu_label or block.settings.product_menu %}
+              <div class="footer-wrap-content">
+                    <h4>{{ block.settings.product_menu_label }}</h4>
+                    {% if block.settings.product_menu %}
+                      <ul>
+                        {% assign product_links = linklists[block.settings.product_menu].links %}
+                          {% for link in product_links %}
+                          <li>
+                            <a href="{{ link.url | default: 'javascript:void(0)' }}" title="{{ link.title }}">
+                              {{ link.title }}
+                            </a>
+                          </li>
+                        {% endfor %}
+                      </ul>
+                    {% endif %}
+              </div>
+              {% endif %}
+              {%- when 'social_link' -%}
+              <div class="footer-wrap-content">
+              {% if settings.social_menu_label %}<h4>{{ settings.social_menu_label }}</h4>{% endif %}
+              <ul class="social-icon">
+                {% if settings.facebook_url != blank or settings.facebook_icon_footer != blank and settings.facebook_text != blank %}
+                  <li><a href="{{ settings.facebook_url }}">
+                    <img src="{{ settings.facebook_icon_footer | image_url }}" alt="{{ settings.facebook_text }}" class="img-fluid" />
+                    {{ settings.facebook_text }}
+                  </a></li>
+                {% endif %}
+                {% if settings.twitter_url != blank or settings.twitter_icon_footer != blank and settings.twitter_text != blank %}
+                    <li><a href="{{ settings.twitter_url }}">
+                      <img src="{{ settings.twitter_icon_footer | image_url }}" alt="{{ settings.twitter_text }}" class="img-fluid" />
+                      {{ settings.twitter_text }}
+                    </a></li>
+                {% endif %}
+                {% if settings.google_plus_url != blank or settings.google_plus_icon_footer != blank and settings.google_plus_text != blank %}
+                    <li><a href="{{ settings.google_plus_url }}">
+                      <img src="{{ settings.google_plus_icon_footer | image_url }}" alt="{{ settings.google_plus_text }}" class="img-fluid" />
+                      {{ settings.google_plus_text }}
+                    </a></li>
+                {% endif %}
+                {% if settings.youtube_url != blank or settings.youtube_icon_footer != blank and settings.youtube_text != blank %}
+                    <li><a href="{{ settings.youtube_url }}">
+                      <img src="{{ settings.youtube_icon_footer | image_url }}" alt="{{ settings.youtube_text }}" class="img-fluid" />
+                      {{ settings.youtube_text }}
+                    </a></li>
+                {% endif %}
+                {% if settings.instagram_url != blank or settings.instagram_icon_footer != blank and settings.instagram_text != blank %}
+                    <li><a href="{{ settings.instagram_url }}">
+                      <img src="{{ settings.instagram_icon_footer | image_url }}" alt="{{ settings.instagram_text }}" class="img-fluid" />
+                      {{ settings.instagram_text }}
+                    </a></li>
+                {% endif %}
+              </ul>
+              </div>
+              {% endcase %}
+            {% endfor %}
+          </div>
         </div>
         <div class="footer__bottom">
             <div class="container">
                 <div class="footer__bottom-content">
                     <div class="footer__bottom-left">
-                        <p> <a href="javascript:void(0)"> © 2022 Bombing Science. </a> All Rights Reserved.</p>
+                        <p> <a href="javascript:void(0)">&copy; {{ 'now' | date: '%Y' }}, {{ shop.name | link_to: routes.root_url -}} </a> All Rights Reserved.</p>
                     </div>
                     <div class="footer__bottom-right">
-                        <a href="mailto:support@bombingscience.com">support@bombingscience.com</a>
-                        <ul>
-                            <li>Privacy Policy</li>
-                        </ul>
+                    {% if section.settings.email != blank %}<a href="mailto:{{ section.settings.email }}">{{ section.settings.email }}</a>{% endif %}
+                        <ul class="policies list-unstyled">
+                          {%- for policy in shop.policies -%}
+                            {%- if  policy.title == "Privacy policy" -%}
+                              <li>
+                                <small class="copyright__content">
+                                  <a href="{{ policy.url }}">{{ policy.title }}</a>
+                                </small>
+                              </li>
+                            {%- endif -%}
+                          {%- endfor -%}
+                        </ul>                        
                     </div>
                 </div>
             </div>
         </div>
 </footer>
+{%  schema  %}
+{
+  "name": "Custom Footer",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Footer Section Settings"
+    },
+    {
+      "type": "text",
+      "id" : "email",
+      "label":"Support Email"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "product_list",
+      "name": "Product Link",
+      "settings": [
+        {
+          "type": "text",
+          "id": "product_menu_label",
+          "label": "Products Label"
+        },
+        {
+          "type": "link_list",
+          "id": "product_menu",
+          "label": "Products Links"
+        }
+      ]
+    },
+    {
+      "type": "brand_list",
+      "name": "Brand Link",
+      "settings": [
+        {
+          "type": "text",
+          "id": "brand_menu_label",
+          "label": "Brands Label"
+        },
+        {
+          "type": "link_list",
+          "id": "brand_menu",
+          "label": "Brands Links"
+        }
+      ]
+    },
+    {
+      "type": "link_list",
+      "name": "Quick Link Block",
+      "settings": [
+        {
+          "type": "text",
+          "id": "footer_quick_menu_label",
+          "label": "Quick Links Label",
+        },
+        {
+          "type": "link_list",
+          "id": "footer_menu",
+          "label": "Choose a Link List",
+        }
+      ]
+    },
+    {
+      "type": "social_link",
+      "name": "Social Link Block",
+      "settings": [
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Footer",
+      "blocks": [
+        {
+          "type": "product_list"
+        },
+        {
+          "type": "brand_list"
+        },
+        {
+          "type": "link_list"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

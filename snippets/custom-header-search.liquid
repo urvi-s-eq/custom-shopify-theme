@@ -1,0 +1,250 @@
+<script src="{{ 'main-search.js' | asset_url }}" defer="defer"></script>
+
+<style>
+  .search__button .icon {
+    height: 1.8rem;
+  }
+
+  .predictive-search-result {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 0;
+    font-family: var(--font-secondary);
+  }
+
+  .predictive-search-result__image {
+    margin-right: 1rem;
+  }
+
+  .loading-spinner {
+    text-align: center;
+    padding: 1rem;
+  }
+
+  .predictive-search-no-results {
+    text-align: center;
+    padding: 1rem;
+    color: #666;
+  }
+
+  .predictive-search-results {
+    display: block;
+    background-color: black;
+    position: absolute;
+    z-index: 9999;
+  }
+
+  .predictive-search-results-list {
+    display: block;
+  }
+
+  .predictive-search-result {
+    display: block; 
+    padding: 0.5rem;
+    border-bottom: 1px solid #ddd; 
+  }
+  .predictive-search-result__link
+  {
+    display: flex;
+  }
+@media screen and (max-width: 750px) {
+  .predictive-search-results {
+    position: absolute;
+    top: 100%; 
+    left: 0;
+    width: 100%;
+    background-color: white;
+    z-index: 9999;
+  }
+
+  .predictive-search-results-list {
+    max-height: 300px; 
+    overflow-y: auto;
+  }
+
+  .predictive-search__loading-state {
+    padding: 1rem;
+    text-align: center;
+  }
+
+  .search-input {
+    position: relative;
+    z-index: 10;
+  }
+}
+
+.search-input {
+    position: relative;
+    z-index: 10; 
+}
+
+.predictive-search-results {
+    display: block;
+    background-color: white; /* Change background to white for visibility */
+    position: absolute; /* Absolute positioning relative to the parent container */
+    top: 100%; /* Position directly below the search input */
+    left: 0;
+    width: 100%; /* Ensure it spans the full width of the container */
+    z-index: 9999;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Optional: add some shadow for better visibility */
+}
+.predictive-search-result__title
+{
+  color: black;
+  margin: auto;
+  line-height: normal;
+}
+
+.predictive-search-results-list {
+    max-height: 300px; /* Set max height for scrollable results */
+    overflow-y: auto;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+/* Adjust styling for individual result items */
+.predictive-search-result {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+    border-bottom: 1px solid #ddd; /* Optional: border to separate results */
+}
+
+.predictive-search-result__image {
+    margin-right: 1rem;
+}
+
+
+.predictive-search-no-results {
+    text-align: center;
+    padding: 1rem;
+    color: #666;
+}
+
+</style>
+
+{%- liquid
+  assign sort_by = search.sort_by | default: search.default_sort_by
+  assign terms = search.terms | escape
+-%}
+
+<div class="search-input">
+    {%- if settings.predictive_search_enabled -%}
+      <predictive-search data-loading-text="{{ 'accessibility.loading' | t }}">
+    {%- endif -%}
+    <main-search>
+      <form action="{{ routes.search_url }}" method="get" role="search" class="search">
+        <div class="field">
+          <button type="submit" class="search__button field__button" aria-label="{{ 'general.search.search' | t }}">
+            <span class="svg-wrapper">
+              <img 
+                src="{{section.settings.search_icon | image_url }}" 
+                alt="search-icon" 
+                class="img-fluid" 
+                width="" 
+                height=""/>
+            </span>
+          </button>
+          <input
+            class="search__input field__input"
+            id="Search-In-Template"
+            type="search"
+            name="q"
+            onkeyup="suggestionList(this)"
+            value="{{ search.terms | escape }}"
+            placeholder="{{ section.settings.search_placeholder_text | default: 'Search......' }}"
+            {%- if settings.predictive_search_enabled -%}
+              role="combobox"
+              aria-expanded="false"
+              aria-owns="predictive-search-results"
+              aria-controls="predictive-search-results"
+              aria-haspopup="listbox"
+              aria-autocomplete="list"
+              autocorrect="off"
+              autocomplete="off"
+              autocapitalize="off"
+              spellcheck="false"
+            {%- endif -%}
+          >
+          <input name="options[prefix]" type="hidden" value="last">
+         
+          {%- if settings.predictive_search_enabled -%}
+            <div class="predictive-search predictive-search--search-template" tabindex="-1" data-predictive-search>
+              {%- render 'loading-spinner', class: 'predictive-search__loading-state' -%}
+            </div>
+
+            <span class="predictive-search-status visually-hidden" role="status" aria-hidden="true"></span>
+          {%- endif -%}
+          </div>
+          <div class="predictive-search-results" id="predictive-search-results">
+      <ul class="predictive-search-results-list">
+        <li class="predictive-search-result" id="result-template" style="display: none;">
+          <a href="#" class="predictive-search-result__link">
+            <img src="#" alt="#" class="predictive-search-result__image" width="50" height="50">
+              <span class="predictive-search-result__title"></span>
+          </a>
+        </li>
+      </ul>
+    </div>
+      </form>
+    </main-search>
+    {%- if settings.predictive_search_enabled -%}
+      </predictive-search>
+    {%- endif -%}    
+</div>
+
+<script>
+  async function suggestionList(e) {
+  const thisVal = e.value;
+  const suggestionList = e.closest('form').querySelector('.predictive-search-results-list');
+  const resultsContainer = document.getElementById('predictive-search-results');
+  
+  if (thisVal.length > 0) {
+    const req = await fetch(`/search/suggest.json?q=${thisVal}&resources[type]=product`);
+    const res = await req.json();
+    const products = res.resources.results.products;
+
+    suggestionList.innerHTML = '';
+
+    if (products && products.length > 0) {
+      products.forEach(item => {
+        const li = document.createElement('li');
+        li.classList.add('predictive-search-result'); 
+
+        const a = document.createElement('a');
+        a.href = item.url;
+        a.classList.add('predictive-search-result__link');
+
+        const img = document.createElement('img');
+        img.src = item.featured_image.url; 
+        img.alt = item.title;
+        img.classList.add('predictive-search-result__image');
+        img.width = 50;
+        img.height = 50;
+
+        const title = document.createElement('span');
+        title.classList.add('predictive-search-result__title');
+        title.innerText = item.title;
+
+        a.appendChild(img);
+        a.appendChild(title);
+
+        li.appendChild(a);
+        suggestionList.appendChild(li);
+      });
+
+      resultsContainer.style.display = 'block';
+    } else {
+      const noResults = document.createElement('div');
+      noResults.classList.add('predictive-search-no-results');
+      noResults.innerText = 'No products found';
+      suggestionList.appendChild(noResults);
+      resultsContainer.style.display = 'block';
+    }
+  } else {
+    resultsContainer.style.display = 'none';
+    suggestionList.innerHTML = '';
+  }
+}
+</script>

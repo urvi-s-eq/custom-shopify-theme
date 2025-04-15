@@ -50,13 +50,13 @@
     border: 1px solid rgba(255,255,255,0.5); 
     width: 100%;
     min-width: 386px;
-    padding: 5px 12px;
     background-color: var(--color-light);
     margin-bottom: 0px;
 }
 .search-input form button{
     border: none;
     background-color: var(--color-light);
+    margin-left: 10px;
 }
 .search-input form button img{
     width: 100%;
@@ -89,9 +89,13 @@
 .cwr-country-logo .selected .dropdown_arrow{
     margin-left: 5px;
     cursor: pointer;
+    margin-top :20px;
 }
 .cwr-country-logo .selected a img{
     width: 30px;
+    border-radius: 50%;
+    height: 30px;
+    margin-top: 20px;
 }
 .cwr-user-and-cart{
     display: flex;
@@ -109,9 +113,9 @@
 .cwr-country-logo .options{
     display: none;
     position: absolute;
-    top: 35px;
+    top: 50px;
     left: 0;
-    z-index: 5;
+    z-index: 11;
 }
 .cwr-country-logo .options ul{
     background-color: var(--color-dark);
@@ -122,6 +126,8 @@
 }
 .cwr-country-logo .options ul li a img{
     width: 30px;
+    border-radius: 50%;
+    height: 30px;
 }
 .cwr-country-logo .options ul li a{
     display: flex;
@@ -783,6 +789,7 @@
         justify-content: space-between;
         padding: 0 20px;
         margin-bottom: 20px;
+        align-items: center;
     }
     .nav-top .cwr-country-logo{
         margin-right: 8px;
@@ -795,6 +802,7 @@
     }
     .nav-top .cwr-country-logo .options ul li a{
         color: var(--color-light);
+        padding : 5px;
     }
     .nav-top .cwr-user-and-cart {
         width: 100%;
@@ -813,9 +821,11 @@
     }
     .cwr-country-logo .selected a img{
         width: 20px;
+        height: 20px;
     }
     .cwr-country-logo .options ul li a img{
         width: 20px;
+        height : 20px;
     }
     .cwr-country-logo .options ul li a{
         font-size: 13px;
@@ -898,6 +908,7 @@
     .search-input form input{
         background-color: var(--color-light);
         color: var(--color-dark);
+        width : auto;
     }
     .search-input form input::placeholder{
         color: var(--color-dark);
@@ -1155,6 +1166,7 @@ footer{
     top: 0;
     left: 0;
     width: 100%;
+    height: inherit;
 }
 .cwr-banner__bg-img img{
     object-fit: cover;
@@ -2743,6 +2755,7 @@ footer{
 .cwr-newsletter__left .custom-btn{
     padding: 18.3px 20px;
     max-width: 207px;
+    border: none;
 }
 .cwr-newsletter__left .custom-btn::after{
     top: 5px;
@@ -5118,5 +5131,36 @@ footer{
         bottom: -70px;
     }
 }
+.field
+{
+    display : flex;
+    width : 100%;
+}
+@media (min-width: 1024px) {
+    .cart-count-bubble {
+      position: absolute;
+      background-color: white;
+      color: black;
+      height: 1.2rem;
+      width: 1.2rem;
+      border-radius: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: .9rem;
+      bottom: 3.8rem;
+      line-height: calc(1 + .1 / var(--font-body-scale));
+      top: 5.5rem;
+      right: 7.9rem;
+    }
+  }
 
-/* cwr-blog section css end  */
+  @media (min-width: 769px) and (max-width: 1024px) {
+    .cart-count-bubble {
+      height: 1rem;
+      width: 1rem;
+      top: 4.5rem;
+      right: 4.9rem;
+    }
+  }
+  
