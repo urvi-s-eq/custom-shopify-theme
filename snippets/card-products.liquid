@@ -1,0 +1,101 @@
+<div class="col-6 col-sm-4 col-lg-3 cwr-our-product__box-col product-card">
+  <div class="cwr-our-product__box cwr-our-product__box--collections">
+    <a href="{{ product.url }}">
+      <figure>
+        <img 
+          src="{{ product.featured_image | img_url: '500x' }}" 
+          alt="{{ product.featured_image.alt | escape }}" 
+          class="img-fluid lazyload" 
+        />
+      </figure>
+    </a>
+
+    {% for tag in product.tags %}
+      {% if tag == "Sale" and product.compare_at_price > product.price %}
+        <span class="cwr-new-arrival cwr-sale">{{ tag }}</span>
+      {% elsif tag == "New Arrival" %}
+        <span class="cwr-new-arrival">{{ tag }}</span>
+      {% endif %}
+  {% endfor %}
+
+    <div class="cwr-our-product__box-content">
+      {% if product.metafields.custom.reviews %}
+        <div class="cwr-rating">
+          <ul>
+            {% for i in (1..5) %}
+              <li><img src="{{ 'rating-star.svg' | file_url }}" alt="star icon" class="img-fluid" width="16" height="16"></li>
+            {% endfor %}
+          </ul>
+          <span>{{ product.metafields.custom.reviews }}</span>
+        </div>
+      {% endif %}
+
+      <a href="{{ product.url }}">
+        <h5>{{ product.title }}</h5>
+      </a>
+
+      <div class="cwr-product-price">
+        {% if product.compare_at_price > product.price %}
+          <span><del>{{ product.compare_at_price | money }}</del>{{ product.price | money }}</span>
+        {% else %}
+          <span>{{ product.price | money }}</span>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="cwr-our-product__box-cta">
+      <button 
+        class="custom-btn add-to-cart-btn"
+        data-variant-id="{{ product.variants.first.id }}"
+      >
+        <span>Shop Now</span>
+  </button>
+</div>
+  </div>
+</div>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll('.add-to-cart-btn').forEach(function(button) {
+      button.addEventListener('click', function () {
+        const variantId = this.dataset.variantId;
+        fetch('/cart/add.js', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify({
+            id: variantId,
+            quantity: 1
+          })
+        })
+        .then(() => {
+          return fetch('/cart.js');
+        })
+        .then(res => res.json())
+        .then(cart => {
+          const cartIconWrapper = document.querySelector('.js-cart-icon');
+          if (!cartIconWrapper) return;
+          const itemCount = cart.item_count;
+          const newCartHtml = `
+            <a href="/cart">
+              <img src="//urvi-test-store.myshopify.com/cdn/shop/files/cart-img.svg?v=1742376987" alt="cart-icon" class="img-fluid">
+              <span class="visually-hidden">Cart</span>
+              ${itemCount > 0 ? `
+                <div class="cart-count-bubble">
+                  <span aria-hidden="true">${itemCount}</span>
+                  <span class="visually-hidden">${itemCount} items</span>
+                </div>
+              ` : ''}
+            </a>
+          `;
+          cartIconWrapper.innerHTML = newCartHtml;
+        })
+        .catch(error => {
+          console.error('Error adding to cart:', error);
+          alert('There was a problem adding the product to your cart.');
+        });
+      });
+    });
+  });
+</script>

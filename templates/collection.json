@@ -1,7 +1,38 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
+    "colllection_banner_RH6mMT": {
+      "type": "colllection-banner",
+      "blocks": {
+        "banner_DFyi3i": {
+          "type": "banner",
+          "settings": {
+            "background_banner_image": "shopify://shop_images/collections-banner-img_1.jpg",
+            "background_banner_mobile_image": "shopify://shop_images/collections-banner-img-mobile_2015addc-19a8-4238-892c-655d39ffefa7.png",
+            "heading": "Get amazing MARKERS Collection",
+            "subheading": "Explore the best graffiti markers and inks online at Bombing Science. Wide selection, top brands like Molotow, Krink, and more.",
+            "button_text": "",
+            "button_url": "",
+            "rating_text": "Rated 4.9/5  by Thousands of Happy Customers"
+          }
+        }
+      },
+      "block_order": [
+        "banner_DFyi3i"
+      ],
+      "settings": {}
+    },
     "banner": {
       "type": "main-collection-banner",
+      "disabled": true,
       "settings": {
         "show_collection_description": true,
         "show_collection_image": false,
@@ -10,9 +41,11 @@
     },
     "product-grid": {
       "type": "main-collection-product-grid",
+      "disabled": true,
       "settings": {
         "products_per_page": 16,
         "columns_desktop": 4,
+        "columns_mobile": "2",
         "color_scheme": "scheme-1",
         "image_ratio": "adapt",
         "image_shape": "default",
@@ -23,14 +56,116 @@
         "enable_filtering": true,
         "filter_type": "horizontal",
         "enable_sorting": true,
-        "columns_mobile": "2",
         "padding_top": 36,
         "padding_bottom": 36
+      }
+    },
+    "collection_content_YmfXpe": {
+      "type": "collection-content",
+      "blocks": {
+        "custom_nav_NkKzb8": {
+          "type": "custom_nav",
+          "settings": {
+            "custom_title": "Categories:",
+            "custom_menu": "categories-submenu"
+          }
+        }
+      },
+      "block_order": [
+        "custom_nav_NkKzb8"
+      ],
+      "settings": {
+        "products_per_row": 2,
+        "payment_label": "Safe & Secure Checkout",
+        "products_per_page": 16,
+        "columns_desktop": 4,
+        "columns_mobile": "2",
+        "enable_filtering": true,
+        "filter_type": "vertical",
+        "enable_sorting": true
+      }
+    },
+    "shopping_with_us_review_QFa3cJ": {
+      "type": "shopping-with-us-review",
+      "blocks": {
+        "quote_b4zNFq": {
+          "type": "quote",
+          "settings": {
+            "quote_image": "shopify://shop_images/review-slider-img1.jpg",
+            "quote_text": "<p>Always a useful tool!</p><p>“Great for custom work when you'd rather use refills than buying new markers or for mixing custom colors. I like to throw a 2mm nib into my 111's so I can make super fine lines.”</p>",
+            "author_name": "kasm78"
+          }
+        },
+        "quote_9qz97H": {
+          "type": "quote",
+          "settings": {
+            "quote_image": "shopify://shop_images/review-slider-img1.jpg",
+            "quote_text": "<p>Always a useful tool!</p><p>“Great for custom work when you'd rather use refills than buying new markers or for mixing custom colors. I like to throw a 2mm nib into my 111's so I can make super fine lines.”</p>",
+            "author_name": "kasm78"
+          }
+        },
+        "quote_qAmaNW": {
+          "type": "quote",
+          "settings": {
+            "quote_image": "shopify://shop_images/review-slider-img1.jpg",
+            "quote_text": "<p>Always a useful tool!</p><p>“Great for custom work when you'd rather use refills than buying new markers or for mixing custom colors. I like to throw a 2mm nib into my 111's so I can make super fine lines.”</p>",
+            "author_name": "kasm78"
+          }
+        },
+        "quote_rA7reP": {
+          "type": "quote",
+          "settings": {
+            "quote_image": "shopify://shop_images/review-slider-img1.jpg",
+            "quote_text": "<p>Always a useful tool!</p><p>“Great for custom work when you'd rather use refills than buying new markers or for mixing custom colors. I like to throw a 2mm nib into my 111's so I can make super fine lines.”</p>",
+            "author_name": "kasm78"
+          }
+        },
+        "quote_HAFQJm": {
+          "type": "quote",
+          "settings": {
+            "quote_image": "shopify://shop_images/review-slider-img1.jpg",
+            "quote_text": "<p>Always a useful tool!</p><p>“Great for custom work when you'd rather use refills than buying new markers or for mixing custom colors. I like to throw a 2mm nib into my 111's so I can make super fine lines.”</p>",
+            "author_name": "kasm78"
+          }
+        }
+      },
+      "block_order": [
+        "quote_b4zNFq",
+        "quote_9qz97H",
+        "quote_qAmaNW",
+        "quote_rA7reP",
+        "quote_HAFQJm"
+      ],
+      "settings": {
+        "quote_header": "Hear what our happy customers say",
+        "quote_subheader": "Transform your living spaces with sophisticated artistry"
+      }
+    },
+    "usp_slider_GbCgxq": {
+      "type": "usp-slider",
+      "settings": {}
+    },
+    "cwr_newsletter_KfiwR3": {
+      "type": "cwr-newsletter",
+      "settings": {
+        "heading_content": "Sign up for email",
+        "sub_heading_content": "Sign up for exclusive discounts, updates, new releases, and more!",
+        "placeholder": "Email Address.....",
+        "button_label": "Subscribe",
+        "img_content_img1": "shopify://shop_images/newsletter-img1.jpg",
+        "img_content_img1_mobile": "shopify://shop_images/newsletter-img1-mobile.jpg",
+        "img_content_img2": "shopify://shop_images/newsletter-img2.jpg",
+        "img_content_img3": "shopify://shop_images/newsletter-img3.jpg"
       }
     }
   },
   "order": [
+    "colllection_banner_RH6mMT",
     "banner",
-    "product-grid"
+    "product-grid",
+    "collection_content_YmfXpe",
+    "shopping_with_us_review_QFa3cJ",
+    "usp_slider_GbCgxq",
+    "cwr_newsletter_KfiwR3"
   ]
 }

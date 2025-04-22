@@ -4432,6 +4432,11 @@ footer{
     justify-content: space-between;
     margin-bottom: 16px;
 }
+a.cwr-collections__filter-clear-btn.js-clear-all {
+    color: var(--color-dark);
+    font-family: var(--font-primary);
+}
+
 .cwr-collections__filter-clear-btn {
     color: var(--color-dark);
     font-family: var(--font-primary);

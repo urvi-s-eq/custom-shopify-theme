@@ -1,0 +1,44 @@
+<div class="cwr-usp-slider cwr-usp-slider--bg-primary">
+    <div class="container">
+        <div class="cwr-usp-slider__content js-usp-slider-content">
+            {% if settings.usp_slider_image_main_content_1 != blank or settings.usp_slider_text_1 != blank %}
+            <div class="cwr-usp-slider__item">
+                <div class="cwr-usp-slider__item-box">
+                {% if settings.usp_slider_image_main_content_1 != blank %}<img src="{{ settings.usp_slider_image_main_content_1 | image_url }}" alt="usp-img" class="img-fluid" width=""
+            height="">{% endif %}
+            {% if settings.usp_slider_text_1 != blank %}<span>{{ settings.usp_slider_text_1 }}</span>{% endif %}
+                </div>
+            </div>
+            {% endif %}
+            {% if settings.usp_slider_image_main_content_2 != blank or settings.usp_slider_text_2 != blank %}
+            <div class="cwr-usp-slider__item">
+                <div class="cwr-usp-slider__item-box">
+                    {% if settings.usp_slider_image_main_content_1 != blank %}<img src="{{ settings.usp_slider_image_main_content_2 | image_url }}" alt="usp-img" class="img-fluid" width=""
+                    height="">{% endif %}
+                {% if settings.usp_slider_text_2 != blank %}<span>{{ settings.usp_slider_text_2 }}</span>{% endif %}
+                </div>
+            </div>
+            {% endif %}
+            {% if settings.usp_slider_image_main_content_3 != blank or settings.usp_slider_text_3 != blank %}
+            <div class="cwr-usp-slider__item">
+                <div class="cwr-usp-slider__item-box">
+                    {% if settings.usp_slider_image_main_content_3 != blank %}<img src="{{ settings.usp_slider_image_main_content_3 | image_url }}" alt="usp-img" class="img-fluid" width=""
+                    height="">{% endif %}
+                    {% if settings.usp_slider_text_3 != blank %}<span>{{ settings.usp_slider_text_3 }}</span>{% endif %}
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% schema %}
+    {
+        "name": "USP Slider",
+        "settings": [],
+        "presets" : [
+            {
+                "name" : "USP Slider"
+            }
+        ]
+    }
+{% endschema %}

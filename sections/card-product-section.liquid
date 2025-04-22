@@ -1,0 +1,3 @@
+{% assign handle = request.path | split: '/' | last %}
+{% assign product = all_products[handle] %}
+{% render 'card-products', product: product %}
