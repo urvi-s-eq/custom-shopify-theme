@@ -1,0 +1,87 @@
+<section class="cwr-banner">
+        <div class="cwr-banner__wrap js-banner-wrap">
+            {% for block in section.blocks %}
+                <div class="cwr-banner__img cwr-banner-img-{{ block.id }}">
+                    <div class="cwr-banner__bg-img">
+                        {% if block.settings.background_banner_image != blank %}<img data-src="{{ block.settings.background_banner_image | image_url }}" alt="hero-img" class="img-fluid lazyload" width="1903"
+                        height="483">{% endif %}
+                    </div>
+                    <div class="cwr-banner__img-mobile">
+                        {% if block.settings.background_banner_mobile_image != blank %}<img data-src="{{ block.settings.background_banner_mobile_image | image_url: width: 991, height: 665 }}" alt="hero-img" class="img-fluid lazyload" width="991"
+                            height="665">{% endif %}
+                    </div>
+                    <div class="cwr-banner__wrap-content cwr-banner__wrap-content--collecitons">
+                        <div class="cwr-rating">
+                            <ul>
+                                {% for i in (1..5) %}
+                                <li><img src="{{ 'rating-star.svg' | file_url }}" alt="star icon" class="img-fluid" width="16" height="16"></li>
+                                {% endfor %}
+                            </ul>
+                            {% if block.settings.rating_text != blank %}<span>{{ block.settings.rating_text }}</span>{% endif %}
+                        </div>
+                        {% if block.settings.heading != blank %}
+                            <h1 class="custom-heading-xl">{{ block.settings.heading }}</h1>
+                        {% endif %}
+                                    
+                        {% if block.settings.subheading != blank %}
+                            <h4 class="custom-heading-sm">{{ block.settings.subheading }}</h4>
+                        {% endif %}
+                    </div>
+                </div>
+        {% endfor %}
+        </div>
+</section>
+
+    {% schema %}
+        {
+          "name": "CWR Collection Banner",
+          "max_blocks": 3,
+          "settings": [],
+          "blocks" : [
+            {
+                "type": "banner",
+                "name": "Banner Slider",
+                "settings": [
+                    {
+                    "type": "image_picker",
+                    "label": "Background Image for Banner",
+                    "id": "background_banner_image"
+                    },
+                    {
+                    "type": "image_picker",
+                    "label": "Background Image for Mobile Banner",
+                    "id": "background_banner_mobile_image"
+                    },
+                    {
+                    "type": "text",
+                    "label": "Heading for Banner",
+                    "id": "heading"
+                    },
+                    {
+                    "type": "text",
+                    "label": "Subheading for Banner",
+                    "id": "subheading"
+                    },
+                    {
+                    "type": "text",
+                    "label": "Button Text for Banner",
+                    "id": "button_text"
+                    },
+                    {
+                    "type": "url",
+                    "label": "Button Url for Banner",
+                    "id": "button_url"
+                    },
+                    {
+                    "type": "text",
+                    "label": "Rating Text for Banner",
+                    "id": "rating_text"
+                    }],
+            }],
+          "presets": [
+            {
+              "name": "CWR Collection Banner"
+            }
+          ]
+        }
+        {% endschema %}

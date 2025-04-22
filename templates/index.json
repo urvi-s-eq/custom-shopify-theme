@@ -520,7 +520,7 @@
       }
     },
     "cwr_faq_KzmBgn": {
-      "type": "cwr-Faq",
+      "type": "cwr-faq",
       "blocks": {
         "question_rFb4mF": {
           "type": "question",
