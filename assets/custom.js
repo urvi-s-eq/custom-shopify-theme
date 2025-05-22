@@ -607,3 +607,16 @@ if ($('.checkout-page').length > 0) {
     var deadline = new Date(Date.parse(new Date()) + 25 * 60 * 60 * 1000);
     initializeClock('clockdiv', deadline);
 }
+
+
+
+function initAjaxinate() {
+    let ajaxinateInstance;
+  if (ajaxinateInstance) return;
+
+  window.ajaxinateInstance = new Ajaxinate({
+    container: '#product-grid',
+    pagination: '#AjaxinatePagination',
+    method: 'click',
+  });
+}

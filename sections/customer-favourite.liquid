@@ -20,8 +20,13 @@
                                 {% endif %}
                             </a>
                             {% endif %}
-                            {% if block.settings.product_picker.tags contains 'New Arrival' %}<span class="cwr-new-arrival">{{  block.settings.product_picker.tags | first }}</span>{% endif %}
-                            {% if block.settings.product_picker.tags contains 'Sale' and block.settings.product_picker.compare_at_price > block.settings.product_picker.price %}<span class="cwr-new-arrival  cwr-sale">{{  block.settings.product_picker.tags | first }}</span>{% endif %}
+                            {% for tag in block.settings.product_picker.tags %}
+                                {% if tag == "Sale" and block.settings.product_picker.compare_at_price > block.settings.product_picker.price %}
+                                  <span class="cwr-new-arrival cwr-sale">{{ tag }}</span>
+                                {% elsif tag == "New Arrival" %}
+                                  <span class="cwr-new-arrival">{{ tag }}</span>
+                                {% endif %}
+                            {% endfor %}
                             <div class="cwr-our-product__box-content">
                                 <div class="cwr-rating">
                                     <ul>

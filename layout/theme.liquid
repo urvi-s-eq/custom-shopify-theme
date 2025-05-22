@@ -5,6 +5,7 @@
     <title>{{ page_title }}</title>
     {{ 'plugins.css' | asset_url | stylesheet_tag }}
     {{ 'base.css' | asset_url | stylesheet_tag }}
+    {{ 'basedawn.css' | asset_url | stylesheet_tag }}
     {{ 'custom.css' | asset_url | stylesheet_tag }}
     {{ 'cwr-cart-page.css' | asset_url | stylesheet_tag }}
     {{ content_for_header }}
@@ -14,6 +15,9 @@
 <script src="{{ 'jquery.min.js' | asset_url }}" defer="defer"></script>
 <script src="{{ 'plugins.js' | asset_url }}" defer="defer"></script>
 <script src="{{ 'custom.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'ajaxinate.min.js' | asset_url }}" type="text/javascript"></script>
+
+
   <a class="skip-to-content-link button visually-hidden" href="#MainContent">
       {{ 'accessibility.skip_to_text' | t }}
     </a>

@@ -68,6 +68,66 @@ class FacetFiltersForm extends HTMLElement {
         FacetFiltersForm.renderProductGridContainer(html);
         FacetFiltersForm.renderProductCount(html);
         if (typeof initializeScrollAnimationTrigger === 'function') initializeScrollAnimationTrigger(html.innerHTML);
+         var urlParams = new URLSearchParams(window.location.search);
+          var minPrice = urlParams.get('filter.v.price.gte');
+        var maxPrice = urlParams.get('filter.v.price.lte');
+    if (minPrice) {
+      document.getElementById('range-min').value = minPrice;
+      document.getElementById('min-price').value = minPrice;
+    }
+
+    if (maxPrice) {
+      document.getElementById('range-max').value = maxPrice;
+      document.getElementById('max-price').value = maxPrice;
+    }
+    var parent = document.querySelector(".range-slider");
+  if (!parent) return;
+
+   var rangeS = parent.querySelectorAll("input[type=range]");
+  var amountInput = document.getElementById('amount');
+  var currencySymbol = parent.querySelector('.cwr-range-slider__value')?.dataset.currency || '$';
+     var slide1 = parseFloat(rangeS[0].value);
+    var slide2 = parseFloat(rangeS[1].value);
+
+    if (slide1 > slide2) {
+      [slide1, slide2] = [slide2, slide1];
+    }
+
+    amountInput.value = currencySymbol + parseFloat(slide1).toFixed(2) + " - " + currencySymbol + parseFloat(slide2).toFixed(2);
+if(document.getElementById('range-min')){
+      var min = parseFloat(document.getElementById('range-min').value);
+    }
+    if(document.getElementById('range-max')){
+      var max = parseFloat(document.getElementById('range-max').value);
+    }
+    var progressBar = document.querySelector('.progress');
+    if (progressBar) {
+      var rangeWidth = (max - min) / (document.getElementById('range-max').max - document.getElementById('range-min').min) * 100;
+      progressBar.style.width = rangeWidth + '%';
+    }
+    var minRange = parseFloat(document.getElementById('range-min').min);
+  var maxRange = parseFloat(document.getElementById('range-max').max);
+    var trackFill = document.querySelector('.range-slider__track-fill');
+  if (!trackFill) return;
+
+  var leftPercent = ((Math.min(min, max) - minRange) / (maxRange - minRange)) * 100;
+  var rightPercent = ((Math.max(min, max) - minRange) / (maxRange - minRange)) * 100;
+
+  trackFill.style.left = `${leftPercent}%`;
+  trackFill.style.width = `${rightPercent - leftPercent}%`;
+
+  const rightThumb = document.querySelector('.thumb-right');
+
+rightThumb.addEventListener('input', () => {
+  const max = parseInt(rightThumb.max);
+  const val = parseInt(rightThumb.value);
+  if (val === max) {
+    rightThumb.classList.add('at-max');
+  } else {
+    rightThumb.classList.remove('at-max');
+  }
+});
+      
       });
   }
 
@@ -77,20 +137,112 @@ class FacetFiltersForm extends HTMLElement {
     FacetFiltersForm.renderProductGridContainer(html);
     FacetFiltersForm.renderProductCount(html);
     if (typeof initializeScrollAnimationTrigger === 'function') initializeScrollAnimationTrigger(html.innerHTML);
+             var urlParams = new URLSearchParams(window.location.search);
+
+      var minPrice = urlParams.get('filter.v.price.gte');
+    var maxPrice = urlParams.get('filter.v.price.lte');
+    if (minPrice) {
+      document.getElementById('range-min').value = minPrice;
+      document.getElementById('min-price').value = minPrice;
+    }
+
+    if (maxPrice) {
+      document.getElementById('range-max').value = maxPrice;
+      document.getElementById('max-price').value = maxPrice;
+    }
+    var parent = document.querySelector(".range-slider");
+  if (!parent) return;
+  var rangeS = parent.querySelectorAll("input[type=range]");
+  var amountInput = document.getElementById('amount');
+  var currencySymbol = parent.querySelector('.cwr-range-slider__value')?.dataset.currency || '$';
+
+     var slide1 = parseFloat(rangeS[0].value);
+    var slide2 = parseFloat(rangeS[1].value);
+
+    if (slide1 > slide2) {
+      [slide1, slide2] = [slide2, slide1];
+    }
+
+    amountInput.value = currencySymbol + parseFloat(slide1).toFixed(2) + " - " + currencySymbol + parseFloat(slide2).toFixed(2);
+if(document.getElementById('range-min')){
+      var min = parseFloat(document.getElementById('range-min').value);
+    }
+    if(document.getElementById('range-max')){
+      var max = parseFloat(document.getElementById('range-max').value);
+    }
+    var progressBar = document.querySelector('.progress');
+    if (progressBar) {
+      var rangeWidth = (max - min) / (document.getElementById('range-max').max - document.getElementById('range-min').min) * 100;
+      progressBar.style.width = rangeWidth + '%';
+    }
+    var minRange = parseFloat(document.getElementById('range-min').min);
+  var maxRange = parseFloat(document.getElementById('range-max').max);
+        var trackFill = document.querySelector('.range-slider__track-fill');
+  if (!trackFill) return;
+
+  var leftPercent = ((Math.min(min, max) - minRange) / (maxRange - minRange)) * 100;
+  var rightPercent = ((Math.max(min, max) - minRange) / (maxRange - minRange)) * 100;
+
+  trackFill.style.left = `${leftPercent}%`;
+  trackFill.style.width = `${rightPercent - leftPercent}%`;
+
+  const rightThumb = document.querySelector('.thumb-right');
+
+rightThumb.addEventListener('input', () => {
+  const max = parseInt(rightThumb.max);
+  const val = parseInt(rightThumb.value);
+  if (val === max) {
+    rightThumb.classList.add('at-max');
+  } else {
+    rightThumb.classList.remove('at-max');
+  }
+});
+      
   }
 
   static renderProductGridContainer(html) {
-    document.getElementById('ProductGridContainer').innerHTML = new DOMParser()
-      .parseFromString(html, 'text/html')
-      .getElementById('ProductGridContainer').innerHTML;
+  const parser = new DOMParser();
+  const doc = parser.parseFromString(html, 'text/html');
 
-    document
-      .getElementById('ProductGridContainer')
-      .querySelectorAll('.scroll-trigger')
-      .forEach((element) => {
-        element.classList.add('scroll-trigger--cancel');
-      });
+  const productGridContainer = document.getElementById('ProductGridContainer');
+  const newProductGridContainer = doc.getElementById('ProductGridContainer');
+
+  if (productGridContainer && newProductGridContainer) {
+    productGridContainer.innerHTML = newProductGridContainer.innerHTML;
   }
+
+  const productGrid = document.getElementById('product-grid');
+  const newProductGrid = doc.getElementById('product-grid');
+
+  if (productGrid && newProductGrid) {
+    productGrid.innerHTML = newProductGrid.innerHTML;
+  }
+
+  const paginationContainer = document.getElementById("AjaxinatePagination");
+  const newPagination = doc.getElementById("AjaxinatePagination");
+
+  if (paginationContainer && newPagination) {
+    paginationContainer.innerHTML = newPagination.innerHTML;
+  }
+
+  initAjaxinate();
+
+  document
+    .getElementById('ProductGridContainer')
+    .querySelectorAll('.scroll-trigger')
+    .forEach((element) => {
+      element.classList.add('scroll-trigger--cancel');
+    });
+
+  if (typeof url !== 'undefined') {
+    window.history.pushState({}, "", url.toString());
+  }
+
+  const loadingOverlay = document.getElementById('loading-overlay');
+  if (loadingOverlay) {
+    loadingOverlay.style.display = 'none';
+  }
+}
 
   static renderProductCount(html) {
     const count = new DOMParser().parseFromString(html, 'text/html').getElementById('ProductCount').innerHTML;
@@ -196,7 +348,7 @@ class FacetFiltersForm extends HTMLElement {
       document.querySelector(selector).innerHTML = html.querySelector(selector).innerHTML;
     });
 
-    document.getElementById('FacetFiltersFormMobile').closest('menu-drawer').bindEvents();
+    // document.getElementById('FacetFiltersFormMobile')?.closest('menu-drawer')?.bindEvents();
   }
 
   static renderCounts(source, target) {
@@ -359,7 +511,24 @@ class FacetRemove extends HTMLElement {
     event.preventDefault();
     const form = this.closest('facet-filters-form') || document.querySelector('facet-filters-form');
     form.onActiveFilterClick(event);
+ fetch(window.location.href)
+      .then(response => response.text())
+      .then(html => {
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, 'text/html');
+        const newFacetFilters = doc.querySelector('facet-filters-form.facets-vertical-sort');
+        const currentFacetFilters = document.querySelector('facet-filters-form.facets-vertical-sort');
+        if (currentFacetFilters && newFacetFilters) {
+          currentFacetFilters.replaceWith(newFacetFilters);
+        } else {
+          console.warn('Facet filters not found in either current or fetched page.');
+        }
+      })
+      .catch(error => {
+      });
   }
+
+ 
 }
 
 customElements.define('facet-remove', FacetRemove);
