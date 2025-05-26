@@ -18,28 +18,32 @@
       padding-bottom: {{ section.settings.padding_bottom }}px;
     }
   }
+  .cwr-our-product.cwr-related
+  {
+    padding: 65px 0 75px !important;
+  }
 {%- endstyle -%}
-
-<div class="color-{{ section.settings.color_scheme }} gradient">
+  <section class="cwr-our-product cwr-related">
   <product-recommendations
-    class="related-products page-width section-{{ section.id }}-padding isolate{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+    class="related-products section-{{ section.id }}-padding isolate{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
     data-url="{{ routes.product_recommendations_url }}?limit={{ section.settings.products_to_show }}"
     data-section-id="{{ section.id }}"
     data-product-id="{{ product.id }}"
   >
+        <div class="container">
+            <div class="sec-heading">
+            {%- if section.settings.heading != blank -%}<h2 class="custom-heading-md">{{ section.settings.heading }}</h2>{%- endif -%}
+            {%- if section.settings.subheader != blank -%}<h4 class="custom-heading-sm">{{ section.settings.subheader }}</h4>{%- endif -%}
+            </div>
+        </div>
+      
     {% if recommendations.performed and recommendations.products_count > 0 %}
-      <h2 class="related-products__heading inline-richtext {{ section.settings.heading_size }}">
-        {{ section.settings.heading }}
-      </h2>
-      <ul
-        class="grid product-grid grid--{{ section.settings.columns_desktop }}-col-desktop grid--{{ section.settings.columns_mobile }}-col-tablet-down"
-        role="list"
-      >
         {% assign skip_card_product_styles = false %}
+        <div class="cwr-our-product__wrap js-cwr-our-product grid--{{ section.settings.columns_desktop }}-col-desktop grid--{{ section.settings.columns_mobile }}-col-tablet-down">
+
         {% for recommendation in recommendations.products %}
-          <li class="grid__item">
-            {% render 'card-product',
-              card_product: recommendation,
+            {% render 'card-related-products',
+              product: recommendation,
               media_aspect_ratio: section.settings.image_ratio,
               image_shape: section.settings.image_shape,
               show_secondary_image: section.settings.show_secondary_image,
@@ -47,16 +51,16 @@
               show_rating: section.settings.show_rating,
               skip_styles: skip_card_product_styles
             %}
-          </li>
           {%- assign skip_card_product_styles = true -%}
         {% endfor %}
-      </ul>
+                    </div>
+
     {% endif %}
   </product-recommendations>
+  </section>
   {% if section.settings.image_shape == 'arch' %}
     {{ 'mask-arch.svg' | inline_asset_content }}
   {%- endif -%}
-</div>
 
 {% schema %}
 {
@@ -69,10 +73,15 @@
       "content": "t:sections.related-products.settings.paragraph__1.content"
     },
     {
-      "type": "inline_richtext",
+      "type": "text",
       "id": "heading",
       "default": "t:sections.related-products.settings.paragraph__1.default",
       "label": "t:sections.related-products.settings.heading.label"
+    },
+    {
+      "id": "subheader" , 
+      "type": "text",
+      "label": "Related-Subheading"
     },
     {
       "type": "select",
@@ -253,3 +262,92 @@
   ]
 }
 {% endschema %}
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  // Redirect on 'Shop Now'
+  document.addEventListener('click', function (e) {
+    if (e.target.closest('.add-to-cart-btn')) {
+      const button = e.target.closest('.add-to-cart-btn');
+      const productUrl = button.dataset.productUrl;
+      if (productUrl) {
+        window.location.href = productUrl;
+      }
+    }
+  });
+
+  // Slick slider init
+  window.addEventListener('load', () => {
+  const target = document.querySelector('product-recommendations');
+
+  if (!target) return;
+
+  const observer = new MutationObserver((mutations, obs) => {
+    const slider = document.querySelector('.js-cwr-our-product');
+    if (slider && slider.children.length > 0 && !$(slider).hasClass('slick-initialized')) {
+      $(slider).slick({
+        slidesToShow: 4.3,
+        slidesToScroll: 1,
+        infinite: false,
+        dots: false,
+        arrows: true,
+        speed: 900,
+        autoplay: false,
+        adaptiveHeight: false,
+       prevArrow: '<button type="button" class="prev-arrow"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.000995636 6.72148C0.000313759 6.83945 0.0229249 6.9564 0.0675335 7.06562C0.112142 7.17483 0.17787 7.27417 0.260948 7.35793L5.63929 12.7364C5.80808 12.9052 6.03701 13 6.27572 13C6.51443 13 6.74337 12.9052 6.91216 12.7364C7.08095 12.5676 7.17578 12.3386 7.17578 12.0999C7.17578 11.8612 7.08095 11.6323 6.91216 11.4635L2.16129 6.72148L6.9032 1.97948C7.05005 1.808 7.12679 1.58741 7.11807 1.36181C7.10936 1.1362 7.01583 0.922197 6.85619 0.762551C6.69655 0.602906 6.48255 0.509383 6.25695 0.500669C6.03135 0.491955 5.81077 0.568691 5.63929 0.715547L0.260948 6.09399C0.0953455 6.26096 0.00198603 6.48631 0.000995636 6.72148Z" fill="black"/></svg></button>',
+                nextArrow: '<button type="button" class="next-arrow"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.17479 6.72148C7.17547 6.83945 7.15286 6.9564 7.10825 7.06562C7.06364 7.17483 6.99791 7.27417 6.91483 7.35793L1.53649 12.7364C1.3677 12.9052 1.13877 13 0.900058 13C0.661348 13 0.432414 12.9052 0.263621 12.7364C0.0948273 12.5676 0 12.3386 0 12.0999C0 11.8612 0.0948273 11.6323 0.263621 11.4635L5.01449 6.72148L0.272585 1.97948C0.125733 1.808 0.0489958 1.58741 0.0577097 1.36181C0.0664237 1.1362 0.159947 0.922197 0.319589 0.762551C0.479231 0.602906 0.693234 0.509383 0.918834 0.500669C1.14443 0.491955 1.36501 0.568691 1.53649 0.715547L6.91483 6.09399C7.08044 6.26096 7.1738 6.48631 7.17479 6.72148Z" fill="white"/></svg></button>',
+        responsive: [
+                    {
+                        breakpoint: 992,
+                        settings: {
+                            arrows: true,
+                            slidesToShow: 2,
+                            slidesToScroll: 1,
+                            rows: 2,
+                        }
+                    },
+                    {
+                        breakpoint: 576,
+                        settings: {
+                            arrows: true,
+                            slidesToShow: 2,
+                            slidesToScroll: 1,
+                            rows: 2,
+                        }
+                    }
+                ]
+      });
+
+      function equalizeProductHeights() {
+  let maxTitleHeight = 0;
+  let maxPriceHeight = 0;
+
+  // Reset heights first
+  $(".cwr-our-product__box-content h5").css("height", "auto");
+  $(".cwr-product-price").css("height", "auto");
+
+  // Find max height for titles
+  $(".cwr-our-product__box-content h5").each(function () {
+    const h = $(this).outerHeight();
+    if (h > maxTitleHeight) maxTitleHeight = h;
+  });
+
+  // Find max height for prices
+  $(".cwr-product-price").each(function () {
+    const h = $(this).outerHeight();
+    if (h > maxPriceHeight) maxPriceHeight = h;
+  });
+
+  // Apply max heights
+  $(".cwr-our-product__box-content h5").css("height", maxTitleHeight + "px");
+  $(".cwr-product-price").css("height", maxPriceHeight + "px");
+}equalizeProductHeights()
+      obs.disconnect(); // Stop observing once initialized
+    }
+  });
+
+  observer.observe(target, { childList: true, subtree: true });
+});
+
+
+});
+</script>

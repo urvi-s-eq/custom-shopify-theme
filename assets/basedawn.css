@@ -347,12 +347,12 @@ h5,
   }
 }
 
-h6,
+/* h6,
 .h6 {
   color: rgba(var(--color-foreground), 0.75);
   margin-block-start: 1.67em;
   margin-block-end: 1.67em;
-}
+} */
 
 blockquote {
   font-style: italic;
@@ -399,7 +399,7 @@ blockquote {
 .caption-large,
 .customer .field input,
 .customer select,
-.field__input,
+/* .field__input, */
 .form__label,
 .select__select {
   font-size: 1.3rem;
@@ -720,6 +720,11 @@ summary::-webkit-details-marker {
   box-shadow: var(--focused-base-box-shadow);
 }
 
+.search__input.field__input:focus-visible , .custom-message-input:focus-visible, .field__input{
+  outline: none;
+  outline-offset: none;
+  box-shadow: none;
+}
 /* Fallback - for browsers that don't support :focus-visible, a fallback is set for :focus */
 .focused {
   outline: var(--focused-base-outline);
@@ -1562,7 +1567,7 @@ details[open] > .share-button__fallback {
 }
 
 /* component-form */
-.field__input,
+/* .field__input, */
 .select__select,
 .customer .field input,
 .customer select {
@@ -1642,7 +1647,7 @@ details[open] > .share-button__fallback {
   border-radius: var(--inputs-radius);
 }
 
-.field__input:focus-visible,
+/* .field__input:focus-visible, */
 .select__select:focus-visible,
 .customer .field input:focus-visible,
 .customer select:focus-visible,
@@ -1652,7 +1657,7 @@ details[open] > .share-button__fallback {
   border-radius: var(--inputs-radius);
 }
 
-.field__input:focus,
+/* .field__input:focus, */
 .select__select:focus,
 .customer .field input:focus,
 .customer select:focus,
@@ -1712,7 +1717,7 @@ details[open] > .share-button__fallback {
   flex-wrap: wrap;
 }
 
-.field__input,
+/* .field__input, */
 .customer .field input {
   flex-grow: 1;
   text-align: left;
@@ -1754,7 +1759,7 @@ details[open] > .share-button__fallback {
 .customer .field input:not(:placeholder-shown),
 .customer .field input:-webkit-autofill {
   /* padding: 2.2rem 1.5rem 0.8rem 2rem; */
-  margin: var(--inputs-border-width);
+  /* margin: var(--inputs-border-width); */
 }
 
 .field__input::-webkit-search-cancel-button,
@@ -1792,7 +1797,7 @@ details[open] > .share-button__fallback {
 .field__input:-webkit-autofill ~ .field__button,
 .field__input:-webkit-autofill ~ .field__label,
 .customer .field input:-webkit-autofill ~ label {
-  color: rgb(0, 0, 0);
+  /* color: rgb(0, 0, 0); */
 }
 
 /* Text area */
@@ -2930,11 +2935,11 @@ details-disclosure > details {
   word-break: break-word;
 }
 
-.gradient {
+/* .gradient {
   background: rgb(var(--color-background));
   background: var(--gradient-background);
   background-attachment: fixed;
-}
+} */
 
 @media screen and (forced-colors: active) {
   .icon {
@@ -3116,7 +3121,7 @@ details-disclosure > details {
   .customer .field input:focus,
   .customer select:focus,
   .localization-form__select:focus.localization-form__select:after {
-    outline: transparent solid 1px;
+    /* outline: transparent solid 1px; */
   }
 
   .localization-form__select:focus {
@@ -3272,10 +3277,10 @@ details-disclosure > details {
     }
   }
 
-  .scroll-trigger.animate--fade-in,
+  /* .scroll-trigger.animate--fade-in,
   .scroll-trigger.animate--slide-in {
     opacity: 0.01;
-  }
+  } */
 
   .scroll-trigger.animate--slide-in {
     transform: translateY(2rem);

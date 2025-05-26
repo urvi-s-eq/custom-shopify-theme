@@ -1,1 +1,558 @@
-{"sections":{"main":{"type":"main-product","blocks":{"vendor":{"type":"text","settings":{"text":"{{ product.vendor }}","text_style":"uppercase"}},"title":{"type":"title","settings":{}},"price":{"type":"price","settings":{}},"variant_picker":{"type":"variant_picker","settings":{"picker_type":"button","swatch_shape":"circle"}},"quantity_selector":{"type":"quantity_selector","settings":{}},"buy_buttons":{"type":"buy_buttons","settings":{"show_dynamic_checkout":true,"show_gift_card_recipient":true}},"description":{"type":"description","settings":{}},"share":{"type":"share","settings":{"share_label":"Share"}}},"block_order":["vendor","title","price","variant_picker","quantity_selector","buy_buttons","description","share"],"settings":{"enable_sticky_info":true,"color_scheme":"scheme-1","media_size":"large","constrain_to_viewport":true,"media_fit":"contain","gallery_layout":"stacked","mobile_thumbnails":"hide","media_position":"left","image_zoom":"lightbox","hide_variants":true,"enable_video_looping":false,"padding_top":36,"padding_bottom":12}},"related-products":{"type":"related-products","settings":{"heading":"You may also like","heading_size":"h2","products_to_show":4,"columns_desktop":4,"columns_mobile":"2","color_scheme":"scheme-1","image_ratio":"square","image_shape":"default","show_secondary_image":true,"show_vendor":false,"show_rating":false,"padding_top":36,"padding_bottom":28}}},"order":["main","related-products"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "cwr-main-product",
+      "blocks": {
+        "vendor": {
+          "type": "text",
+          "settings": {
+            "rating_text": "Rated 4.9/5 by Thousands of Happy Customers",
+            "text": "",
+            "text_style": "uppercase"
+          }
+        },
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "swatch_shape": "square"
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "quantity_selector": {
+          "type": "quantity_selector",
+          "settings": {}
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": true
+          }
+        },
+        "description": {
+          "type": "description",
+          "settings": {}
+        },
+        "share": {
+          "type": "share",
+          "disabled": true,
+          "settings": {
+            "share_label": "Share"
+          }
+        },
+        "image_UYAaKy": {
+          "type": "image",
+          "settings": {
+            "payment_img_1": "shopify://shop_images/payment-icon1.svg",
+            "payment_img_2": "shopify://shop_images/payment-icon2.svg",
+            "payment_img_3": "shopify://shop_images/payment-icon3.svg",
+            "payment_img_4": "shopify://shop_images/payment-icon4.svg",
+            "payment_img_5": "shopify://shop_images/payment-icon5.svg",
+            "payment_img_6": "shopify://shop_images/payment-icon6.svg",
+            "payment_img_7": "shopify://shop_images/payment-icon7.svg",
+            "payment_img_8": "shopify://shop_images/payment-icon8.svg",
+            "payment_img_9": "shopify://shop_images/payment-icon9.svg"
+          }
+        },
+        "collapsible_tab_a7PDMC": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Additional information",
+            "icon": "none",
+            "content": "<p>This classic Bad Boy Mountain T-shirt offers unbeatable style and comfort. Crafted with a durable polyester and cotton blend, this shirt is designed to last without sacrificing softness. Featuring a mountain design with a bold logo, you'll be ready for any adventure.<br/><br/></p>",
+            "page": ""
+          }
+        },
+        "collapsible_tab_9kwwYC": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Shipping policy",
+            "icon": "none",
+            "content": "",
+            "page": "privacy-policy"
+          }
+        },
+        "collapsible_tab_WERUw6": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Ask a question",
+            "icon": "none",
+            "content": "<p>This classic Bad Boy Mountain T-shirt offers unbeatable style and comfort. Crafted with a durable polyester and cotton blend, this shirt is designed to last without sacrificing softness. Featuring a mountain design with a bold logo, you'll be ready for any adventure.<br/><br/></p>",
+            "page": ""
+          }
+        },
+        "benefit_CaYGBi": {
+          "type": "benefit",
+          "settings": {
+            "icon": "shopify://shop_images/product-benefit-img1_550af155-31eb-4c94-9f9c-e3ba78f839bb.svg",
+            "text": "90,000+ Customers"
+          }
+        },
+        "benefit_jUDVQJ": {
+          "type": "benefit",
+          "settings": {
+            "icon": "shopify://shop_images/product-benefit-img2_627ef237-5adc-49f3-a25f-9bb3122399ee.svg",
+            "text": "Premium Quality"
+          }
+        },
+        "benefit_PTJkax": {
+          "type": "benefit",
+          "settings": {
+            "icon": "shopify://shop_images/product-benefit-img3_8fe9460b-3925-49b8-8e60-302784473a5d.svg",
+            "text": "Since 1998"
+          }
+        },
+        "benefit_wttyfa": {
+          "type": "benefit",
+          "settings": {
+            "icon": "shopify://shop_images/product-benefit-img4_344e3e62-f096-4a84-aafb-455f8a98d0b7.svg",
+            "text": "Safe Checkout"
+          }
+        }
+      },
+      "block_order": [
+        "vendor",
+        "title",
+        "variant_picker",
+        "price",
+        "quantity_selector",
+        "buy_buttons",
+        "description",
+        "share",
+        "image_UYAaKy",
+        "collapsible_tab_a7PDMC",
+        "collapsible_tab_9kwwYC",
+        "collapsible_tab_WERUw6",
+        "benefit_CaYGBi",
+        "benefit_jUDVQJ",
+        "benefit_PTJkax",
+        "benefit_wttyfa"
+      ],
+      "settings": {
+        "enable_sticky_info": true,
+        "color_scheme": "scheme-1",
+        "media_size": "large",
+        "constrain_to_viewport": true,
+        "media_fit": "contain",
+        "gallery_layout": "stacked",
+        "mobile_thumbnails": "hide",
+        "media_position": "left",
+        "image_zoom": "lightbox",
+        "hide_variants": true,
+        "enable_video_looping": false,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "award_slider_ABVAnY": {
+      "type": "award-slider",
+      "blocks": {
+        "award_KVEb4m": {
+          "type": "award",
+          "settings": {
+            "award_image": "shopify://shop_images/logo-slider-img1.png"
+          }
+        },
+        "award_JwfkpW": {
+          "type": "award",
+          "settings": {
+            "award_image": "shopify://shop_images/logo-slider-img2.png"
+          }
+        },
+        "award_QDXgCk": {
+          "type": "award",
+          "settings": {
+            "award_image": "shopify://shop_images/logo-slider-img3.png"
+          }
+        },
+        "award_kc8tGi": {
+          "type": "award",
+          "settings": {
+            "award_image": "shopify://shop_images/logo-slider-img4.png"
+          }
+        },
+        "award_ngbw4t": {
+          "type": "award",
+          "settings": {
+            "award_image": "shopify://shop_images/logo-slider-img4.png"
+          }
+        },
+        "award_LVG3ya": {
+          "type": "award",
+          "settings": {
+            "award_image": "shopify://shop_images/logo-slider-img5.png"
+          }
+        },
+        "award_YJXfGx": {
+          "type": "award",
+          "settings": {
+            "award_image": "shopify://shop_images/logo-slider-img6.png"
+          }
+        },
+        "award_6g9gXh": {
+          "type": "award",
+          "settings": {
+            "award_image": "shopify://shop_images/logo-slider-img7.png"
+          }
+        },
+        "award_gAAL9C": {
+          "type": "award",
+          "settings": {
+            "award_image": "shopify://shop_images/logo-slider-img8.png"
+          }
+        },
+        "award_pKgYkA": {
+          "type": "award",
+          "settings": {
+            "award_image": "shopify://shop_images/logo-slider-img7.png"
+          }
+        }
+      },
+      "block_order": [
+        "award_KVEb4m",
+        "award_JwfkpW",
+        "award_QDXgCk",
+        "award_kc8tGi",
+        "award_ngbw4t",
+        "award_LVG3ya",
+        "award_YJXfGx",
+        "award_6g9gXh",
+        "award_gAAL9C",
+        "award_pKgYkA"
+      ],
+      "name": "Award Slider",
+      "settings": {}
+    },
+    "shopping_with_us_review_qjXQYn": {
+      "type": "shopping-with-us-review",
+      "blocks": {
+        "quote_MV6Tar": {
+          "type": "quote",
+          "settings": {
+            "quote_image": "shopify://shop_images/review-slider-img1.jpg",
+            "quote_text": "<p>“Great customer service. I had damage to a order, they fixed/ resolved immediately! Also the search tool on shop website is very user friendly (dont need exact text to generate results)!”</p>",
+            "author_name": "ERIC POTTS"
+          }
+        },
+        "quote_rwMBCX": {
+          "type": "quote",
+          "settings": {
+            "quote_image": "shopify://shop_images/review-slider-img2.jpg",
+            "quote_text": "<p>“I just found Bombing Science and I’m glad I said! Great website! Quick ship! Easy to navigate. Great selection and better prices than the big guy! I’m a Bombing Science customer! Thanks!”</p>",
+            "author_name": "stevie kay"
+          }
+        },
+        "quote_mp37a4": {
+          "type": "quote",
+          "settings": {
+            "quote_image": "shopify://shop_images/review-slider-img3.jpg",
+            "quote_text": "<p>“Bombing Science has great prices and variety. Dang brand paint is great quality and sold for a great price. I would strongly recommend Bombing Science for art/graff supplies!”</p>",
+            "author_name": "Matthew Keyes"
+          }
+        },
+        "quote_4Uq6aB": {
+          "type": "quote",
+          "settings": {
+            "quote_image": "shopify://shop_images/review-slider-img4.jpg",
+            "quote_text": "<p>“I’ve only ordered from them 3 times but will always come back to order more, unbelievable amount of colours, amazing quality an unmatched prices!!</p>",
+            "author_name": "ChedderB 1620"
+          }
+        },
+        "quote_xmtdxx": {
+          "type": "quote",
+          "settings": {
+            "quote_image": "shopify://shop_images/review-slider-img1.jpg",
+            "quote_text": "<p>“Great for custom work when you'd rather use refills than buying new markers or for mixing custom colors. I like to throw a 2mm nib into my 111's so I can make super fine lines.”</p>",
+            "author_name": "spectre"
+          }
+        }
+      },
+      "block_order": [
+        "quote_MV6Tar",
+        "quote_rwMBCX",
+        "quote_mp37a4",
+        "quote_4Uq6aB",
+        "quote_xmtdxx"
+      ],
+      "name": "Shopping With Us",
+      "settings": {
+        "quote_header": "WHY ARTISTS AND GRAFFITISTS LOVE SHOPPING WITH US",
+        "quote_subheader": "Hear it straight from those who trust our products"
+      }
+    },
+    "cwr_marquee_slider_DV96jg": {
+      "type": "cwr-marquee-slider",
+      "blocks": {
+        "slider_RAfNeQ": {
+          "type": "slider",
+          "settings": {
+            "marquee_text": "200+ Google Reviews"
+          }
+        },
+        "slider_dgjDEz": {
+          "type": "slider",
+          "settings": {
+            "marquee_text": "Since 1998"
+          }
+        },
+        "slider_GhAwxX": {
+          "type": "slider",
+          "settings": {
+            "marquee_text": "90,000+ Happy customers"
+          }
+        },
+        "slider_mppeJ9": {
+          "type": "slider",
+          "settings": {
+            "marquee_text": "Premium Quality"
+          }
+        },
+        "slider_gWGdPd": {
+          "type": "slider",
+          "settings": {
+            "marquee_text": "Since 1998"
+          }
+        }
+      },
+      "block_order": [
+        "slider_RAfNeQ",
+        "slider_dgjDEz",
+        "slider_GhAwxX",
+        "slider_mppeJ9",
+        "slider_gWGdPd"
+      ],
+      "name": "CWR Marquee Slider",
+      "settings": {}
+    },
+    "cwr_img_content_PYrafy": {
+      "type": "cwr-img-content",
+      "blocks": {
+        "image_content_w7weqa": {
+          "type": "image_content",
+          "settings": {
+            "img_content_img1": "shopify://shop_images/img-content-img1.jpg",
+            "img_content_img2": "shopify://shop_images/img-content-img2.jpg",
+            "img_content_img3": "shopify://shop_images/img-content-img3.jpg"
+          }
+        },
+        "text_content_yQdYha": {
+          "type": "text_content",
+          "settings": {
+            "heading_content": "TRUSTED ART SUPPLIER FOR 25+ YEARS",
+            "sub_heading_content": "Thousands of artists globally rely on us for quality and variety.",
+            "main_content": "<p>Since launching in 1998, we've been a source of artistic inspiration, innovation, and endless   possibilities for artists and graffiti enthusiasts alike. Taking our passion online in 2004 marked a pivotal moment, extending our influence globally from our trusted origins as an art supplier in the USA and Canada.</p><p>As of now, we're proudly connecting with over 90,000 satisfied customers globally, and that  number keeps growing day by day.</p>",
+            "button_label": "LEARN MORE",
+            "button_link": "/"
+          }
+        }
+      },
+      "block_order": [
+        "image_content_w7weqa",
+        "text_content_yQdYha"
+      ],
+      "name": "CWR Img-Content",
+      "settings": {}
+    },
+    "related-products": {
+      "type": "related-products",
+      "settings": {
+        "heading": "EXPLORE THESE CUSTOMER FAVORITES",
+        "subheader": "Must-haves worth checking out!",
+        "heading_size": "h1",
+        "products_to_show": 5,
+        "columns_desktop": 4,
+        "columns_mobile": "2",
+        "color_scheme": "scheme-1",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": true,
+        "padding_top": 36,
+        "padding_bottom": 28
+      }
+    },
+    "customer_favourite_KGFMHP": {
+      "type": "customer-favourite",
+      "blocks": {
+        "product_block_Gfr3Gc": {
+          "type": "product_block",
+          "settings": {
+            "product_picker": "molotow-227hs-marker"
+          }
+        },
+        "product_block_PJrYGn": {
+          "type": "product_block",
+          "settings": {
+            "product_picker": "dang-flex-15-mop-paint"
+          }
+        },
+        "product_block_AFwBYR": {
+          "type": "product_block",
+          "settings": {
+            "product_picker": "uni-paint-marker-px-30"
+          }
+        },
+        "product_block_bBLCPW": {
+          "type": "product_block",
+          "settings": {
+            "product_picker": "grog-squeezer-marker-10-fmp"
+          }
+        },
+        "product_block_88fgVK": {
+          "type": "product_block",
+          "settings": {
+            "product_picker": "rossignol-ampage-mind-expander-mens-snowboard"
+          }
+        }
+      },
+      "block_order": [
+        "product_block_Gfr3Gc",
+        "product_block_PJrYGn",
+        "product_block_AFwBYR",
+        "product_block_bBLCPW",
+        "product_block_88fgVK"
+      ],
+      "disabled": true,
+      "name": "Customer Favourite",
+      "settings": {
+        "fav_header": "EXPLORE THESE CUSTOMER FAVORITES",
+        "fav_subheader": "Must-haves worth checking out!"
+      }
+    },
+    "cwr_faq_YexHPU": {
+      "type": "cwr-faq",
+      "blocks": {
+        "question_F4BtM7": {
+          "type": "question",
+          "settings": {
+            "title": "When my order will be delivered?",
+            "answer": "<p>USA: 3-6 business daysCanada: 1-5 business daysInternational: 8-75 business days.</p><ul><li>Calculate the business days from the day after you have received your shipping confirmation. For example, if you have received your shipping confirmation today, tomorrow will be the 1st business day of the shipping.</li><li>The shipping times above are for deliveries in major centers. For rural deliveries or deliveries outside continental USA and Canada, it can take a few more days.</li></ul>"
+          }
+        },
+        "question_eq6kKQ": {
+          "type": "question",
+          "settings": {
+            "title": "When will you ship my order?",
+            "answer": "<p>USA: 3-6 business daysCanada: 1-5 business daysInternational: 8-75 business days</p>"
+          }
+        },
+        "question_yfUpWX": {
+          "type": "question",
+          "settings": {
+            "title": "Where can I track my package?",
+            "answer": "<p>USA: 3-6 business daysCanada: 1-5 business daysInternational: 8-75 business days</p>"
+          }
+        },
+        "question_V6EYnc": {
+          "type": "question",
+          "settings": {
+            "title": "What is your return policy?",
+            "answer": "<p>USA: 3-6 business daysCanada: 1-5 business daysInternational: 8-75 business days</p>"
+          }
+        },
+        "question_r8tPEQ": {
+          "type": "question",
+          "settings": {
+            "title": "What kind of payment do you accept?",
+            "answer": "<p>USA: 3-6 business daysCanada: 1-5 business daysInternational: 8-75 business days</p>"
+          }
+        }
+      },
+      "block_order": [
+        "question_F4BtM7",
+        "question_eq6kKQ",
+        "question_yfUpWX",
+        "question_V6EYnc",
+        "question_r8tPEQ"
+      ],
+      "name": "CWR-Faq",
+      "settings": {
+        "faq_img": "shopify://shop_images/faq-logo.png",
+        "faq_heading": "Frequently asked questions",
+        "faq_subheading": "If you can’t find all the answers you need here, please contact us                            at",
+        "faq_email": "support@bombingscience.com ."
+      }
+    },
+    "cwr_img_content_creation_4hxHzr": {
+      "type": "cwr-img-content-creation",
+      "blocks": {
+        "text_content_FRDNmr": {
+          "type": "text_content",
+          "settings": {
+            "creation_img": "shopify://shop_images/explore-captivating-img_1.jpg",
+            "heading_content": "WHY LET THE INSPIRATION LINGER?",
+            "sub_heading_content": "YOUR MARKERS ARE JUST A CLICK AWAY!",
+            "main_content": "It’s time to let your artistic expression flow effortlessly. Grab yours, and watch the blank canvas transform in a whirlwind of creativity!",
+            "button_label": "Shop Best Seller",
+            "button_link": "/",
+            "rating_text": "Rated  <b>4.9/5</b>  by <b>Thousands</b> of Happy Customers"
+          }
+        },
+        "image_Ww9VVX": {
+          "type": "image",
+          "settings": {
+            "payment_img_1": "shopify://shop_images/payment-icon1.svg",
+            "payment_img_2": "shopify://shop_images/payment-icon2.svg",
+            "payment_img_3": "shopify://shop_images/payment-icon3.svg",
+            "payment_img_4": "shopify://shop_images/payment-icon4.svg",
+            "payment_img_5": "shopify://shop_images/payment-icon5.svg",
+            "payment_img_6": "shopify://shop_images/payment-icon6.svg",
+            "payment_img_7": "shopify://shop_images/payment-icon7.svg",
+            "payment_img_8": "shopify://shop_images/payment-icon8.svg",
+            "payment_img_9": "shopify://shop_images/payment-icon9.svg"
+          }
+        }
+      },
+      "block_order": [
+        "text_content_FRDNmr",
+        "image_Ww9VVX"
+      ],
+      "name": "CWR Image Content Creation",
+      "settings": {}
+    },
+    "cwr_newsletter_8qNF7M": {
+      "type": "cwr-newsletter",
+      "name": "CWR-Newsletter",
+      "settings": {
+        "heading_content": "Subscribe for exclusive updates",
+        "sub_heading_content": "Be the first to know about our latest products, offers, and exclusive content.",
+        "placeholder": "Email Address.....",
+        "button_label": "Subscribe",
+        "img_content_img1": "shopify://shop_images/product-newsletter-img1_a98ac178-749f-4318-a14d-ab457c2ab6f3.jpg",
+        "img_content_img1_mobile": "shopify://shop_images/product-newsletter-img1_a98ac178-749f-4318-a14d-ab457c2ab6f3.jpg",
+        "img_content_img2": "shopify://shop_images/product-newsletter-img2_19bc15a1-e2b1-4615-99ee-eee2282715f6.jpg",
+        "img_content_img3": "shopify://shop_images/newsletter-img3_bbbad937-3c2b-4c04-9b14-15195fbe7672.jpg"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "award_slider_ABVAnY",
+    "shopping_with_us_review_qjXQYn",
+    "cwr_marquee_slider_DV96jg",
+    "cwr_img_content_PYrafy",
+    "related-products",
+    "customer_favourite_KGFMHP",
+    "cwr_faq_YexHPU",
+    "cwr_img_content_creation_4hxHzr",
+    "cwr_newsletter_8qNF7M"
+  ]
+}
