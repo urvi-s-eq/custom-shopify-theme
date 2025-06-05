@@ -1,0 +1,62 @@
+{% if recommendations and recommendations.products_count > 0 %}
+  <style>
+  .product__img
+  {
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
+    margin-bottom: 10px;
+    display: block;
+    border-radius: 4px;
+  }
+  .recommendation-heading {
+    margin-bottom: 15px;
+}
+</style>
+<div class="recommended-products-grid" style="display: flex;
+    gap: 15px;
+    overflow-x: auto;
+    padding-bottom: 10px;">
+    {% for product in recommendations.products %}
+    <div class="cwr-our-product__box cwr-our-product__box--collections" style="height: auto;">
+                        <div>
+                            {%- if product.url != blank and product.featured_image != blank -%}
+                            <a href="{{ product.url }}">
+                                {% if product.featured_image != blank %}
+                                    <img src="{{ product.featured_image | image_url }}" alt="product img"
+                                        class="product__img" width="200" height="200">
+                                {% endif %}
+                            </a>
+                            {% endif %}
+                            <div class="cwr-our-product__box-content">
+                                {%- if product.url != blank and product.title != blank -%}
+                                <a href="{{ product.url }}">
+                                    <h5>{{ product.title }}</h5>
+                                </a>
+                                {% endif %}
+                                {% if product.price %}
+                                <div class="cwr-product-price">
+                                    {% if product.compare_at_price > product.price %}
+                                        <span><del>{{ product.compare_at_price | money }}</del>{{ product.price | money }}</span>
+                                    {% else %}
+                                        <span>{{ product.price | money }}</span>
+                                    {% endif %}
+                                </div>
+                                {% endif %}
+                                  <div class="cwr-our-product__box-cta">
+                                  <button 
+                                    class="custom-btn add-to-cart-btn-rec"
+                                    data-variant-id="{{ product.variants.first.id }}"
+                                    data-product-url="{{ product.url }}"
+                                  >
+                                  <span>Add to Cart</span>
+                                  </button>
+                                  </div>
+                            </div>
+                        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% else %}
+  <p>No recommendations found.</p>
+{% endif %}

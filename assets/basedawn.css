@@ -1607,6 +1607,10 @@ details[open] > .share-button__fallback {
     var(--inputs-shadow-blur-radius) rgba(var(--color-shadow), var(--inputs-shadow-opacity));
   z-index: -1;
 }
+.search-input .field:after{
+  content: unset;
+}
+
 
 .field:after,
 .select:after,
@@ -2549,14 +2553,14 @@ input[type='checkbox'] {
   transform: scale(1.07);
 }
 
-.header__icon .icon {
+/* .header__icon .icon {
   height: 2rem;
   width: 2rem;
   fill: none;
   vertical-align: middle;
-}
+} */
 
-.header__icon,
+/* .header__icon,
 .header__icon--cart .icon {
   height: 4.4rem;
   width: 4.4rem;
@@ -2566,7 +2570,7 @@ input[type='checkbox'] {
 .header__icon--cart {
   position: relative;
   margin-right: -1.2rem;
-}
+} */
 
 .header__icon--menu[aria-expanded='true']::before {
   content: '';

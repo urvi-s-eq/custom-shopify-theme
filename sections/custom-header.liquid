@@ -128,7 +128,7 @@
 
                     </div>
                     <div class="cwr-cart js-cart-icon">
-                      <a href="{{ routes.cart_url }}">
+                      <a href="{{ routes.cart_url }}" class="header__icon header__icon--cart link focus-inset" id="cart-icon-bubble" role="button" aria-haspopup="dialog">
                       {% if cart == empty %}
                        <img 
                         src="{{ section.settings.cart_icon | image_url }}" 

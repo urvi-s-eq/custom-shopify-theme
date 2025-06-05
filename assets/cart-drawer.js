@@ -32,6 +32,12 @@ class CartDrawer extends HTMLElement {
     // here the animation doesn't seem to always get triggered. A timeout seem to help
     setTimeout(() => {
       this.classList.add('animate', 'active');
+      const recommendations = this.querySelector('cart-drawer-recommendations');
+      if (recommendations && typeof recommendations.loadRecommendations === 'function') {
+        recommendations.loadRecommendations();
+      } else {
+        console.warn('cart-drawer-recommendations not found or not ready');
+      }
     });
 
     this.addEventListener(

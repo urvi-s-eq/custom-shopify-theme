@@ -23,7 +23,7 @@
     <div
       class="drawer__inner gradient color-{{ settings.cart_color_scheme }}"
       role="dialog"
-      aria-modal="true"
+      aria-modal="true" 
       aria-label="{{ 'sections.cart.title' | t }}"
       tabindex="-1"
     >
@@ -452,7 +452,18 @@
           </div>
           <div id="CartDrawer-CartErrors" role="alert"></div>
         </form>
+        <cart-drawer-recommendations
+          data-base-url="{{ routes.product_recommendations_url }}?section_id=cart-recommendations"
+        >
+        <h2 class="recommendation-heading" style="margin-bottom: 15px;">{{ 'sections.cart.cart_recommendation_title' | t }}</h2>
+        <div class="recommended-products-grid" style="display: flex;
+            gap: 15px;
+            overflow-x: auto;
+            padding-bottom: 10px;">
+        </div>
+        </cart-drawer-recommendations>
       </cart-drawer-items>
+     
       <div class="drawer__footer">
         {%- if settings.show_cart_note -%}
           <details id="Details-CartDrawer">
@@ -476,7 +487,6 @@
 
         <!-- Start blocks -->
         <!-- Subtotals -->
-
         <div class="cart-drawer__footer" {{ block.shopify_attributes }}>
           <div>
             {%- if cart.cart_level_discount_applications.size > 0 -%}
@@ -558,3 +568,100 @@
     </div>
   </div>
 </cart-drawer>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  // Handle "Add to Cart" with AJAX and remove from DOM
+  document.addEventListener('click', function (e) {
+  const button = e.target.closest('.add-to-cart-btn-rec');
+  if (!button) return;
+
+  e.preventDefault(); // prevent form submission or link behavior
+  e.stopPropagation(); // prevent bubbling to parent <a>
+
+  const variantId = button.getAttribute('data-variant-id');
+  const parentBox = button.closest('.cwr-our-product__box');
+
+  // Add to cart using AJAX
+  fetch('/cart/add.js', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      id: variantId,
+      quantity: 1
+    })
+  })
+  .then(response => {
+    if (!response.ok) throw new Error('Add to cart failed.');
+    return response.json();
+  })
+  .then((data) => {
+      if (parentBox) parentBox.remove();
+      // Get cart data with sections for rendering
+      return fetch(window.location.pathname + `?sections=cart-drawer,cart-icon-bubble`);
+    })
+    .then((res) => res.json())
+    .then((sections) => {
+      const cartDrawerEl = document.querySelector('cart-drawer');
+      if (cartDrawerEl && typeof cartDrawerEl.renderContents === 'function') {
+        cartDrawerEl.renderContents({ sections }); // Uses your component method
+      } else {
+        console.error('CartDrawer component not found or renderContents() missing');
+      }
+    })
+  .catch(error => {
+    console.error('Error:', error);
+  });
+});
+
+
+  // Slick slider init (inside cart-drawer-recommendations)
+  window.addEventListener('load', () => {
+    const target = document.querySelector('cart-drawer-recommendations .js-cwr-our-product');
+    if (!target) return;
+
+    const observer = new MutationObserver((mutations, obs) => {
+      const slider = document.querySelector('.js-cwr-our-product');
+      if (slider && slider.children.length > 0 && !$(slider).hasClass('slick-initialized')) {
+        $(slider).slick({
+          slidesToShow: 4.3,
+          slidesToScroll: 1,
+          infinite: false,
+          dots: false,
+          arrows: true,
+          speed: 900,
+          autoplay: false,
+          adaptiveHeight: false,
+          prevArrow: '<button type="button" class="prev-arrow">...</button>',
+          nextArrow: '<button type="button" class="next-arrow">...</button>',
+          responsive: [
+            {
+              breakpoint: 992,
+              settings: {
+                arrows: true,
+                slidesToShow: 2,
+                slidesToScroll: 1,
+                rows: 2,
+              }
+            },
+            {
+              breakpoint: 576,
+              settings: {
+                arrows: true,
+                slidesToShow: 2,
+                slidesToScroll: 1,
+                rows: 2,
+              }
+            }
+          ]
+        });
+
+        obs.disconnect(); // Stop observing after initializing
+      }
+    });
+
+    observer.observe(target, { childList: true, subtree: true });
+  });
+});
+</script>
