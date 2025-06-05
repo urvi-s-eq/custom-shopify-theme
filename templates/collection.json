@@ -77,9 +77,6 @@
       "settings": {
         "products_per_row": 2,
         "payment_label": "Safe & Secure Checkout",
-        "products_per_page": 16,
-        "columns_desktop": 4,
-        "columns_mobile": "2",
         "enable_filtering": true,
         "filter_type": "vertical",
         "enable_sorting": true

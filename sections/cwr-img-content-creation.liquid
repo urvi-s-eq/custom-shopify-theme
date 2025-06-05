@@ -1,0 +1,161 @@
+<section class="cwr-img-content cwr-img-content--creations product--creations">
+        <div class="container">
+        {% for block in section.blocks %}
+            {% case block.type %}
+            {% when 'text_content' %}
+            <div class="cwr-img-content__left">
+                <div class="cwr-img-content__left-img">
+                    <img data-src="{{ block.settings.creation_img | image_url: width: 835, height: 792 }}" alt="cwr-img-content-img"
+                        class="img-fluid lazyload" width="835" height="795">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="cwr-img-content__right">
+                        <div class="cwr-rating">
+                            <ul>
+                                {% for i in (1..5) %}
+                                <li><img src="{{ 'rating-star.svg' | file_url }}" alt="star icon" class="img-fluid" width="16" height="16"></li>
+                                {% endfor %}
+                            </ul>
+                        {% if block.settings.rating_text != blank %}<span>{{ block.settings.rating_text }}</span>{% endif %}
+                        </div>
+                        {% if block.settings.heading_content != blank %}<h3>{{ block.settings.heading_content }}</h3>{% endif %}
+                        {% if block.settings.sub_heading_content != blank %}<h2 class="custom-heading-md">{{ block.settings.sub_heading_content }}</h2>{% endif %}
+                    {% if block.settings.main_content != blank %}<h4 class="custom-heading-sm">{{ block.settings.main_content }}</h4>{% endif %}
+                        {% if block.settings.button_label != blank %}
+                        <a href="{{ block.settings.button_link }}" class="custom-btn">
+                            <span>{{ block.settings.button_label }}<svg xmlns="http://www.w3.org/2000/svg" width="18" height="15"
+                                    viewBox="0 0 18 15" fill="none">
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M11.3429 0.292893L17.7069 6.65685C18.0974 7.04738 18.0974 7.68054 17.7069 8.07107L11.3429 14.435C10.9524 14.8256 10.3192 14.8256 9.92869 14.435C9.53816 14.0445 9.53816 13.4113 9.92869 13.0208L14.5855 8.36396H0.999756C0.447471 8.36396 -0.000244141 7.91625 -0.000244141 7.36396C-0.000244141 6.81168 0.447471 6.36396 0.999756 6.36396H14.5855L9.92869 1.70711C9.53816 1.31658 9.53816 0.683418 9.92869 0.292893C10.3192 -0.0976311 10.9524 -0.0976311 11.3429 0.292893Z"
+                                        fill="black" />
+                                </svg>
+                            </span>
+                        </a>
+                        {% endif %}
+                        {% when 'image' %}
+                        <div class="cwr-payment-icon">
+                            {% for i in (1..9) %}
+                            {% assign key = "payment_img_" | append: i %}
+                            {% assign image = block.settings[key] %}
+                            {% if image != blank %}
+                                <div class="cwr-payment-icon__img">
+                                <img src="{{ image | img_url: 'master' }}" alt="payment-icon" class="img-fluid" />
+                                </div>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endcase %}
+        {% endfor %}
+        </div>
+    </section>
+    {% schema %}
+    {
+        "name": "Content Creation",
+        "settings": [],
+        "blocks" : [
+        {
+            "type": "text_content",
+            "name": "Creation Block",
+            "settings": [
+                {
+                "type": "image_picker",
+                "label": "Creation Image",
+                "id": "creation_img"
+                },
+                {
+                "type": "text",
+                "label": "Creation Heading Content",
+                "id": "heading_content"
+                },
+                {
+                "type": "text",
+                "label": "Creation Sub Heading Content",
+                "id": "sub_heading_content"
+                },
+                {
+                "type": "text",
+                "label": "Creation Main Content",
+                "id": "main_content"
+                },
+                {
+                "type": "text",
+                "id": "button_label",
+                "label": "Creation Button Label"
+                },
+                {
+                "type": "url",
+                "id": "button_link",
+                "label": "Creation Button Link"
+                },
+                {
+                "type": "text",
+                "label": "Rating Text for Banner",
+                "id": "rating_text"
+                }
+            ]
+        },
+        {
+            "type": "image",
+            "name": "Payment Block",
+            "settings": [
+                {
+                "type": "image_picker",
+                "label": "Payment Image 1",
+                "id": "payment_img_1"
+                },
+                {
+                "type": "image_picker",
+                "label": "Payment Image 2",
+                "id": "payment_img_2"
+                },
+                {
+                "type": "image_picker",
+                "label": "Payment Image 3",
+                "id": "payment_img_3"
+                },
+                {
+                "type": "image_picker",
+                "label": "Payment Image 4",
+                "id": "payment_img_4"
+                },
+                {
+                "type": "image_picker",
+                "label": "Payment Image 5",
+                "id": "payment_img_5"
+                },
+                {
+                "type": "image_picker",
+                "label": "Payment Image 6",
+                "id": "payment_img_6"
+                },
+                {
+                "type": "image_picker",
+                "label": "Payment Image 7",
+                "id": "payment_img_7"
+                },
+                 {
+                "type": "image_picker",
+                "label": "Payment Image 8",
+                "id": "payment_img_8"
+                },
+                {
+                "type": "image_picker",
+                "label": "Payment Image 9",
+                "id": "payment_img_9"
+                }
+                
+            ]
+        }
+        ],
+        "presets" : [
+            {
+                "name" : "CWR Image Content Creation"
+            }
+        ]
+    }
+{% endschema %}

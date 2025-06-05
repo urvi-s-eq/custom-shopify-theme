@@ -1,0 +1,57 @@
+            <div class="cwr-slick-item">
+                    <div>
+                        <div class="cwr-our-product__box">
+                            {%- if product.url != blank and product.featured_image != blank -%}
+                            <a href="{{ product.url }}">
+                                {% if product.featured_image != blank %}
+                                <figure>
+                                    <img src="{{ product.featured_image | image_url }}" alt="product img"
+                                        class="img-fluid lazyload" width="344" height="344">
+                                </figure>
+                                {% endif %}
+                            </a>
+                            {% endif %}
+                            {% for tag in product.tags %}
+                                {% if tag == "Sale" and product.compare_at_price > product.price %}
+                                  <span class="cwr-new-arrival cwr-sale">{{ tag }}</span>
+                                {% elsif tag == "New Arrival" %}
+                                  <span class="cwr-new-arrival">{{ tag }}</span>
+                                {% endif %}
+                            {% endfor %}
+                            <div class="cwr-our-product__box-content">
+                                <div class="cwr-rating">
+                                    <ul>
+                                        {% for i in (1..5) %}
+                                            <li><img src="{{ 'rating-star.svg' | file_url }}" alt="star icon" class="img-fluid" width="16" height="16"></li>
+                                        {% endfor %}
+                                    </ul>
+                                    <span>{{ product.metafields.custom.reviews }}</span>
+                                </div>
+                                {%- if product.url != blank and product.title != blank -%}
+                                <a href="{{ product.url }}">
+                                    <h5>{{ product.title }}</h5>
+                                </a>
+                                {% endif %}
+                                {% if product.price %}
+                                <div class="cwr-product-price">
+                                    {% if product.compare_at_price > product.price %}
+                                        <span><del>{{ product.compare_at_price | money }}</del>{{ product.price | money }}</span>
+                                    {% else %}
+                                        <span>{{ product.price | money }}</span>
+                                    {% endif %}
+                                </div>
+                                {% endif %}
+                                  <div class="cwr-our-product__box-cta">
+                                  <button 
+                                    class="custom-btn add-to-cart-btn"
+                                    data-variant-id="{{ product.variants.first.id }}"
+                                    data-product-url="{{ product.url }}"
+                                  >
+                                  <span>Shop Now</span>
+                                  </button>
+                                  </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+
